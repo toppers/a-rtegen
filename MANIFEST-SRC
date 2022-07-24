@@ -1,6 +1,7 @@
 PACKAGE a-rtegen
 VERSION 1.4.0
 
+MANIFEST
 MANIFEST-SRC
 readme.txt
 version.txt
