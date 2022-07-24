@@ -1,0 +1,33 @@
+PACKAGE a-rtegen
+VERSION 1.4.0
+
+MANIFEST-SRC
+readme.txt
+version.txt
+
+bin/bin/atk2style.cfg
+bin/bin/logging.properties
+bin/bin/rtegen.bat
+bin/bin/rtegen.sh
+bin/bin/uncrustify.exe
+bin/lib/
+bin/model/Rte_InternalDataTypes.arxml
+bin/schema/README.txt
+
+ecu_extractor/ecu_extractor.rb
+ecu_extractor/readme.txt
+
+INCLUDE sample/MANIFEST
+
+src/com.google.guava
+INCLUDE src/jp.ac.nagoya_u.is.nces.a_rte.app/MANIFEST
+src/jp.ac.nagoya_u.is.nces.a_rte.codegen
+src/jp.ac.nagoya_u.is.nces.a_rte.m2m
+src/jp.ac.nagoya_u.is.nces.a_rte.model
+src/jp.ac.nagoya_u.is.nces.a_rte.persist
+src/jp.ac.nagoya_u.is.nces.a_rte.validation
+src/lib
+src/lib-sources
+src/cleanup.xml
+src/codingstyle.xml
+src/readme_dev.doc

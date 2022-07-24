@@ -1,0 +1,480 @@
+#
+#  TOPPERS/A-RTEGEN
+#      Automotive Runtime Environment Generator
+#
+#  Copyright (C) 2013-2016 by Center for Embedded Computing Systems
+#              Graduate School of Information Science, Nagoya Univ., JAPAN
+#  Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
+#  Copyright (C) 2014-2016 by eSOL Co.,Ltd., JAPAN
+#  Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
+#  Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
+#  Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+#  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
+#  Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
+#  Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
+#  Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
+#  Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
+#  Copyright (C) 2013-2016 by Witz Corporation
+#
+#  上記著作権者は，以下の(1)〜(4)の条件を満たす場合に限り，本ソフトウェ
+#  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
+#  変・再配布（以下，利用と呼ぶ）することを無償で許諾する．
+#  (1) 本ソフトウェアをソースコードの形で利用する場合には，上記の著作
+#      権表示，この利用条件および下記の無保証規定が，そのままの形でソー
+#      スコード中に含まれていること．
+#  (2) 本ソフトウェアを，ライブラリ形式など，他のソフトウェア開発に使
+#      用できる形で再配布する場合には，再配布に伴うドキュメント（利用
+#      者マニュアルなど）に，上記の著作権表示，この利用条件および下記
+#      の無保証規定を掲載すること．
+#  (3) 本ソフトウェアを，機器に組み込むなど，他のソフトウェア開発に使
+#      用できない形で再配布する場合には，次のいずれかの条件を満たすこ
+#      と．
+#    (a) 再配布に伴うドキュメント（利用者マニュアルなど）に，上記の著
+#        作権表示，この利用条件および下記の無保証規定を掲載すること．
+#    (b) 再配布の形態を，別に定める方法によって，TOPPERSプロジェクトに
+#        報告すること．
+#  (4) 本ソフトウェアの利用により直接的または間接的に生じるいかなる損
+#      害からも，上記著作権者およびTOPPERSプロジェクトを免責すること．
+#      また，本ソフトウェアのユーザまたはエンドユーザからのいかなる理
+#      由に基づく請求からも，上記著作権者およびTOPPERSプロジェクトを
+#      免責すること．
+#
+#  本ソフトウェアは，AUTOSAR（AUTomotive Open System ARchitecture）仕
+#  様に基づいている．上記の許諾は，AUTOSARの知的財産権を許諾するもので
+#  はない．AUTOSARは，AUTOSAR仕様に基づいたソフトウェアを商用目的で利
+#  用する者に対して，AUTOSARパートナーになることを求めている．
+#
+#  本ソフトウェアは，無保証で提供されているものである．上記著作権者お
+#  よびTOPPERSプロジェクトは，本ソフトウェアに関して，特定の使用目的
+#  に対する適合性も含めて，いかなる保証も行わない．また，本ソフトウェ
+#  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
+#  の責任を負わない．
+#
+#  $Id: HelloAutosarWithCom_ECU1.yaml 651 2016-03-31 06:20:22Z mtakada $
+#
+
+Ecuc:
+  Os:
+    MainApp:
+      DefinitionRef: OsAppMode
+    OsOS:
+      OsStackMonitoring: true
+      OsStatus: EXTENDED
+      OsUseGetServiceId: true
+      OsUseParameterAccess: true
+      OsScalabilityClass: SC3
+      OsHooks:
+        OsErrorHook: true
+        OsProtectionHook: true
+        OsPreTaskHook: false
+        OsPostTaskHook: false
+        OsStartupHook: false
+        OsShutdownHook: false
+      OsHookStack:
+        OsHookStackSize: 1024
+      OsOsStack:
+        OsOsStackSize: 4096
+    NON_TRUSTED_OSAP1:
+      DefinitionRef: OsApplication
+      OsTrusted: false
+      OsAppEcucPartitionRef: /Ecuc/EcuC/EcucPartitionCollection/EcucPartition_SWC1
+      OsAppTaskRef: /Ecuc/Os/TASK1
+      OsApplicationHooks:
+        OsAppErrorHook: false
+        OsAppShutdownHook: false
+        OsAppStartupHook: false
+    TASK1:
+      DefinitionRef: OsTask
+      OsTaskActivation: 1
+      OsTaskPriority: 10
+      OsTaskSchedule: FULL
+      OsTaskStackSize: 1024
+      OsTaskResourceRef:
+        - /Ecuc/Os/COMSTACK_RESOURCE
+    TRUSTED_OSAP1:
+      DefinitionRef: OsApplication
+      OsTrusted: true
+      OsAppEcucPartitionRef: /Ecuc/EcuC/EcucPartitionCollection/EcucPartition_Rte
+      OsAppTaskRef:
+        - /Ecuc/Os/ECU_INIT_TASK
+        - /Ecuc/Os/SCHM_TASK
+      OsAppIsrRef: /Ecuc/Os/C2ISR_FOR_CAN
+      OsAppAlarmRef:
+        - /Ecuc/Os/ALARM1
+        - /Ecuc/Os/ALARM2
+      OsApplicationHooks:
+        OsAppErrorHook: false
+        OsAppShutdownHook: false
+        OsAppStartupHook: false
+    ECU_INIT_TASK:
+      DefinitionRef: OsTask
+      OsTaskActivation: 1
+      OsTaskPriority: 15
+      OsTaskSchedule: FULL
+      OsTaskStackSize: 1024
+      OsTaskResourceRef:
+        - /Ecuc/Os/COMSTACK_RESOURCE
+      OsTaskAutostart:
+        OsTaskAppModeRef: /Ecuc/Os/MainApp
+    SCHM_TASK:
+      DefinitionRef: OsTask
+      OsTaskActivation: 1
+      OsTaskPriority: 15
+      OsTaskSchedule: FULL
+      OsTaskStackSize: 1024
+      OsTaskResourceRef:
+        - /Ecuc/Os/COMSTACK_RESOURCE
+    COMSTACK_RESOURCE:
+      DefinitionRef: OsResource
+      OsResourceProperty: STANDARD
+    COM_REENTRANT0:
+      DefinitionRef: OsResource
+      OsResourceProperty: LINKED
+      OsResourceLinkedResourceRef: /Ecuc/Os/COMSTACK_RESOURCE
+    COM_REENTRANT1:
+      DefinitionRef: OsResource
+      OsResourceProperty: LINKED
+      OsResourceLinkedResourceRef: /Ecuc/Os/COMSTACK_RESOURCE
+    COM_REENTRANT2:
+      DefinitionRef: OsResource
+      OsResourceProperty: LINKED
+      OsResourceLinkedResourceRef: /Ecuc/Os/COMSTACK_RESOURCE
+    CANIF_REENTRANT0:
+      DefinitionRef: OsResource
+      OsResourceProperty: LINKED
+      OsResourceLinkedResourceRef: /Ecuc/Os/COMSTACK_RESOURCE
+    CANIF_REENTRANT1:
+      DefinitionRef: OsResource
+      OsResourceProperty: LINKED
+      OsResourceLinkedResourceRef: /Ecuc/Os/COMSTACK_RESOURCE
+    CAN_REENTRANT:
+      DefinitionRef: OsResource
+      OsResourceProperty: LINKED
+      OsResourceLinkedResourceRef: /Ecuc/Os/COMSTACK_RESOURCE
+# 100msに1回満了するアラーム
+    ALARM1:
+      DefinitionRef: OsAlarm
+      OsAlarmCounterRef: /Ecuc/Os/MAIN_HW_COUNTER
+      OsAlarmAction:
+        OsAlarmActivateTask:
+          OsAlarmActivateTaskRef: /Ecuc/Os/TASK1
+      OsAlarmAutostart:
+        OsAlarmAppModeRef: /Ecuc/Os/MainApp
+        OsAlarmAlarmTime: 6000000  # nios2_dev_gcc(60MHz)
+        OsAlarmCycleTime: 6000000  # nios2_dev_gcc(60MHz)
+        OsAlarmAutostartType: RELATIVE
+    ALARM2:
+      DefinitionRef: OsAlarm
+      OsAlarmCounterRef: /Ecuc/Os/MAIN_HW_COUNTER
+      OsAlarmAction:
+        OsAlarmActivateTask:
+          OsAlarmActivateTaskRef: /Ecuc/Os/SCHM_TASK
+      OsAlarmAutostart:
+        OsAlarmAppModeRef: /Ecuc/Os/MainApp
+        OsAlarmAlarmTime: 6000000  # nios2_dev_gcc(60MHz)
+        OsAlarmCycleTime: 6000000  # nios2_dev_gcc(60MHz)
+        OsAlarmAutostartType: RELATIVE
+# CAN割込み
+    C2ISR_FOR_CAN:
+      DefinitionRef: OsIsr
+      OsIsrCategory: CATEGORY_2
+      OsIsrInterruptNumber: 10
+      OsIsrInterruptPriority: 3
+      OsIsrInterruptSource: ENABLE
+      OsIsrResourceRef:
+        - /Ecuc/Os/COMSTACK_RESOURCE
+
+  EcuC:
+    EcucPduCollection:
+      PduIdTypeEnum: UINT16
+      PduLengthTypeEnum: UINT16
+      Pdu1:
+        PduLength: 4
+        DefinitionRef: Pdu
+    EcucPartitionCollection:
+      EcucPartition_SWC1:
+        DefinitionRef: EcucPartition
+        EcucPartitionBswModuleExecution: false
+        PartitionCanBeRestarted: false
+        EcucPartitionSoftwareComponentInstanceRef:
+          - CONTEXT-ELEMENT-REF: /System/SystemHA/RootSwCompositionPrototype
+          - TARGET-REF: /HelloAutosar/HA_TopLevel/SWC1
+      EcucPartition_Rte:
+        DefinitionRef: EcucPartition
+        EcucPartitionBswModuleExecution: true
+        PartitionCanBeRestarted: false
+
+  Com:
+    ComConfig:
+      ComConfigurationId: 0
+      ComSignal1:
+        DefinitionRef: ComSignal
+        ComSystemTemplateSystemSignalRef: /Network/ISignalIPdu1/iSignalToIPduMapping1
+        ComHandleId: 0
+        ComBitPosition: 0
+        ComBitSize: 32
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 0
+        ComSignalType: UINT32
+        ComTransferProperty: TRIGGERED
+      ComIPduGroup1:
+        ComIPduGroupHandleId: 0
+        DefinitionRef: ComIPduGroup
+      ComIPdu1:
+        DefinitionRef: ComIPdu
+        ComTxIPdu:
+          ComTxModeTrue:
+            ComTxMode:
+              ComTxModeMode: DIRECT
+          ComTxIPduUnusedAreasDefault: 0
+        ComIPduDirection: SEND
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduHandleId: 0
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - /Ecuc/Com/ComConfig/ComIPduGroup1
+        ComIPduSignalRef:
+        - /Ecuc/Com/ComConfig/ComSignal1
+        ComPduIdRef: /Ecuc/EcuC/EcucPduCollection/Pdu1
+      ComTimeBase:
+        ComTxTimeBase: 0.1
+        ComRxTimeBase: 0.1
+    ComGeneral:
+      ComSupportedIPduGroups: 1
+      ComVersionInfoApi: false
+      ComConfigurationUseDet: true
+
+  PduR:
+    PduRGeneral:
+      PduRZeroCostOperation: true
+      PduRDevErrorDetect: false
+      PduRVersionInfoApi: false
+    PduRRoutingTables:
+      PduRConfigurationId: 0
+      PduRRoutingTable:
+        PduRIsMinimumRouting: false
+        PduRRoutingPath_0:
+          DefinitionRef: PduRRoutingPath
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 0
+            PduRSrcPduRef: /Ecuc/EcuC/EcucPduCollection/Pdu1
+          PduRDestPdu:
+            PduRDestPduHandleId: 0
+            PduRDestPduRef: /Ecuc/EcuC/EcucPduCollection/Pdu1
+
+  CanIf:
+    CanIfPublicCfg:
+      CanIfPublicCancelTransmitSupport: true
+      CanIfPublicChangeBaudrateSupport: true
+      CanIfPublicDevErrorDetect: true
+      CanIfPublicHandleTypeEnum: UINT8
+      CanIfPublicMultipleDrvSupport: false
+      CanIfPublicNumberOfCanHwUnits: 1
+      CanIfPublicPnSupport: false
+      CanIfPublicReadRxPduDataApi: true
+      CanIfPublicReadRxPduNotifyStatusApi: true
+      CanIfPublicReadTxPduNotifyStatusApi: true
+      CanIfPublicSetDynamicTxIdApi: false
+      CanIfPublicTxBuffering: false
+      CanIfPublicTxConfirmPollingSupport: true
+      CanIfPublicVersionInfoApi: false
+      CanIfPublicWakeupCheckValidSupport: true
+    CanIfPrivateCfg:
+      CanIfPrivateDlcCheck: TRUE
+      CanIfSupportTTCAN: FALSE
+    CanIfDispatchCfg:
+      CanIfDispatchUserCtrlBusOffName: CanSM_ControllerBusOff
+      CanIfDispatchUserCtrlBusOffUL: CAN_SM
+      CanIfDispatchUserCtrlModeIndicationName: CanSM_ControllerModeIndication
+      CanIfDispatchUserCtrlModeIndicationUL: CAN_SM
+      CanIfDispatchUserValidateWakeupEventName: EcuM_ValidateWakeupEvent
+      CanIfDispatchUserValidateWakeupEventUL: ECUM
+    CanIfCtrlDrvCfg:
+      CanIfCtrlDrvTxCancellation: false
+      CanIfCtrlDrvInitHohConfigRef: /Ecuc/CanIf/CanIfInitCfg/CanIfInitHohCfg
+      CanIfCtrlDrvNameRef: /Ecuc/Can/CanGeneral
+      CanIfCtrlCfg1:
+        DefinitionRef: CanIfCtrlCfg
+        CanIfCtrlId: 0
+        CanIfCtrlWakeupSupport: true
+        CanIfCtrlCanCtrlRef: /Ecuc/Can/CanConfigSet/CanController1
+    CanIfInitCfg:
+      CanIfInitCfgSet: main_canif_config
+      CanIfBufferCfg:
+        CanIfBufferSize: 0
+        CanIfBufferHthRef: /Ecuc/CanIf/CanIfInitCfg/CanIfInitHohCfg/CanIfHthCfg1
+      CanIfInitHohCfg:
+        CanIfInitRefCfgSet: /Ecuc/Can/CanConfigSet
+        CanIfHthCfg1:
+          DefinitionRef: CanIfHthCfg
+          CanIfHthCanCtrlIdRef: /Ecuc/CanIf/CanIfCtrlDrvCfg/CanIfCtrlCfg1
+          CanIfHthIdSymRef: /Ecuc/Can/CanConfigSet/CanHardwareObject1
+      CanIfTxPduCfg_0:
+        DefinitionRef: CanIfTxPduCfg
+        CanIfTxPduCanId: 0x02
+        CanIfTxPduCanIdType: STANDARD_CAN
+        CanIfTxPduDlc: 4
+        CanIfTxPduId: 0
+        CanIfTxPduPnFilterPdu: FALSE
+        CanIfTxPduReadNotifyStatus: TRUE
+        CanIfTxPduType: STATIC
+        CanIfTxPduUserTxConfirmationName: PduR_CanIfTxConfirmation
+        CanIfTxPduUserTxConfirmationUL: PDUR
+        CanIfTxPduBufferRef: /Ecuc/CanIf/CanIfInitCfg/CanIfBufferCfg
+        CanIfTxPduRef: /Ecuc/EcuC/EcucPduCollection/Pdu1
+
+  Can:
+    CanConfigSet:
+      CanHardwareObject1:
+        DefinitionRef: CanHardwareObject
+        CanHandleType: FULL
+        CanObjectType: TRANSMIT
+        CanIdType: STANDARD
+        CanIdValue: 0
+        CanObjectId: 0
+        CanControllerRef: /Ecuc/Can/CanConfigSet/CanController1
+      CanController1:
+        DefinitionRef: CanController
+        CanControllerId: 0
+        CanWakeupSourceRef: /Ecuc/EcuM/EcuMConfiguration/EcuMCommonConfiguration/EcuMWakeupSource1
+        CanBusoffProcessing: INTERRUPT
+        CanControllerActivation: FALSE
+        CanControllerBaseAddress: 0x08020000
+        CanRxProcessing: INTERRUPT
+        CanTxProcessing: INTERRUPT
+        CanWakeupProcessing: INTERRUPT
+        CanWakeupSupport: FALSE
+        CanControllerDefaultBaudrate: /Ecuc/Can/CanConfigSet/CanController1/CanControllerBaudrateConfig_0
+        CanControllerBaudrateConfig_0:
+          DefinitionRef: CanControllerBaudrateConfig
+          CanControllerBaudRate: 500
+          CanControllerPropSeg: 0
+          CanControllerSeg1: 0
+          CanControllerSeg2: 255
+          CanControllerSyncJumpWidth: 0
+        CanControllerBaudrateConfig_1:
+          DefinitionRef: CanControllerBaudrateConfig
+          CanControllerBaudRate: 250
+          CanControllerPropSeg: 0
+          CanControllerSeg1: 0
+          CanControllerSeg2: 255
+          CanControllerSyncJumpWidth: 0
+    CanGeneral:
+      CanIndex: 0
+      CanChangeBaudrateApi: TRUE
+      CanDevErrorDetection: TRUE
+      CanHardwareCancellation: FALSE
+      CanIdenticalIdCancellation: FALSE
+      CanMainFunctionModePeriod: 0.2
+      CanMultiplexedTransmission: FALSE
+      CanTimeoutDuration: 1.0
+      CanVersionInfoApi: TRUE
+      CanSupportTTCANRef: /Ecuc/CanIf/CanIfPrivateCfg
+      CanMainFunctionRWPeriods:
+        CanMainFunctionReadPeriod: 0.1
+        CanMainFunctionWritePeriod: 0.0
+      CanCounterRef: /Ecuc/Os/MAIN_HW_COUNTER
+
+  EcuM:
+    EcuMConfiguration:
+      EcuMCommonConfiguration:
+        EcuMWakeupSource1:
+          EcuMWakeupSourceId: 0
+          DefinitionRef: EcuMWakeupSource
+
+  Rte:
+    RteBswGeneral:
+      RteSchMVersionInfoApi: false
+      RteUseComShadowSignalApi: false
+    RteGeneration:
+      RteCalibrationSupport: NONE
+      RteCodeVendorId: 65
+      RteDevErrorDetect: true
+      RteDevErrorDetectUninit: true
+      RteGenerationMode: COMPATIBILITY_MODE
+      RteMeasurementSupport: false
+      RteOptimizationMode: MEMORY
+      RteValueRangeCheckEnabled: false
+      RteVfbTraceEnabled: false
+    RteInitializationBehavior:
+      RteInitializationStrategy: RTE_INITIALIZATION_STRATEGY_AT_RTE_START
+      RteSectionInitializationPolicy: CLEARED
+    SWCI1:
+      DefinitionRef: RteSwComponentInstance
+      RteSoftwareComponentInstanceRef: /HelloAutosar/HA_TopLevel/SWC1
+      TimingEvent1:
+        DefinitionRef: RteEventToTaskMapping
+        RteImmediateRestart: false
+        RtePositionInTask: 1
+        RteEventRef: /HelloAutosar/SWC1/IB_SWC1/TimingEvent
+        RteMappedToTaskRef: /Ecuc/Os/TASK1
+        RteUsedOsAlarmRef: /Ecuc/Os/ALARM1
+        RteActivationOffset: 0.1
+    RteOsInteraction:
+      RteUsedOsActivation1:
+        DefinitionRef: RteUsedOsActivation
+        RteExpectedActivationOffset: 0.1
+        RteExpectedTickDuration: 0.1
+        RteActivationOsAlarmRef: /Ecuc/Os/ALARM1
+      RteUsedOsActivation2:
+        DefinitionRef: RteUsedOsActivation
+        RteExpectedActivationOffset: 0.1
+        RteExpectedTickDuration: 0.1
+        RteActivationOsAlarmRef: /Ecuc/Os/ALARM2
+
+# 以下，BSWスケジューラに対するコンフィグ
+    RteBswModuleInstance_com:
+      DefinitionRef: RteBswModuleInstance
+      RteBswImplementationRef: /BSWScheduler/BswImplementations/bswImplementation0
+      RteBswExclusiveAreaImpl_exclusiveArea0:
+        DefinitionRef: RteBswExclusiveAreaImpl
+        RteExclusiveAreaImplMechanism: OS_RESOURCE
+        RteBswExclusiveAreaOsResourceRef: /Ecuc/Os/COM_REENTRANT0
+        RteBswExclusiveAreaRef: /BSWScheduler/BswModuleDescriptions/Com/InternalBehavior_0/Reentrant_0
+      RteBswExclusiveAreaImpl_exclusiveArea1:
+        DefinitionRef: RteBswExclusiveAreaImpl
+        RteExclusiveAreaImplMechanism: OS_RESOURCE
+        RteBswExclusiveAreaOsResourceRef: /Ecuc/Os/COM_REENTRANT1
+        RteBswExclusiveAreaRef: /BSWScheduler/BswModuleDescriptions/Com/InternalBehavior_0/Reentrant_1
+      RteBswExclusiveAreaImpl_exclusiveArea2:
+        DefinitionRef: RteBswExclusiveAreaImpl
+        RteExclusiveAreaImplMechanism: OS_RESOURCE
+        RteBswExclusiveAreaOsResourceRef: /Ecuc/Os/COM_REENTRANT2
+        RteBswExclusiveAreaRef: /BSWScheduler/BswModuleDescriptions/Com/InternalBehavior_0/Reentrant_2
+      RteBswEventToTaskMapping_timingEvent1:
+        DefinitionRef: RteBswEventToTaskMapping
+        RteBswImmediateRestart: 0
+        RteBswPositionInTask: 0
+        RteBswEventRef: /BSWScheduler/BswModuleDescriptions/Com/InternalBehavior_0/TimingEvent_MainFunctionRx
+        RteBswMappedToTaskRef: /Ecuc/Os/SCHM_TASK
+        RteBswUsedOsAlarmRef: /Ecuc/Os/ALARM2
+        RteBswActivationOffset: 0.1
+      RteBswEventToTaskMapping_timingEvent2:
+        DefinitionRef: RteBswEventToTaskMapping
+        RteBswImmediateRestart: 0
+        RteBswPositionInTask: 1
+        RteBswEventRef: /BSWScheduler/BswModuleDescriptions/Com/InternalBehavior_0/TimingEvent_MainFunctionTx
+        RteBswMappedToTaskRef: /Ecuc/Os/SCHM_TASK
+        RteBswUsedOsAlarmRef: /Ecuc/Os/ALARM2
+        RteBswActivationOffset: 0.1
+    RteBswModuleInstance_can:
+      DefinitionRef: RteBswModuleInstance
+      RteBswImplementationRef: /BSWScheduler/BswImplementations/bswImplementation1
+      RteBswExclusiveAreaImpl_exclusiveArea3:
+        DefinitionRef: RteBswExclusiveAreaImpl
+        RteExclusiveAreaImplMechanism: OS_RESOURCE
+        RteBswExclusiveAreaOsResourceRef: /Ecuc/Os/CAN_REENTRANT
+        RteBswExclusiveAreaRef: /BSWScheduler/BswModuleDescriptions/Can/InternalBehavior_0/Reentrant
+    RteBswModuleInstance_canif:
+      DefinitionRef: RteBswModuleInstance
+      RteBswImplementationRef: /BSWScheduler/BswImplementations/bswImplementation2
+      RteBswExclusiveAreaImpl_exclusiveArea4:
+        DefinitionRef: RteBswExclusiveAreaImpl
+        RteExclusiveAreaImplMechanism: OS_RESOURCE
+        RteBswExclusiveAreaOsResourceRef: /Ecuc/Os/CANIF_REENTRANT0
+        RteBswExclusiveAreaRef: /BSWScheduler/BswModuleDescriptions/CanIf/InternalBehavior_0/Reentrant_0
+      RteBswExclusiveAreaImpl_exclusiveArea5:
+        DefinitionRef: RteBswExclusiveAreaImpl
+        RteExclusiveAreaImplMechanism: OS_RESOURCE
+        RteBswExclusiveAreaOsResourceRef: /Ecuc/Os/CANIF_REENTRANT1
+        RteBswExclusiveAreaRef: /BSWScheduler/BswModuleDescriptions/CanIf/InternalBehavior_0/Reentrant_1

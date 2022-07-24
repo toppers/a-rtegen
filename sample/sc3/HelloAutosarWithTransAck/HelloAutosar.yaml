@@ -1,0 +1,278 @@
+#
+#  TOPPERS/A-RTEGEN
+#      Automotive Runtime Environment Generator
+#
+#  Copyright (C) 2015-2016 by Center for Embedded Computing Systems
+#              Graduate School of Information Science, Nagoya Univ., JAPAN
+#  Copyright (C) 2015-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
+#  Copyright (C) 2015-2016 by eSOL Co.,Ltd., JAPAN
+#  Copyright (C) 2015-2016 by FUJI SOFT INCORPORATED, JAPAN
+#  Copyright (C) 2015-2016 by NEC Communication Systems, Ltd., JAPAN
+#  Copyright (C) 2015-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+#  Copyright (C) 2015-2016 by SCSK Corporation, JAPAN
+#  Copyright (C) 2015-2016 by Sunny Giken Inc., JAPAN
+#  Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
+#  Copyright (C) 2015-2016 by TOSHIBA CORPORATION, JAPAN
+#  Copyright (C) 2015-2016 by Witz Corporation
+#
+#  上記著作権者は，以下の(1)〜(4)の条件を満たす場合に限り，本ソフトウェ
+#  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
+#  変・再配布（以下，利用と呼ぶ）することを無償で許諾する．
+#  (1) 本ソフトウェアをソースコードの形で利用する場合には，上記の著作
+#      権表示，この利用条件および下記の無保証規定が，そのままの形でソー
+#      スコード中に含まれていること．
+#  (2) 本ソフトウェアを，ライブラリ形式など，他のソフトウェア開発に使
+#      用できる形で再配布する場合には，再配布に伴うドキュメント（利用
+#      者マニュアルなど）に，上記の著作権表示，この利用条件および下記
+#      の無保証規定を掲載すること．
+#  (3) 本ソフトウェアを，機器に組み込むなど，他のソフトウェア開発に使
+#      用できない形で再配布する場合には，次のいずれかの条件を満たすこ
+#      と．
+#    (a) 再配布に伴うドキュメント（利用者マニュアルなど）に，上記の著
+#        作権表示，この利用条件および下記の無保証規定を掲載すること．
+#    (b) 再配布の形態を，別に定める方法によって，TOPPERSプロジェクトに
+#        報告すること．
+#  (4) 本ソフトウェアの利用により直接的または間接的に生じるいかなる損
+#      害からも，上記著作権者およびTOPPERSプロジェクトを免責すること．
+#      また，本ソフトウェアのユーザまたはエンドユーザからのいかなる理
+#      由に基づく請求からも，上記著作権者およびTOPPERSプロジェクトを
+#      免責すること．
+#
+#  本ソフトウェアは，AUTOSAR（AUTomotive Open System ARchitecture）仕
+#  様に基づいている．上記の許諾は，AUTOSARの知的財産権を許諾するもので
+#  はない．AUTOSARは，AUTOSAR仕様に基づいたソフトウェアを商用目的で利
+#  用する者に対して，AUTOSARパートナーになることを求めている．
+#
+#  本ソフトウェアは，無保証で提供されているものである．上記著作権者お
+#  よびTOPPERSプロジェクトは，本ソフトウェアに関して，特定の使用目的
+#  に対する適合性も含めて，いかなる保証も行わない．また，本ソフトウェ
+#  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
+#  の責任を負わない．
+#
+#  $Id: HelloAutosar.yaml 651 2016-03-31 06:20:22Z mtakada $
+#
+
+Ecuc:
+  Os:
+    MainApp:
+      DefinitionRef: OsAppMode
+    OsOS:
+      OsStackMonitoring: true
+      OsStatus: EXTENDED
+      OsUseGetServiceId: true
+      OsUseParameterAccess: true
+      OsScalabilityClass: SC3
+      OsHooks:
+        OsErrorHook: true
+        OsProtectionHook: true
+        OsPreTaskHook: false
+        OsPostTaskHook: false
+        OsStartupHook: false
+        OsShutdownHook: false
+      OsHookStack:
+        OsHookStackSize: 1024
+      OsOsStack:
+        OsOsStackSize: 4096
+    NON_TRUSTED_OSAP1:
+      DefinitionRef: OsApplication
+      OsTrusted: false
+      OsAppEcucPartitionRef: /Ecuc/EcuC/EcucPartitionCollection/EcucPartition_SWC1
+      OsAppTaskRef:
+        - /Ecuc/Os/TASK1
+        - /Ecuc/Os/TASK1DSC1
+      OsApplicationHooks:
+        OsAppErrorHook: false
+        OsAppShutdownHook: false
+        OsAppStartupHook: false
+    NON_TRUSTED_OSAP2:
+      DefinitionRef: OsApplication
+      OsTrusted: false
+      OsAppEcucPartitionRef: /Ecuc/EcuC/EcucPartitionCollection/EcucPartition_SWC2
+      OsAppTaskRef:
+       - /Ecuc/Os/TASK2
+       - /Ecuc/Os/TASK2DR1
+       - /Ecuc/Os/TASK2DRE1
+      OsApplicationHooks:
+        OsAppErrorHook: false
+        OsAppShutdownHook: false
+        OsAppStartupHook: false
+    TRUSTED_OSAP:
+      DefinitionRef: OsApplication
+      OsTrusted: true
+      OsAppEcucPartitionRef: /Ecuc/EcuC/EcucPartitionCollection/EcucPartition_Rte
+      OsAppTaskRef: /Ecuc/Os/ECU_INIT_TASK
+      OsAppAlarmRef:
+        - /Ecuc/Os/ALARM1
+        - /Ecuc/Os/ALARM2
+      OsApplicationHooks:
+        OsAppErrorHook: false
+        OsAppShutdownHook: false
+        OsAppStartupHook: false
+    TASK1:
+      DefinitionRef: OsTask
+      OsTaskActivation: 1
+      OsTaskPriority: 10
+      OsTaskSchedule: FULL
+      OsTaskStackSize: 1024
+    TASK1DSC1:
+      DefinitionRef: OsTask
+      OsTaskActivation: 1
+      OsTaskPriority: 10
+      OsTaskSchedule: FULL
+      OsTaskStackSize: 1024
+    TASK2:
+      DefinitionRef: OsTask
+      OsTaskActivation: 1
+      OsTaskPriority: 10
+      OsTaskSchedule: FULL
+      OsTaskStackSize: 1024
+    TASK2DR1:
+      DefinitionRef: OsTask
+      OsTaskActivation: 1
+      OsTaskPriority: 10
+      OsTaskSchedule: FULL
+      OsTaskStackSize: 1024
+      OsTaskAccessingApplication: /Ecuc/Os/NON_TRUSTED_OSAP1
+    TASK2DRE1:
+      DefinitionRef: OsTask
+      OsTaskActivation: 1
+      OsTaskPriority: 10
+      OsTaskSchedule: FULL
+      OsTaskStackSize: 1024
+      OsTaskAccessingApplication: /Ecuc/Os/NON_TRUSTED_OSAP1
+    ECU_INIT_TASK:
+      DefinitionRef: OsTask
+      OsTaskActivation: 1
+      OsTaskPriority: 15
+      OsTaskSchedule: FULL
+      OsTaskStackSize: 1024
+      OsTaskAutostart:
+        OsTaskAppModeRef: /Ecuc/Os/MainApp
+# 10msに1回満了するアラーム
+    ALARM1:
+      DefinitionRef: OsAlarm
+      OsAlarmCounterRef: /Ecuc/Os/MAIN_HW_COUNTER
+      OsAlarmAction:
+        OsAlarmActivateTask:
+          OsAlarmActivateTaskRef: /Ecuc/Os/TASK1
+      OsAlarmAutostart:
+        OsAlarmAppModeRef: /Ecuc/Os/MainApp
+        OsAlarmAlarmTime: 6000000  # nios2_dev_gcc(60MHz)
+        OsAlarmCycleTime: 600000  # nios2_dev_gcc(60MHz)
+#        OsAlarmAlarmTime: 3200000  # fl850fl4/fl850pj4(32Mhz)
+#        OsAlarmCycleTime: 320000  # fl850fl4/fl850pj4(32Mhz)
+        OsAlarmAutostartType: RELATIVE
+    ALARM2:
+      DefinitionRef: OsAlarm
+      OsAlarmCounterRef: /Ecuc/Os/MAIN_HW_COUNTER
+      OsAlarmAction:
+        OsAlarmActivateTask:
+          OsAlarmActivateTaskRef: /Ecuc/Os/TASK2
+      OsAlarmAutostart:
+        OsAlarmAppModeRef: /Ecuc/Os/MainApp
+        OsAlarmAlarmTime: 6000000  # nios2_dev_gcc(60MHz)
+        OsAlarmCycleTime: 600000  # nios2_dev_gcc(60MHz)
+#        OsAlarmAlarmTime: 3200000  # fl850fl4/fl850pj4(32Mhz)
+#        OsAlarmCycleTime: 320000  # fl850fl4/fl850pj4(32Mhz)
+        OsAlarmAutostartType: RELATIVE
+  # DE2-115用のLEDアクセスのためのメモリ領域設定
+    MEM_AREA_LED_RG:
+      DefinitionRef: OsMemoryArea
+      OsMemoryAreaWriteable: true
+      OsMemoryAreaReadable: true
+      OsMemoryAreaExecutable: true
+      OsMemoryAreaCacheable: false
+      OsMemoryAreaDevice: true
+      OsMemoryAreaStartAddress: 0x08000400
+      OsMemoryAreaSize: 0x40
+
+# ダミーのEcuCコンテナ(SystemDesk.arxml共通化のため用意する)
+  EcuC:
+    EcucPartitionCollection:
+      EcucPartition_SWC1:
+        DefinitionRef: EcucPartition
+        EcucPartitionBswModuleExecution: false
+        PartitionCanBeRestarted: false
+        EcucPartitionSoftwareComponentInstanceRef:
+          - CONTEXT-ELEMENT-REF: /System/SystemHA/RootSwCompositionPrototype
+          - TARGET-REF: /HelloAutosar/HA_TopLevel/SWC1
+      EcucPartition_SWC2:
+        DefinitionRef: EcucPartition
+        EcucPartitionBswModuleExecution: false
+        PartitionCanBeRestarted: false
+        EcucPartitionSoftwareComponentInstanceRef:
+          - CONTEXT-ELEMENT-REF: /System/SystemHA/RootSwCompositionPrototype
+          - TARGET-REF: /HelloAutosar/HA_TopLevel/SWC2
+      EcucPartition_Rte:
+        DefinitionRef: EcucPartition
+        EcucPartitionBswModuleExecution: true
+        PartitionCanBeRestarted: false
+
+  Rte:
+    RteBswGeneral:
+      RteSchMVersionInfoApi: false
+      RteUseComShadowSignalApi: false
+    RteGeneration:
+      RteCalibrationSupport: NONE
+      RteCodeVendorId: 65
+      RteDevErrorDetect: true
+      RteDevErrorDetectUninit: true
+      RteGenerationMode: COMPATIBILITY_MODE
+      RteMeasurementSupport: false
+      RteOptimizationMode: MEMORY
+      RteValueRangeCheckEnabled: false
+      RteVfbTraceEnabled: false
+    RteInitializationBehavior:
+      RteInitializationStrategy: RTE_INITIALIZATION_STRATEGY_AT_RTE_START
+      RteSectionInitializationPolicy: CLEARED
+    SWCI1:
+      DefinitionRef: RteSwComponentInstance
+      RteSoftwareComponentInstanceRef: /HelloAutosar/HA_TopLevel/SWC1
+      TimingEvent1:
+        DefinitionRef: RteEventToTaskMapping
+        RteImmediateRestart: false
+        RtePositionInTask: 1
+        RteEventRef: /HelloAutosar/SWC1/IB_SWC1/TimingEvent
+        RteMappedToTaskRef: /Ecuc/Os/TASK1
+        RteUsedOsAlarmRef: /Ecuc/Os/ALARM1
+        RteActivationOffset: 0.5
+      DataSendCompletedEvent1:
+        DefinitionRef: RteEventToTaskMapping
+        RteImmediateRestart: false
+        RtePositionInTask: 2
+        RteEventRef: /HelloAutosar/SWC1/IB_SWC1/DataSendCompletedEvent1
+        RteMappedToTaskRef: /Ecuc/Os/TASK1DSC1
+    SWCI2:
+      DefinitionRef: RteSwComponentInstance
+      RteSoftwareComponentInstanceRef: /HelloAutosar/HA_TopLevel/SWC2
+      TimingEvent2:
+        DefinitionRef: RteEventToTaskMapping
+        RteImmediateRestart: false
+        RtePositionInTask: 1
+        RteEventRef: /HelloAutosar/SWC2/IB_SWC2/TimingEvent
+        RteMappedToTaskRef: /Ecuc/Os/TASK2
+        RteUsedOsAlarmRef: /Ecuc/Os/ALARM2
+        RteActivationOffset: 1
+      DataReceivedEvent:
+        DefinitionRef: RteEventToTaskMapping
+        RteImmediateRestart: false
+        RtePositionInTask: 2
+        RteEventRef: /HelloAutosar/SWC2/IB_SWC2/DataReceivedEvent1
+        RteMappedToTaskRef: /Ecuc/Os/TASK2DR1
+      DataReceivedErrorEvent:
+        DefinitionRef: RteEventToTaskMapping
+        RteImmediateRestart: false
+        RtePositionInTask: 3
+        RteEventRef: /HelloAutosar/SWC2/IB_SWC2/DataReceiveErrorEvent1
+        RteMappedToTaskRef: /Ecuc/Os/TASK2DRE1
+    RteOsInteraction:
+      RteUsedOsActivation1:
+        DefinitionRef: RteUsedOsActivation
+        RteExpectedActivationOffset: 0.1
+        RteExpectedTickDuration: 0.01
+        RteActivationOsAlarmRef: /Ecuc/Os/ALARM1
+      RteUsedOsActivation2:
+        DefinitionRef: RteUsedOsActivation
+        RteExpectedActivationOffset: 0.1
+        RteExpectedTickDuration: 0.01
+        RteActivationOsAlarmRef: /Ecuc/Os/ALARM2

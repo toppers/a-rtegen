@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="EUC-JP"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+
+
+
+
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated rte -->
+      <package
+            uri="http://nces.is.nagoya-u.ac.jp/a-rte/rte"
+            class="jp.ac.nagoya_u.is.nces.a_rte.model.rte.RtePackage"
+            genModel="model/rte.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated rte -->
+      <package
+            uri="http://nces.is.nagoya-u.ac.jp/a-rte/rte/ex"
+            class="jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.ExPackage"
+            genModel="model/rte.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated rte -->
+      <package
+            uri="http://nces.is.nagoya-u.ac.jp/a-rte/rte/interaction"
+            class="jp.ac.nagoya_u.is.nces.a_rte.model.rte.interaction.InteractionPackage"
+            genModel="model/rte.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated rte -->
+      <package
+            uri="http://nces.is.nagoya-u.ac.jp/a-rte/rte/module"
+            class="jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ModulePackage"
+            genModel="model/rte.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated rte -->
+      <package
+            uri="http://nces.is.nagoya-u.ac.jp/a-rte/ar4x"
+            class="jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.Ar4xPackage"
+            genModel="model/rte.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated rte -->
+      <package
+            uri="http://nces.is.nagoya-u.ac.jp/a-rte/ar4x/m2"
+            class="jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.m2.M2Package"
+            genModel="model/rte.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated rte -->
+      <package
+            uri="http://nces.is.nagoya-u.ac.jp/a-rte/ar4x/ecuc"
+            class="jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.EcucPackage"
+            genModel="model/rte.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated rte -->
+      <package
+            uri="http://nces.is.nagoya-u.ac.jp/a-rte/ar4x/instance"
+            class="jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.instance.InstancePackage"
+            genModel="model/rte.genmodel"/>
+   </extension>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated rteTest -->
+      <package
+            uri="http://nces.is.nagoya-u.ac.jp/a-rte/rte-test"
+            class="jp.ac.nagoya_u.is.nces.a_rte.model.rte_test.RteTestPackage"
+            genModel="model/rteTest.genmodel"/>
+   </extension>
+
+</plugin>
