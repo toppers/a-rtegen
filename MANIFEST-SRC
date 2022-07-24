@@ -20,6 +20,9 @@ ecu_extractor/readme.txt
 
 INCLUDE sample/MANIFEST
 
+doc/rte_spec-01-140.pdf
+doc/rte_glo-01-140.pdf
+
 src/com.google.guava
 INCLUDE src/jp.ac.nagoya_u.is.nces.a_rte.app/MANIFEST
 src/jp.ac.nagoya_u.is.nces.a_rte.codegen

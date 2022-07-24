@@ -19,3 +19,6 @@ ecu_extractor/ecu_extractor.rb
 ecu_extractor/readme.txt
 
 INCLUDE sample/MANIFEST
+
+doc/rte_spec-01-140.pdf
+doc/rte_glo-01-140.pdf
