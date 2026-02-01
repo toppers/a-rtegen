@@ -1,5 +1,7 @@
 .DS_Store
 RELEASE/
+bin/schema/
+bin/bin/uncrustify.exe
 *.bak
 *.xsd
 *.o
