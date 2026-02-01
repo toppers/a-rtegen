@@ -7,7 +7,7 @@ if [ "$1" = "clean" ]; then
     rm AUTOSAR_MMOD_XMLSchema.zip*
 else
     echo "Download AUTOSAR Schema..."
-    wget --no-check-certificate https://www.autosar.org/fileadmin/standards/classic/4-0/AUTOSAR_MMOD_XMLSchema.zip
+    wget --no-check-certificate https://www.autosar.org/fileadmin/standards/R4.0.3/CP/AUTOSAR_MMOD_XMLSchema.zip
     mkdir schema && unzip AUTOSAR_MMOD_XMLSchema.zip -d schema
     cp schema/*.xsd .
 fi
