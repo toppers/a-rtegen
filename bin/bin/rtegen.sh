@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 BASEDIR=$(dirname "$0")
 PLATFORM_NAME=$(uname -o)
 
