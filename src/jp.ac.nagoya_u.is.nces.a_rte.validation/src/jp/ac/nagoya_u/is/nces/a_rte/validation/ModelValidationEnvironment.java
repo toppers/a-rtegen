@@ -64,7 +64,7 @@ import com.google.common.io.Resources;
 /**
  * RTEジェネレータの実行時に必要となるEMFモデル検証環境の初期設定を実施する。
  */
-public class ModelValidationEnvironment { // COVERAGE 常に未達(インスタンス生成が行なわれていないが，ユーティリティであるため問題ない)
+public class ModelValidationEnvironment {
 
 	/**
 	 * EMFモデル検証環境を初期化する。

@@ -50,7 +50,7 @@
 #  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
 #  の責任を負わない．
 #
-#  $Id: PowerWindowController2.yaml 801 2017-03-07 08:53:50Z suzuki-kawaguchi $
+#  $Id: PowerWindowController2.yaml 651 2016-03-31 06:20:22Z mtakada $
 #
 
 Ecuc:
@@ -109,18 +109,6 @@ Ecuc:
       DefinitionRef: OsResource
       OsResourceProperty: STANDARD
     WDGM_REENTRANT:
-      DefinitionRef: OsResource
-      OsResourceProperty: LINKED
-      OsResourceLinkedResourceRef: /Ecuc/Os/WDGSTACK_RESOURCE
-    WDGM_CRITICALSECTION_FIRTSTEXPIREDSEID:
-      DefinitionRef: OsResource
-      OsResourceProperty: LINKED
-      OsResourceLinkedResourceRef: /Ecuc/Os/WDGSTACK_RESOURCE
-    WDGM_CRITICALSECTION_SUPERVISION:
-      DefinitionRef: OsResource
-      OsResourceProperty: LINKED
-      OsResourceLinkedResourceRef: /Ecuc/Os/WDGSTACK_RESOURCE
-    WDGM_CRITICALSECTION_SETTRIGGERCONDITION:
       DefinitionRef: OsResource
       OsResourceProperty: LINKED
       OsResourceLinkedResourceRef: /Ecuc/Os/WDGSTACK_RESOURCE
@@ -246,21 +234,6 @@ Ecuc:
         RteExclusiveAreaImplMechanism: OS_RESOURCE
         RteBswExclusiveAreaOsResourceRef: /Ecuc/Os/WDGM_REENTRANT
         RteBswExclusiveAreaRef: /BSWScheduler/BswModuleDescriptions/WdgM/InternalBehavior/Reentrant
-      RteBswExclusiveAreaImpl_exclusiveArea1:
-        DefinitionRef: RteBswExclusiveAreaImpl
-        RteExclusiveAreaImplMechanism: OS_RESOURCE
-        RteBswExclusiveAreaOsResourceRef: /Ecuc/Os/WDGM_CRITICALSECTION_FIRTSTEXPIREDSEID
-        RteBswExclusiveAreaRef: /BSWScheduler/BswModuleDescriptions/WdgM/InternalBehavior/CriticalSection_FirstExpiredSEID
-      RteBswExclusiveAreaImpl_exclusiveArea2:
-        DefinitionRef: RteBswExclusiveAreaImpl
-        RteExclusiveAreaImplMechanism: OS_RESOURCE
-        RteBswExclusiveAreaOsResourceRef: /Ecuc/Os/WDGM_CRITICALSECTION_SUPERVISION
-        RteBswExclusiveAreaRef: /BSWScheduler/BswModuleDescriptions/WdgM/InternalBehavior/CriticalSection_Supervision
-      RteBswExclusiveAreaImpl_exclusiveArea3:
-        DefinitionRef: RteBswExclusiveAreaImpl
-        RteExclusiveAreaImplMechanism: OS_RESOURCE
-        RteBswExclusiveAreaOsResourceRef: /Ecuc/Os/WDGM_CRITICALSECTION_SETTRIGGERCONDITION
-        RteBswExclusiveAreaRef: /BSWScheduler/BswModuleDescriptions/WdgM/InternalBehavior/CriticalSection_SetTriggerCondition
       RteBswEventToTaskMapping_timingEvent1:
         DefinitionRef: RteBswEventToTaskMapping
         RteBswImmediateRestart: 0
@@ -281,6 +254,22 @@ Ecuc:
         DefinitionRef: RteEventToTaskMapping
         RteImmediateRestart: false
         RteEventRef: /Services/WdgM/InternalBehavior/OperationInvokedEvent_alive002
+      RteEventToTaskMapping_port003:
+        DefinitionRef: RteEventToTaskMapping
+        RteImmediateRestart: false
+        RteEventRef: /Services/WdgM/InternalBehavior/OperationInvokedEvent_alive003
+      RteEventToTaskMapping_port004:
+        DefinitionRef: RteEventToTaskMapping
+        RteImmediateRestart: false
+        RteEventRef: /Services/WdgM/InternalBehavior/OperationInvokedEvent_alive004
+      RteEventToTaskMapping_port005:
+        DefinitionRef: RteEventToTaskMapping
+        RteImmediateRestart: false
+        RteEventRef: /Services/WdgM/InternalBehavior/OperationInvokedEvent_alive005
+      RteEventToTaskMapping_port006:
+        DefinitionRef: RteEventToTaskMapping
+        RteImmediateRestart: false
+        RteEventRef: /Services/WdgM/InternalBehavior/OperationInvokedEvent_alive006
 
   WdgM:
     WdgMGeneral:
@@ -307,8 +296,6 @@ Ecuc:
           DefinitionRef: WdgMCheckpoint
           WdgMCheckpointId: 2
 
-        WdgMOSCounter: /Ecuc/Os/SUB_HW_COUNTER1
-
       WdgMSupervisedEntity_1:
         DefinitionRef: WdgMSupervisedEntity
         WdgMSupervisedEntityId: 1
@@ -328,10 +315,6 @@ Ecuc:
           DefinitionRef: WdgMCheckpoint
           WdgMCheckpointId: 2
 
-        WdgMCheckpoint_1_3:
-          DefinitionRef: WdgMCheckpoint
-          WdgMCheckpointId: 3
-
         WdgMInternalTransition_1_0:
           DefinitionRef: WdgMInternalTransition
           WdgMInternalTransitionDestRef: /Ecuc/WdgM/WdgMGeneral/WdgMSupervisedEntity_1/WdgMCheckpoint_1_1
@@ -340,8 +323,6 @@ Ecuc:
           DefinitionRef: WdgMInternalTransition
           WdgMInternalTransitionDestRef: /Ecuc/WdgM/WdgMGeneral/WdgMSupervisedEntity_1/WdgMCheckpoint_1_2
           WdgMInternalTransitionSourceRef: /Ecuc/WdgM/WdgMGeneral/WdgMSupervisedEntity_1/WdgMCheckpoint_1_1
-
-        WdgMOSCounter: /Ecuc/Os/SUB_HW_COUNTER1
 
       WdgMWatchdog_0:
         DefinitionRef: WdgMWatchdog
@@ -367,14 +348,6 @@ Ecuc:
           WdgMSupervisionReferenceCycle: 10
           WdgMAliveSupervisionCheckpointRef: /Ecuc/WdgM/WdgMGeneral/WdgMSupervisedEntity_0/WdgMCheckpoint_0_0
 
-        WdgMAliveSupervision_1:
-          DefinitionRef: WdgMAliveSupervision
-          WdgMExpectedAliveIndications: 5
-          WdgMMaxMargin: 5
-          WdgMMinMargin: 5
-          WdgMSupervisionReferenceCycle: 10
-          WdgMAliveSupervisionCheckpointRef: /Ecuc/WdgM/WdgMGeneral/WdgMSupervisedEntity_1/WdgMCheckpoint_1_3
-
         WdgMDeadlineSupervision_0:
           DefinitionRef: WdgMDeadlineSupervision
           WdgMDeadlineMax: 3.0
@@ -384,7 +357,7 @@ Ecuc:
 
         WdgMLocalStatusParams_0:
           DefinitionRef: WdgMLocalStatusParams
-          WdgMFailedAliveSupervisionRefCycleTol: 30
+          WdgMFailedAliveSupervisionRefCycleTol: 5
           WdgMLocalStatusSupervisedEntityRef: /Ecuc/WdgM/WdgMGeneral/WdgMSupervisedEntity_0
 
         WdgMLocalStatusParams_1:

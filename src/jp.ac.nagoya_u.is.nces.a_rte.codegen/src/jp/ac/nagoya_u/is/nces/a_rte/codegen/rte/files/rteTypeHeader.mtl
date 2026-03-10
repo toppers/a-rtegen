@@ -39,7 +39,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  * 
- *  $Id: rteTypeHeader.mtl 27834 2016-11-10 07:50:05Z m-yamada $
+ *  $Id: rteTypeHeader.mtl 19918 2016-01-08 06:05:46Z hiroki.kitagawa $
  */
 [/comment]
 [comment encoding = UTF-8 /]
@@ -164,6 +164,11 @@ typedef struct {
 
 [template private genRteTypeDefinition(aType : ComSendTrustedFunctionParamType) ]
 typedef struct {
+	[if (aType.isGroup)]
+		Rte_ComMetaComplexDataType *meta;
+	[else]
+		Com_SignalIdType	com_sig_id;
+	[/if]
 	const void				*com_data;
 	Std_ReturnType 		tf_ercd;
 } [aType.symbolName/];

@@ -70,8 +70,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.impl.ComSignalImpl#getComSystemTemplateSystemSignal <em>Com System Template System Signal</em>}</li>
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.impl.ComSignalImpl#getComHandleId <em>Com Handle Id</em>}</li>
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.impl.ComSignalImpl#getComTransferProperty <em>Com Transfer Property</em>}</li>
- *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.impl.ComSignalImpl#getComBitSize <em>Com Bit Size</em>}</li>
- *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.impl.ComSignalImpl#getComSignalLength <em>Com Signal Length</em>}</li>
  * </ul>
  * </p>
  *
@@ -127,46 +125,6 @@ public class ComSignalImpl extends EcucContainerImpl implements ComSignal {
 	 * @ordered
 	 */
 	protected ComTransferPropertyEnum comTransferProperty = COM_TRANSFER_PROPERTY_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getComBitSize() <em>Com Bit Size</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getComBitSize()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Integer COM_BIT_SIZE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getComBitSize() <em>Com Bit Size</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getComBitSize()
-	 * @generated
-	 * @ordered
-	 */
-	protected Integer comBitSize = COM_BIT_SIZE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getComSignalLength() <em>Com Signal Length</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getComSignalLength()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Integer COM_SIGNAL_LENGTH_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getComSignalLength() <em>Com Signal Length</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getComSignalLength()
-	 * @generated
-	 * @ordered
-	 */
-	protected Integer comSignalLength = COM_SIGNAL_LENGTH_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -268,48 +226,6 @@ public class ComSignalImpl extends EcucContainerImpl implements ComSignal {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Integer getComBitSize() {
-		return comBitSize;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setComBitSize(Integer newComBitSize) {
-		Integer oldComBitSize = comBitSize;
-		comBitSize = newComBitSize;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EcucPackage.COM_SIGNAL__COM_BIT_SIZE, oldComBitSize, comBitSize));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Integer getComSignalLength() {
-		return comSignalLength;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setComSignalLength(Integer newComSignalLength) {
-		Integer oldComSignalLength = comSignalLength;
-		comSignalLength = newComSignalLength;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EcucPackage.COM_SIGNAL__COM_SIGNAL_LENGTH, oldComSignalLength, comSignalLength));
-	}
-
-	/**
 	 * The cached invocation delegate for the '{@link #transfersImmediately() <em>Transfers Immediately</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -348,10 +264,6 @@ public class ComSignalImpl extends EcucContainerImpl implements ComSignal {
 				return getComHandleId();
 			case EcucPackage.COM_SIGNAL__COM_TRANSFER_PROPERTY:
 				return getComTransferProperty();
-			case EcucPackage.COM_SIGNAL__COM_BIT_SIZE:
-				return getComBitSize();
-			case EcucPackage.COM_SIGNAL__COM_SIGNAL_LENGTH:
-				return getComSignalLength();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -372,12 +284,6 @@ public class ComSignalImpl extends EcucContainerImpl implements ComSignal {
 				return;
 			case EcucPackage.COM_SIGNAL__COM_TRANSFER_PROPERTY:
 				setComTransferProperty((ComTransferPropertyEnum)newValue);
-				return;
-			case EcucPackage.COM_SIGNAL__COM_BIT_SIZE:
-				setComBitSize((Integer)newValue);
-				return;
-			case EcucPackage.COM_SIGNAL__COM_SIGNAL_LENGTH:
-				setComSignalLength((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -400,12 +306,6 @@ public class ComSignalImpl extends EcucContainerImpl implements ComSignal {
 			case EcucPackage.COM_SIGNAL__COM_TRANSFER_PROPERTY:
 				setComTransferProperty(COM_TRANSFER_PROPERTY_EDEFAULT);
 				return;
-			case EcucPackage.COM_SIGNAL__COM_BIT_SIZE:
-				setComBitSize(COM_BIT_SIZE_EDEFAULT);
-				return;
-			case EcucPackage.COM_SIGNAL__COM_SIGNAL_LENGTH:
-				setComSignalLength(COM_SIGNAL_LENGTH_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -424,10 +324,6 @@ public class ComSignalImpl extends EcucContainerImpl implements ComSignal {
 				return COM_HANDLE_ID_EDEFAULT == null ? comHandleId != null : !COM_HANDLE_ID_EDEFAULT.equals(comHandleId);
 			case EcucPackage.COM_SIGNAL__COM_TRANSFER_PROPERTY:
 				return comTransferProperty != COM_TRANSFER_PROPERTY_EDEFAULT;
-			case EcucPackage.COM_SIGNAL__COM_BIT_SIZE:
-				return COM_BIT_SIZE_EDEFAULT == null ? comBitSize != null : !COM_BIT_SIZE_EDEFAULT.equals(comBitSize);
-			case EcucPackage.COM_SIGNAL__COM_SIGNAL_LENGTH:
-				return COM_SIGNAL_LENGTH_EDEFAULT == null ? comSignalLength != null : !COM_SIGNAL_LENGTH_EDEFAULT.equals(comSignalLength);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -460,10 +356,6 @@ public class ComSignalImpl extends EcucContainerImpl implements ComSignal {
 		result.append(comHandleId);
 		result.append(", comTransferProperty: ");
 		result.append(comTransferProperty);
-		result.append(", comBitSize: ");
-		result.append(comBitSize);
-		result.append(", comSignalLength: ");
-		result.append(comSignalLength);
 		result.append(')');
 		return result.toString();
 	}

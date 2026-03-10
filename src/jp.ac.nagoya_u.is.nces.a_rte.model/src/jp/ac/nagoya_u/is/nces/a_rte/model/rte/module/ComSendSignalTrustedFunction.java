@@ -55,8 +55,6 @@ package jp.ac.nagoya_u.is.nces.a_rte.model.rte.module;
  * <ul>
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ComSendSignalTrustedFunction#getIsGroup <em>Is Group</em>}</li>
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ComSendSignalTrustedFunction#getSignalGroupSymbolName <em>Signal Group Symbol Name</em>}</li>
- *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ComSendSignalTrustedFunction#getOperation <em>Operation</em>}</li>
- *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ComSendSignalTrustedFunction#getSendValueType <em>Send Value Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -117,56 +115,4 @@ public interface ComSendSignalTrustedFunction extends TrustedFunction {
 	 * @generated
 	 */
 	void setSignalGroupSymbolName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Operation</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Operation</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Operation</em>' containment reference.
-	 * @see #setOperation(DirectComSendOperation)
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ModulePackage#getComSendSignalTrustedFunction_Operation()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	DirectComSendOperation getOperation();
-
-	/**
-	 * Sets the value of the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ComSendSignalTrustedFunction#getOperation <em>Operation</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Operation</em>' containment reference.
-	 * @see #getOperation()
-	 * @generated
-	 */
-	void setOperation(DirectComSendOperation value);
-
-	/**
-	 * Returns the value of the '<em><b>Send Value Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Send Value Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Send Value Type</em>' reference.
-	 * @see #setSendValueType(Type)
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ModulePackage#getComSendSignalTrustedFunction_SendValueType()
-	 * @model required="true"
-	 * @generated
-	 */
-	Type getSendValueType();
-
-	/**
-	 * Sets the value of the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ComSendSignalTrustedFunction#getSendValueType <em>Send Value Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Send Value Type</em>' reference.
-	 * @see #getSendValueType()
-	 * @generated
-	 */
-	void setSendValueType(Type value);
 } // ComSendSignalTrustedFunction

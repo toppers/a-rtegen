@@ -1209,15 +1209,6 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTrustedFunctionComSendImplementation_OsTrustedFunction() {
-		return (EReference)trustedFunctionComSendImplementationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getPeriodicProxyComSendImplementation() {
 		return periodicProxyComSendImplementationEClass;
 	}
@@ -2164,7 +2155,6 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		directComSendImplementationEClass = createEClass(DIRECT_COM_SEND_IMPLEMENTATION);
 
 		trustedFunctionComSendImplementationEClass = createEClass(TRUSTED_FUNCTION_COM_SEND_IMPLEMENTATION);
-		createEReference(trustedFunctionComSendImplementationEClass, TRUSTED_FUNCTION_COM_SEND_IMPLEMENTATION__OS_TRUSTED_FUNCTION);
 
 		periodicProxyComSendImplementationEClass = createEClass(PERIODIC_PROXY_COM_SEND_IMPLEMENTATION);
 
@@ -2493,7 +2483,6 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		initEClass(directComSendImplementationEClass, DirectComSendImplementation.class, "DirectComSendImplementation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(trustedFunctionComSendImplementationEClass, TrustedFunctionComSendImplementation.class, "TrustedFunctionComSendImplementation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTrustedFunctionComSendImplementation_OsTrustedFunction(), theEcucPackage.getOsApplicationTrustedFunction(), null, "osTrustedFunction", null, 1, 1, TrustedFunctionComSendImplementation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(periodicProxyComSendImplementationEClass, PeriodicProxyComSendImplementation.class, "PeriodicProxyComSendImplementation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

@@ -1467,8 +1467,6 @@
           eType="#//m2/Integer"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="comTransferProperty"
           eType="#//ecuc/ComTransferPropertyEnum"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="comBitSize" eType="#//m2/Integer"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="comSignalLength" eType="#//m2/Integer"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ComSignalGroup" eSuperTypes="#//ecuc/EcucContainer">
       <eOperations name="transfersImmediately" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
@@ -1490,8 +1488,6 @@
           eType="#//m2/ISignalToIPduMapping"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="comHandleId" lowerBound="1"
           eType="#//m2/Integer"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="comBitSize" eType="#//m2/Integer"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="comSignalLength" eType="#//m2/Integer"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="OsAlarm" eSuperTypes="#//ecuc/EcucContainer">
       <eStructuralFeatures xsi:type="ecore:EReference" name="expectedConfig" upperBound="-1"
@@ -1637,8 +1633,6 @@
       </eOperations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="osNumberOfCores" eType="#//m2/Integer"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="osMasterCoreId" eType="#//m2/Integer"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="osSystemCycle" eType="#//ecuc/OsSystemCycle"
-          containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="RteBswEventToTaskMapping" eSuperTypes="#//ecuc/EcucContainer">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="rteBswActivationOffset"
@@ -1667,7 +1661,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="rteBswExclusiveAreaImpl"
           upperBound="-1" eType="#//ecuc/RteBswExclusiveAreaImpl" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="rteBswImplementation"
-          lowerBound="1" eType="#//m2/BswImplementation"/>
+          lowerBound="1" eType="#//m2/BswImplementation" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="rteBswRequiredModeGroupConnection"
           ordered="false" upperBound="-1" eType="#//ecuc/RteBswRequiredModeGroupConnection"
           containment="true" eOpposite="#//ecuc/RteBswRequiredModeGroupConnection/parent"/>
@@ -1682,7 +1676,6 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="rteBswExclusiveAreaOsSpinlock"
           eType="#//ecuc/OsSpinlock"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="OsSystemCycle" eSuperTypes="#//ecuc/EcucContainer"/>
   </eSubpackages>
   <eSubpackages name="instance" nsURI="http://nces.is.nagoya-u.ac.jp/a-rte/ar4x/instance"
       nsPrefix="instance">

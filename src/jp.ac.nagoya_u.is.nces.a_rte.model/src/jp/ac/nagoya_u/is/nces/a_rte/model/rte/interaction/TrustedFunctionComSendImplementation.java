@@ -44,50 +44,16 @@
  */
 package jp.ac.nagoya_u.is.nces.a_rte.model.rte.interaction;
 
-import jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.OsApplicationTrustedFunction;
-
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Trusted Function Com Send Implementation</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * <ul>
- *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.interaction.TrustedFunctionComSendImplementation#getOsTrustedFunction <em>Os Trusted Function</em>}</li>
- * </ul>
- * </p>
  *
  * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.interaction.InteractionPackage#getTrustedFunctionComSendImplementation()
  * @model
  * @generated
  */
 public interface TrustedFunctionComSendImplementation extends ComSendImplementation {
-
-	/**
-	 * Returns the value of the '<em><b>Os Trusted Function</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Os Trusted Function</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Os Trusted Function</em>' reference.
-	 * @see #setOsTrustedFunction(OsApplicationTrustedFunction)
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.interaction.InteractionPackage#getTrustedFunctionComSendImplementation_OsTrustedFunction()
-	 * @model required="true"
-	 * @generated
-	 */
-	OsApplicationTrustedFunction getOsTrustedFunction();
-
-	/**
-	 * Sets the value of the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.interaction.TrustedFunctionComSendImplementation#getOsTrustedFunction <em>Os Trusted Function</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Os Trusted Function</em>' reference.
-	 * @see #getOsTrustedFunction()
-	 * @generated
-	 */
-	void setOsTrustedFunction(OsApplicationTrustedFunction value);
 } // TrustedFunctionComSendImplementation

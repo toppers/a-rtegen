@@ -44,7 +44,6 @@
  */
 package jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ActivationOperation;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.LocalVariable;
@@ -56,10 +55,8 @@ import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.TAckStatus;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -455,30 +452,6 @@ public class SendApiImpl extends RteApiImpl implements SendApi {
 	}
 
 	/**
-	 * The cached invocation delegate for the '{@link #isContainedTrustedOperation() <em>Is Contained Trusted Operation</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isContainedTrustedOperation()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final EOperation.Internal.InvocationDelegate IS_CONTAINED_TRUSTED_OPERATION__EINVOCATION_DELEGATE = ((EOperation.Internal)ModulePackage.Literals.SEND_API___IS_CONTAINED_TRUSTED_OPERATION).getInvocationDelegate();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Boolean isContainedTrustedOperation() {
-		try {
-			return (Boolean)IS_CONTAINED_TRUSTED_OPERATION__EINVOCATION_DELEGATE.dynamicInvoke(this, null);
-		}
-		catch (InvocationTargetException ite) {
-			throw new WrappedException(ite);
-		}
-	}
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -639,20 +612,6 @@ public class SendApiImpl extends RteApiImpl implements SendApi {
 				return tAckStatus != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case ModulePackage.SEND_API___IS_CONTAINED_TRUSTED_OPERATION:
-				return isContainedTrustedOperation();
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

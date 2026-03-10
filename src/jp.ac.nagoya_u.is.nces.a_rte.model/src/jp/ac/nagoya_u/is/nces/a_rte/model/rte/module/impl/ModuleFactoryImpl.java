@@ -293,7 +293,6 @@ public class ModuleFactoryImpl extends EFactoryImpl implements ModuleFactory {
 			case ModulePackage.OS_ACTIVATE_TASK_API: return (EObject)createOsActivateTaskApi();
 			case ModulePackage.FEEDBACK_API: return (EObject)createFeedbackApi();
 			case ModulePackage.TACK_STATUS: return (EObject)createTAckStatus();
-			case ModulePackage.USER_DEFINED_EXCLUDE_OPERATION: return (EObject)createUserDefinedExcludeOperation();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -1179,16 +1178,6 @@ public class ModuleFactoryImpl extends EFactoryImpl implements ModuleFactory {
 	public TAckStatus createTAckStatus() {
 		TAckStatusImpl tAckStatus = new TAckStatusImpl();
 		return tAckStatus;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public UserDefinedExcludeOperation createUserDefinedExcludeOperation() {
-		UserDefinedExcludeOperationImpl userDefinedExcludeOperation = new UserDefinedExcludeOperationImpl();
-		return userDefinedExcludeOperation;
 	}
 
 	/**

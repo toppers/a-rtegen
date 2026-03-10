@@ -388,15 +388,6 @@ public interface EcucFactory extends EFactory {
 	RteBswExclusiveAreaImpl createRteBswExclusiveAreaImpl();
 
 	/**
-	 * Returns a new object of class '<em>Os System Cycle</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Os System Cycle</em>'.
-	 * @generated
-	 */
-	OsSystemCycle createOsSystemCycle();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -45,14 +45,9 @@
 package jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl;
 
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ComSendSignalTrustedFunction;
-import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.DirectComSendOperation;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ModulePackage;
-import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.Type;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -64,8 +59,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.ComSendSignalTrustedFunctionImpl#getIsGroup <em>Is Group</em>}</li>
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.ComSendSignalTrustedFunctionImpl#getSignalGroupSymbolName <em>Signal Group Symbol Name</em>}</li>
- *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.ComSendSignalTrustedFunctionImpl#getOperation <em>Operation</em>}</li>
- *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.ComSendSignalTrustedFunctionImpl#getSendValueType <em>Send Value Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -108,26 +101,6 @@ public class ComSendSignalTrustedFunctionImpl extends TrustedFunctionImpl implem
 	 * @ordered
 	 */
 	protected String signalGroupSymbolName = SIGNAL_GROUP_SYMBOL_NAME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getOperation() <em>Operation</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOperation()
-	 * @generated
-	 * @ordered
-	 */
-	protected DirectComSendOperation operation;
-
-	/**
-	 * The cached value of the '{@link #getSendValueType() <em>Send Value Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSendValueType()
-	 * @generated
-	 * @ordered
-	 */
-	protected Type sendValueType;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -195,101 +168,6 @@ public class ComSendSignalTrustedFunctionImpl extends TrustedFunctionImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DirectComSendOperation getOperation() {
-		return operation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetOperation(DirectComSendOperation newOperation, NotificationChain msgs) {
-		DirectComSendOperation oldOperation = operation;
-		operation = newOperation;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ModulePackage.COM_SEND_SIGNAL_TRUSTED_FUNCTION__OPERATION, oldOperation, newOperation);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOperation(DirectComSendOperation newOperation) {
-		if (newOperation != operation) {
-			NotificationChain msgs = null;
-			if (operation != null)
-				msgs = ((InternalEObject)operation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ModulePackage.COM_SEND_SIGNAL_TRUSTED_FUNCTION__OPERATION, null, msgs);
-			if (newOperation != null)
-				msgs = ((InternalEObject)newOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ModulePackage.COM_SEND_SIGNAL_TRUSTED_FUNCTION__OPERATION, null, msgs);
-			msgs = basicSetOperation(newOperation, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModulePackage.COM_SEND_SIGNAL_TRUSTED_FUNCTION__OPERATION, newOperation, newOperation));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Type getSendValueType() {
-		if (sendValueType != null && ((EObject)sendValueType).eIsProxy()) {
-			InternalEObject oldSendValueType = (InternalEObject)sendValueType;
-			sendValueType = (Type)eResolveProxy(oldSendValueType);
-			if (sendValueType != oldSendValueType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ModulePackage.COM_SEND_SIGNAL_TRUSTED_FUNCTION__SEND_VALUE_TYPE, oldSendValueType, sendValueType));
-			}
-		}
-		return sendValueType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Type basicGetSendValueType() {
-		return sendValueType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSendValueType(Type newSendValueType) {
-		Type oldSendValueType = sendValueType;
-		sendValueType = newSendValueType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModulePackage.COM_SEND_SIGNAL_TRUSTED_FUNCTION__SEND_VALUE_TYPE, oldSendValueType, sendValueType));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ModulePackage.COM_SEND_SIGNAL_TRUSTED_FUNCTION__OPERATION:
-				return basicSetOperation(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -297,11 +175,6 @@ public class ComSendSignalTrustedFunctionImpl extends TrustedFunctionImpl implem
 				return getIsGroup();
 			case ModulePackage.COM_SEND_SIGNAL_TRUSTED_FUNCTION__SIGNAL_GROUP_SYMBOL_NAME:
 				return getSignalGroupSymbolName();
-			case ModulePackage.COM_SEND_SIGNAL_TRUSTED_FUNCTION__OPERATION:
-				return getOperation();
-			case ModulePackage.COM_SEND_SIGNAL_TRUSTED_FUNCTION__SEND_VALUE_TYPE:
-				if (resolve) return getSendValueType();
-				return basicGetSendValueType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -319,12 +192,6 @@ public class ComSendSignalTrustedFunctionImpl extends TrustedFunctionImpl implem
 				return;
 			case ModulePackage.COM_SEND_SIGNAL_TRUSTED_FUNCTION__SIGNAL_GROUP_SYMBOL_NAME:
 				setSignalGroupSymbolName((String)newValue);
-				return;
-			case ModulePackage.COM_SEND_SIGNAL_TRUSTED_FUNCTION__OPERATION:
-				setOperation((DirectComSendOperation)newValue);
-				return;
-			case ModulePackage.COM_SEND_SIGNAL_TRUSTED_FUNCTION__SEND_VALUE_TYPE:
-				setSendValueType((Type)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -344,12 +211,6 @@ public class ComSendSignalTrustedFunctionImpl extends TrustedFunctionImpl implem
 			case ModulePackage.COM_SEND_SIGNAL_TRUSTED_FUNCTION__SIGNAL_GROUP_SYMBOL_NAME:
 				setSignalGroupSymbolName(SIGNAL_GROUP_SYMBOL_NAME_EDEFAULT);
 				return;
-			case ModulePackage.COM_SEND_SIGNAL_TRUSTED_FUNCTION__OPERATION:
-				setOperation((DirectComSendOperation)null);
-				return;
-			case ModulePackage.COM_SEND_SIGNAL_TRUSTED_FUNCTION__SEND_VALUE_TYPE:
-				setSendValueType((Type)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -366,10 +227,6 @@ public class ComSendSignalTrustedFunctionImpl extends TrustedFunctionImpl implem
 				return IS_GROUP_EDEFAULT == null ? isGroup != null : !IS_GROUP_EDEFAULT.equals(isGroup);
 			case ModulePackage.COM_SEND_SIGNAL_TRUSTED_FUNCTION__SIGNAL_GROUP_SYMBOL_NAME:
 				return SIGNAL_GROUP_SYMBOL_NAME_EDEFAULT == null ? signalGroupSymbolName != null : !SIGNAL_GROUP_SYMBOL_NAME_EDEFAULT.equals(signalGroupSymbolName);
-			case ModulePackage.COM_SEND_SIGNAL_TRUSTED_FUNCTION__OPERATION:
-				return operation != null;
-			case ModulePackage.COM_SEND_SIGNAL_TRUSTED_FUNCTION__SEND_VALUE_TYPE:
-				return sendValueType != null;
 		}
 		return super.eIsSet(featureID);
 	}

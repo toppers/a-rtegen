@@ -71,7 +71,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import com.google.common.base.Preconditions;
@@ -165,7 +164,6 @@ public class M2ModelLoadHandler extends DefaultHandler {
 
 	private List<XmlContext> xmlContexts;
 	private M2Root m2Root;
-	private StringBuilder leaf = new StringBuilder();
 
 	public M2Root getM2Root() {
 		return this.m2Root;
@@ -190,8 +188,6 @@ public class M2ModelLoadHandler extends DefaultHandler {
 	 */
 	@Override
 	public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-		leaf.setLength(0);
-
 		XmlContext currentXmlContext = getCurrentXmlContext();
 		if (localName.endsWith(M2XmlUtils.VARIANTS_TAG_NAME_SUFFIX)) {
 			pushXmlContext(currentXmlContext.createVariantsContext(localName));
@@ -296,11 +292,27 @@ public class M2ModelLoadHandler extends DefaultHandler {
 	 */
 	@Override
 	public void endElement(String uri, String localName, String qName) throws SAXException {
+		popM2Element();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.xml.sax.helpers.DefaultHandler#characters(char[], int, int)
+	 */
+	@Override
+	public void characters(char[] ch, int start, int length) throws SAXException {
 		switch (getCurrentXmlContext().contextType) {
 		case ROLE:
-			EStructuralFeature valueFeature = getValueFeature();
-			if (valueFeature != null && valueFeature.getEType() instanceof EDataType) {
-				String originalValue = leaf.toString();
+			EStructuralFeature valueFeature;
+			if (M2ModelUtils.hasMixedStringStereotype(getCurrentXmlContext().contextM2Element.eClass())) {
+				valueFeature = getCurrentXmlContext().contextM2Element.eClass().getEStructuralFeature(M2ModelUtils.MIXED_STRING_VALUE_FEATURE_NAME);
+			} else {
+				valueFeature = getCurrentXmlContext().contextM2Feature;
+			}
+
+			if (valueFeature != null && valueFeature.getEType() instanceof EDataType) { // COVERAGE 常にtrue(falseとなるのは不具合混入時のみなので，未カバレッジで問題ない)
+				String originalValue = String.valueOf(ch, start, length);
 
 				Object value;
 				try {
@@ -327,82 +339,13 @@ public class M2ModelLoadHandler extends DefaultHandler {
 			break;
 		case REFERENCE:
 		case TYPE_REFERENCE:
-			String value = leaf.toString();
+			String value = String.valueOf(ch, start, length);
 			LOGGER.finest("set reference '" + value + "' to " + getCurrentXmlContext().contextM2Feature);
 			getCurrentXmlContext().contextM2Element.addUnresolvedReference((EReference) getCurrentXmlContext().contextM2Feature, M2ModelUtils.ID_PREFIX + value);
 			break;
 		default:
 			break;
 		}
-
-		popM2Element();
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.xml.sax.helpers.DefaultHandler#characters(char[], int, int)
-	 */
-	@Override
-	public void characters(char[] ch, int start, int length) throws SAXException {
-		leaf.append(String.valueOf(ch, start, length));
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.xml.sax.helpers.DefaultHandler#warning(org.xml.sax.SAXParseException)
-	 */
-	@Override
-	public void warning(SAXParseException exception) throws SAXException { // COVERAGE (常用ケースではないため，コードレビューで問題ないことを確認)
-		if (getValueFeature() != null) {
-			throw new SAXException("Error found in the parameter '" + getValueFeature().getName() + "' of " + ModelLabels.getLabel(getCurrentXmlContext().contextM2Element) + ". " + exception.getMessage(),
-					exception);
-		} else {
-			throw exception;
-		}
-	}
-	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.xml.sax.helpers.DefaultHandler#error(org.xml.sax.SAXParseException)
-	 */
-	@Override
-	public void error(SAXParseException exception) throws SAXException {
-		if (getValueFeature() != null) {
-			throw new SAXException("Error found in the parameter '" + getValueFeature().getName() + "' of " + ModelLabels.getLabel(getCurrentXmlContext().contextM2Element) + ". " + exception.getMessage(),
-					exception);
-		} else {
-			throw exception;
-		}
-	}
-	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.xml.sax.helpers.DefaultHandler#fatalError(org.xml.sax.SAXParseException)
-	 */
-	@Override
-	public void fatalError(SAXParseException exception) throws SAXException {
-		if (getValueFeature() != null) { // COVERAGE (常用ケースではないため，コードレビューで問題ないことを確認)
-			throw new SAXException("Error found in the parameter '" + getValueFeature().getName() + "' of " + ModelLabels.getLabel(getCurrentXmlContext().contextM2Element) + ". " + exception.getMessage(),
-					exception);
-		} else {
-			throw exception;
-		}
-	}
-
-	private EStructuralFeature getValueFeature() {
-		EStructuralFeature valueFeature = null;
-		if (M2ModelUtils.hasMixedStringStereotype(getCurrentXmlContext().contextM2Element.eClass())) {
-			valueFeature = getCurrentXmlContext().contextM2Element.eClass().getEStructuralFeature(M2ModelUtils.MIXED_STRING_VALUE_FEATURE_NAME);
-		} else {
-			if (getCurrentXmlContext().contextM2Feature != null) {
-				valueFeature = getCurrentXmlContext().contextM2Feature;
-			}
-		}
-		return valueFeature;
 	}
 
 	/* パース中のEcucModuleConfigurationValuesをXmlContextsから取得する */

@@ -288,12 +288,6 @@ public class ExSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ExPackage.COM_GROUP_SIGNAL_EX: {
-				ComGroupSignalEx comGroupSignalEx = (ComGroupSignalEx)theEObject;
-				T result = caseComGroupSignalEx(comGroupSignalEx);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -430,21 +424,6 @@ public class ExSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseRteEventEx(RteEventEx object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Com Group Signal Ex</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Com Group Signal Ex</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseComGroupSignalEx(ComGroupSignalEx object) {
 		return null;
 	}
 

@@ -60,8 +60,6 @@ import static jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ModulePackage.Litera
 import static jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ModulePackage.Literals.RTE_BUFFER_SEND_TRUSTED_FUNCTION;
 import static jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ModulePackage.Literals.RTE_BUFFER_VARIABLE_SET;
 import static jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ModulePackage.Literals.RTE_BUFFER_WRITE_TRUSTED_FUNCTION;
-import static jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ModulePackage.Literals.COM_SEND_SIGNAL_TRUSTED_FUNCTION;
-import static jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ModulePackage.Literals.TACK_STATUS;
 import static jp.ac.nagoya_u.is.nces.a_rte.model.util.EObjectConditions.hasOp;
 import static jp.ac.nagoya_u.is.nces.a_rte.model.util.EObjectConditions.isKindOf;
 import static jp.ac.nagoya_u.is.nces.a_rte.model.util.EObjectConditions.ref;
@@ -138,7 +136,6 @@ import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.RteBufferQueuedVariable;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.RteBufferSendTrustedFunction;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.RteBufferVariableSet;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.RteBufferWriteTrustedFunction;
-import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ComSendSignalTrustedFunction;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.SendOperation;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.TAckStatus;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.TrustedFunctionComSendOperation;
@@ -626,31 +623,14 @@ public class SenderReceiverOperationModelBuilder {
 		return destDirectComSendOperation;
 	}
 
-	public DirectComSendOperation createDirectComSendOperationForComTrustedFunction(ComSendImplementation sourceSendImplementation) throws ModelException {
-		DirectComSendOperation destDirectComSendOperation = ModuleFactory.eINSTANCE.createDirectComSendOperation();
-		EcucContainer sourceComSignalOrComSignalGroup = sourceSendImplementation.getComSignal() != null ? sourceSendImplementation.getComSignal() : sourceSendImplementation.getComSignalGroup();
-		ComSendSignalApi comSendSignalApi = this.context.builtQuery.findDest(COM_SEND_SIGNAL_API, sourceComSignalOrComSignalGroup);
-		destDirectComSendOperation.setSingleSource(sourceSendImplementation.getParent());
-		destDirectComSendOperation.setAccessApi(comSendSignalApi);
-
-		InternalEcuSender sourceSender = sourceSendImplementation.getParent().getInternalEcuSenders().get(0);
-		Optional<TAckStatus> tAckStatus = this.context.builtQuery.tryFindDest(TACK_STATUS, sourceSender.getTAckStatusVariableImplementation());
-		if (tAckStatus.isPresent()) {
-			destDirectComSendOperation.setTAckStatus(tAckStatus.get());
-		}
-		return destDirectComSendOperation;
-	}
-
 	public TrustedFunctionComSendOperation createTrustedFunctionComSendOperation(TrustedFunctionComSendImplementation sourceSendImplementation, Variable dataVariable,
 			LocalVariable returnValueVariable, LocalVariable trustedFunctionParamVariable, LocalVariable tempReturnValueVariable, Type type, TAckStatus tAckStatus, EList<ActivationOperation> activationOperationOnSendCompleted) throws ModelException {
 		TrustedFunctionComSendOperation destTrustedFunctionComSendOperation = ModuleFactory.eINSTANCE.createTrustedFunctionComSendOperation();
 		buildComSendOperation(destTrustedFunctionComSendOperation, sourceSendImplementation, dataVariable, returnValueVariable, tempReturnValueVariable, tAckStatus, activationOperationOnSendCompleted);
 		if (sourceSendImplementation.getComSignal() != null) {
-			ComSendSignalTrustedFunction trustedFunction = this.context.builtQuery.findDest(COM_SEND_SIGNAL_TRUSTED_FUNCTION, sourceSendImplementation.getComSignal());
-			destTrustedFunctionComSendOperation.setAccessTrustedFunction(trustedFunction);
+			destTrustedFunctionComSendOperation.setAccessTrustedFunction(this.context.cache.comSendSignalTf.get());
 		} else {
-			ComSendSignalTrustedFunction trustedFunction = this.context.builtQuery.findDest(COM_SEND_SIGNAL_TRUSTED_FUNCTION, sourceSendImplementation.getComSignalGroup());
-			destTrustedFunctionComSendOperation.setAccessTrustedFunction(trustedFunction);
+			destTrustedFunctionComSendOperation.setAccessTrustedFunction(this.context.cache.comSendSignalGroupTf.get());
 		}
 		destTrustedFunctionComSendOperation.setTrustedFunctionParamVariable(trustedFunctionParamVariable);
 		destTrustedFunctionComSendOperation.setType(type);

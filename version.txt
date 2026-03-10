@@ -10,7 +10,7 @@ TOPPERS/A-RTEGEN
     Toyohashi Open Platform for Embedded Real-Time Systems
     Automotive Runtime Environment 
 
-Copyright (C) 2013-2017 by Eiwa System Management, Inc., JAPAN
+Copyright (C) 2013-2016 by Eiwa System Management, Inc., JAPAN
 
 上記著作権者は，以下の (1)〜(3)の条件を満たす場合に限り，本ドキュメ
 ント（本ドキュメントを改変したものを含む．以下同じ）を使用・複製・改
@@ -38,40 +38,11 @@ Copyright (C) 2013-2017 by Eiwa System Management, Inc., JAPAN
 により直接的または間接的に生じたいかなる損害に関しても，その責任を負
 わない．
 
-$Id: version.txt 822 2017-03-15 07:20:08Z mtakada $
---------------------------------------------------------------------
-        A-RTEGEN
-        Release 1.3.0 から 1.4.0 への変更点
-        リリース日 2017-03-03
-
-○変更点のリスト
-
-・TOPPERS/ATK2の仕様変更に伴い，以下について対応
-  - 非信頼OSAPから排他エリアを使用する場合の割込み禁止APIの生成コード変更
-  - 信頼関数の生成コードポリシーと変数チェック方法の変更
-
-・A-RTEGENの生成コードの見直し
-  - 複合データ型のRPortにInitValueを設定する際の生成コード変更
-  - C/S連携時，プリミティブ型のOUTパラメータのメモリチェックコード変更
-  - ImplDataTypeで配列型を指定した場合の生成コードの変更
-
-・モデル違反チェックルールの追加
-  - COMシグナル/COMグループシグナルのビットサイズと，対応する実装データ型
-    (ImplementationDataType)に関連するソフトウェアベース型(SwBaseType)の
-    ベース型サイズ(baseTypeSize)との一致チェック
-  - COMシグナルのシグナル長(ComSignalLength)と，対応する実装データ型
-    (ImplementationDataType)の実装データ型要素(ImplementationDataTypeElement)
-    の配列サイズ(arraySize)との一致チェック
-  - ポート定義引数値(PortDefinedArgumentValue)の型(valueType)チェック
-  - OSスケーラビリティクラス，時間パーティショニング機能対応OSに応じた
-    使用可能ブロッキングAPIのチェック
-
-・その他細かい修正
-
+$Id: version.txt 651 2016-03-31 06:20:22Z mtakada $
 --------------------------------------------------------------------
         A-RTEGEN
         Release 1.2.2 から 1.3.0 への変更点
-        リリース日 2016-03-31
+        リリース日 2016-3-31
 
 ○変更点のリスト
 

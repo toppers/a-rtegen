@@ -39,7 +39,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  * 
- *  $Id: symbolUtil.mtl 27834 2016-11-10 07:50:05Z m-yamada $
+ *  $Id: symbolUtil.mtl 19918 2016-01-08 06:05:46Z hiroki.kitagawa $
  */
 [/comment]
 [comment encoding = UTF-8 /]
@@ -124,12 +124,6 @@ extern uint8 [aComSignalApiWrapper.symbolName/]([aComSignalApiWrapper.genComSign
 [template public genFunctionRunnableParams(aCsTfCalledRunnable : CsTfCalledRunnable) post (trim())]
 [for (aParam : Parameter | aCsTfCalledRunnable.startOperation.startServerRunnable.roleParam)]
 	[if (aParam.passType = ParameterPassTypeEnum::value)]*[/if]([if (aParam.hasConst)]const[/if] [if (aParam.type.oclIsKindOf(ArrayType))][aParam.type.originalTypeSymbolName/][else][aParam.type.symbolName/][/if] *) p_tfn_prm->tf_argv['['/][aCsTfCalledRunnable.startOperation.startServerRunnable.roleParam->indexOf(aParam)-1/][']'/][if (aParam <> aCsTfCalledRunnable.startOperation.startServerRunnable.roleParam->last())],[/if]
-[/for]
-[/template]
-
-[template public genFunctionRunnablePortArgValues(aCsTfCalledRunnable : CsTfCalledRunnable) post (trim())]
-[for (aValue : Value | aCsTfCalledRunnable.startOperation.portArgValue)]
-	[aValue.oclAsType(Constant).symbolName/][if (aValue <> aCsTfCalledRunnable.startOperation.portArgValue->last())],[/if]
 [/for]
 [/template]
 

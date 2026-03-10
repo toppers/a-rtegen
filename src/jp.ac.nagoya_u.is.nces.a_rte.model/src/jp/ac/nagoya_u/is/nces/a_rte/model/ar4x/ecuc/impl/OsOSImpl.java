@@ -45,16 +45,15 @@
 package jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.EcucPackage;
 import jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.OsOS;
-import jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.OsSystemCycle;
+
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -66,7 +65,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.impl.OsOSImpl#getOsNumberOfCores <em>Os Number Of Cores</em>}</li>
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.impl.OsOSImpl#getOsMasterCoreId <em>Os Master Core Id</em>}</li>
- *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.impl.OsOSImpl#getOsSystemCycle <em>Os System Cycle</em>}</li>
  * </ul>
  * </p>
  *
@@ -112,16 +110,6 @@ public class OsOSImpl extends EcucContainerImpl implements OsOS {
 	 * @ordered
 	 */
 	protected Integer osMasterCoreId = OS_MASTER_CORE_ID_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getOsSystemCycle() <em>Os System Cycle</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOsSystemCycle()
-	 * @generated
-	 * @ordered
-	 */
-	protected OsSystemCycle osSystemCycle;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -185,49 +173,6 @@ public class OsOSImpl extends EcucContainerImpl implements OsOS {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OsSystemCycle getOsSystemCycle() {
-		return osSystemCycle;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetOsSystemCycle(OsSystemCycle newOsSystemCycle, NotificationChain msgs) {
-		OsSystemCycle oldOsSystemCycle = osSystemCycle;
-		osSystemCycle = newOsSystemCycle;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EcucPackage.OS_OS__OS_SYSTEM_CYCLE, oldOsSystemCycle, newOsSystemCycle);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOsSystemCycle(OsSystemCycle newOsSystemCycle) {
-		if (newOsSystemCycle != osSystemCycle) {
-			NotificationChain msgs = null;
-			if (osSystemCycle != null)
-				msgs = ((InternalEObject)osSystemCycle).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EcucPackage.OS_OS__OS_SYSTEM_CYCLE, null, msgs);
-			if (newOsSystemCycle != null)
-				msgs = ((InternalEObject)newOsSystemCycle).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EcucPackage.OS_OS__OS_SYSTEM_CYCLE, null, msgs);
-			msgs = basicSetOsSystemCycle(newOsSystemCycle, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EcucPackage.OS_OS__OS_SYSTEM_CYCLE, newOsSystemCycle, newOsSystemCycle));
-	}
-
-	/**
 	 * The cached invocation delegate for the '{@link #isMulticoreOs() <em>Is Multicore Os</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -257,28 +202,12 @@ public class OsOSImpl extends EcucContainerImpl implements OsOS {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case EcucPackage.OS_OS__OS_SYSTEM_CYCLE:
-				return basicSetOsSystemCycle(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case EcucPackage.OS_OS__OS_NUMBER_OF_CORES:
 				return getOsNumberOfCores();
 			case EcucPackage.OS_OS__OS_MASTER_CORE_ID:
 				return getOsMasterCoreId();
-			case EcucPackage.OS_OS__OS_SYSTEM_CYCLE:
-				return getOsSystemCycle();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -296,9 +225,6 @@ public class OsOSImpl extends EcucContainerImpl implements OsOS {
 				return;
 			case EcucPackage.OS_OS__OS_MASTER_CORE_ID:
 				setOsMasterCoreId((Integer)newValue);
-				return;
-			case EcucPackage.OS_OS__OS_SYSTEM_CYCLE:
-				setOsSystemCycle((OsSystemCycle)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -318,9 +244,6 @@ public class OsOSImpl extends EcucContainerImpl implements OsOS {
 			case EcucPackage.OS_OS__OS_MASTER_CORE_ID:
 				setOsMasterCoreId(OS_MASTER_CORE_ID_EDEFAULT);
 				return;
-			case EcucPackage.OS_OS__OS_SYSTEM_CYCLE:
-				setOsSystemCycle((OsSystemCycle)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -337,8 +260,6 @@ public class OsOSImpl extends EcucContainerImpl implements OsOS {
 				return OS_NUMBER_OF_CORES_EDEFAULT == null ? osNumberOfCores != null : !OS_NUMBER_OF_CORES_EDEFAULT.equals(osNumberOfCores);
 			case EcucPackage.OS_OS__OS_MASTER_CORE_ID:
 				return OS_MASTER_CORE_ID_EDEFAULT == null ? osMasterCoreId != null : !OS_MASTER_CORE_ID_EDEFAULT.equals(osMasterCoreId);
-			case EcucPackage.OS_OS__OS_SYSTEM_CYCLE:
-				return osSystemCycle != null;
 		}
 		return super.eIsSet(featureID);
 	}

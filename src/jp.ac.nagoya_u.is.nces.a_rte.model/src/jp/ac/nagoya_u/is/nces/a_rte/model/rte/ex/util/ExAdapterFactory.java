@@ -230,10 +230,6 @@ public class ExAdapterFactory extends AdapterFactoryImpl {
 				return createRteEventExAdapter();
 			}
 			@Override
-			public Adapter caseComGroupSignalEx(ComGroupSignalEx object) {
-				return createComGroupSignalExAdapter();
-			}
-			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -376,20 +372,6 @@ public class ExAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRteEventExAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.ComGroupSignalEx <em>Com Group Signal Ex</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.ComGroupSignalEx
-	 * @generated
-	 */
-	public Adapter createComGroupSignalExAdapter() {
 		return null;
 	}
 

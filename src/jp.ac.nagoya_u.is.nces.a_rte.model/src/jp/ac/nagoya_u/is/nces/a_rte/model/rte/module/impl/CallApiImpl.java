@@ -50,6 +50,7 @@ import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.LocalVariable;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ModulePackage;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.Parameter;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ServerRunnableStartOperation;
+import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.Value;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -68,6 +69,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <ul>
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.CallApiImpl#getOperation <em>Operation</em>}</li>
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.CallApiImpl#getOperationParam <em>Operation Param</em>}</li>
+ *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.CallApiImpl#getPortArgValue <em>Port Arg Value</em>}</li>
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.CallApiImpl#getReturnVariable <em>Return Variable</em>}</li>
  * </ul>
  * </p>
@@ -94,6 +96,16 @@ public class CallApiImpl extends RteApiImpl implements CallApi {
 	 * @ordered
 	 */
 	protected EList<Parameter> operationParam;
+
+	/**
+	 * The cached value of the '{@link #getPortArgValue() <em>Port Arg Value</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPortArgValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Value> portArgValue;
 
 	/**
 	 * The cached value of the '{@link #getReturnVariable() <em>Return Variable</em>}' reference.
@@ -184,6 +196,18 @@ public class CallApiImpl extends RteApiImpl implements CallApi {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Value> getPortArgValue() {
+		if (portArgValue == null) {
+			portArgValue = new EObjectResolvingEList<Value>(Value.class, this, ModulePackage.CALL_API__PORT_ARG_VALUE);
+		}
+		return portArgValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public LocalVariable getReturnVariable() {
 		if (returnVariable != null && ((EObject)returnVariable).eIsProxy()) {
 			InternalEObject oldReturnVariable = (InternalEObject)returnVariable;
@@ -243,6 +267,8 @@ public class CallApiImpl extends RteApiImpl implements CallApi {
 				return getOperation();
 			case ModulePackage.CALL_API__OPERATION_PARAM:
 				return getOperationParam();
+			case ModulePackage.CALL_API__PORT_ARG_VALUE:
+				return getPortArgValue();
 			case ModulePackage.CALL_API__RETURN_VARIABLE:
 				if (resolve) return getReturnVariable();
 				return basicGetReturnVariable();
@@ -266,6 +292,10 @@ public class CallApiImpl extends RteApiImpl implements CallApi {
 				getOperationParam().clear();
 				getOperationParam().addAll((Collection<? extends Parameter>)newValue);
 				return;
+			case ModulePackage.CALL_API__PORT_ARG_VALUE:
+				getPortArgValue().clear();
+				getPortArgValue().addAll((Collection<? extends Value>)newValue);
+				return;
 			case ModulePackage.CALL_API__RETURN_VARIABLE:
 				setReturnVariable((LocalVariable)newValue);
 				return;
@@ -287,6 +317,9 @@ public class CallApiImpl extends RteApiImpl implements CallApi {
 			case ModulePackage.CALL_API__OPERATION_PARAM:
 				getOperationParam().clear();
 				return;
+			case ModulePackage.CALL_API__PORT_ARG_VALUE:
+				getPortArgValue().clear();
+				return;
 			case ModulePackage.CALL_API__RETURN_VARIABLE:
 				setReturnVariable((LocalVariable)null);
 				return;
@@ -306,6 +339,8 @@ public class CallApiImpl extends RteApiImpl implements CallApi {
 				return operation != null;
 			case ModulePackage.CALL_API__OPERATION_PARAM:
 				return operationParam != null && !operationParam.isEmpty();
+			case ModulePackage.CALL_API__PORT_ARG_VALUE:
+				return portArgValue != null && !portArgValue.isEmpty();
 			case ModulePackage.CALL_API__RETURN_VARIABLE:
 				return returnVariable != null;
 		}

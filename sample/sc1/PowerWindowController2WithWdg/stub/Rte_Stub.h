@@ -53,9 +53,9 @@ extern "C" {
  */
 #define Rte_Switch_START_SEC_CODE
 
-extern Std_ReturnType Rte_Switch_mode0_currentMode(Rte_ModeType_WdgM_Mode mode);
-extern Std_ReturnType Rte_Switch_mode1_currentMode(Rte_ModeType_WdgM_Mode mode);
-extern Std_ReturnType Rte_Switch_globalMode_currentMode(Rte_ModeType_WdgM_Mode mode);
+extern Std_ReturnType Rte_Switch_modeWdgMSupervisedEntity_0_currentMode(Rte_ModeType_WdgM_Mode mode);
+extern Std_ReturnType Rte_Switch_modeWdgMSupervisedEntity_1_currentMode(Rte_ModeType_WdgM_Mode mode);
+extern Std_ReturnType Rte_Switch_modeWdgM_globalMode_currentMode(Rte_ModeType_WdgM_Mode mode);
 
 #define Rte_Switch_STOP_SEC_CODE
 

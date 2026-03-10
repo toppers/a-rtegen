@@ -137,10 +137,8 @@ public class LocalSymbolModelBuilder {
 
 			int i = 0;
 			for (PortDefinedArgumentValue sourcePortDefinedArgumentValue : sourcePortApiOption.getPortArgValue()) {
-				if (sourcePortDefinedArgumentValue.getValueType().getLeafImplementationDataType().isPrimitiveType()) {
-					destPortArgValueParams.add(createCsPortArgValueParam(sourcePortDefinedArgumentValue, i));
-					i++;
-				}
+				destPortArgValueParams.add(createCsPortArgValueParam(sourcePortDefinedArgumentValue, i));
+				i++;
 			}
 		}
 		return destPortArgValueParams;
@@ -269,13 +267,6 @@ public class LocalSymbolModelBuilder {
 		return destStatusVariable;
 	}
 
-	public LocalVariable createTempReturnValueVariableForTrustedFunction() {
-		LocalVariable destStatusVariable = ModuleFactory.eINSTANCE.createLocalVariable();
-		destStatusVariable.setType(this.context.cache.osStatusType);
-		destStatusVariable.setSymbolName(SymbolNames.TEMP_RETURN_VALUE_LOCAL_VAR_NAME_FOR_TRUSTED);
-		return destStatusVariable;
-	}
-
 	public LocalVariable createSrDataVariable(VariableDataInstanceInSwc sourceDataInstanceInSwc, String symbolName) throws ModelException {
 		LocalVariable destDataVariable = ModuleFactory.eINSTANCE.createLocalVariable();
 		destDataVariable.setType(this.context.builtQuery.findDestType(sourceDataInstanceInSwc.getImplementationDataType()));
@@ -325,6 +316,13 @@ public class LocalSymbolModelBuilder {
 		return destTfParamVariable;
 	}
 
+	public LocalVariable createComProxySignalIdVariable() {
+		LocalVariable destVariable = ModuleFactory.eINSTANCE.createLocalVariable();
+		destVariable.setType(this.context.cache.comSignalIdType);
+		destVariable.setSymbolName(SymbolNames.COM_PROXY_SIGNAL_ID_VAR_NAME);
+		return destVariable;
+	}
+
 	public LocalVariable createComProxyFunctionTableIndexVariable() {
 		LocalVariable destVariable = ModuleFactory.eINSTANCE.createLocalVariable();
 		destVariable.setType(this.context.cache.comProxyFunctionTableIndexType);
@@ -352,7 +350,7 @@ public class LocalSymbolModelBuilder {
 			OsActivateTaskApi activatteTaskApi = (OsActivateTaskApi)activationOperation.getActivationApi();
 			activationFlag.setSymbolName(SymbolNames.createActivationFlagName(activatteTaskApi));
 		}
-		else if (activationOperation.getActivationApi() instanceof OsSetEventApi) { // COVERAGE 常にtrue(現状，OsActivateTaskApi/OsSetEventApi以外のパターンが存在しないため，未カバレッジで問題ない)
+		else if (activationOperation.getActivationApi() instanceof OsSetEventApi) {
 			OsSetEventApi setEventApi = (OsSetEventApi)activationOperation.getActivationApi();
 			activationFlag.setSymbolName(SymbolNames.createActivationFlagName(setEventApi));
 		}

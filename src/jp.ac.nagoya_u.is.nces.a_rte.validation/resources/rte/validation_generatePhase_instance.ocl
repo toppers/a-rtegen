@@ -221,13 +221,6 @@ package ar4x::m2
 	or
 	ecucPartition->select(ecucPartitionSoftwareComponent->select(prototype = self.providerIref.contextComponent)->notEmpty())->asSequence()->first().isTrusted()
 	
-	/*
-	 * PortApiOptions
-	 */
-	context PortApiOption
-	inv nrte_sws_0382:
-	self.portArgValue->forAll(arg | arg.valueType.getLeafImplementationDataType().category = 'VALUE')
-
 endpackage
 
 package ar4x::instance
@@ -374,29 +367,6 @@ package ar4x::ecuc
 	inv nrte_sws_0141:
 	self.rteExclusiveAreaImplMechanism <> RteExclusiveAreaImplMechanismEnum::COOPERATIVE_RUNNABLE_PLACEMENT
 
-	inv nrte_sws_0383:
-	OsApplication->isEmpty()
-	or
-	self.rteExclusiveAreaImplMechanism <> RteExclusiveAreaImplMechanismEnum::ALL_INTERRUPT_BLOCKING
-	or
-	not RteSwComponentInstance.allInstances()
-		->select(rteExclusiveAreaImplementation->includes(self))
-		->any(true).rteSoftwareComponentInstance.instance.ownerPartition
-		->exists(not isTrusted())
-
-	inv nrte_sws_0384:
-	OsOS.allInstances()->any(true).osSystemCycle->isEmpty()
-	or
-	(self.rteExclusiveAreaImplMechanism <> RteExclusiveAreaImplMechanismEnum::ALL_INTERRUPT_BLOCKING 
-		and self.rteExclusiveAreaImplMechanism <> RteExclusiveAreaImplMechanismEnum::OS_INTERRUPT_BLOCKING
-		and self.rteExclusiveAreaImplMechanism <> RteExclusiveAreaImplMechanismEnum::OS_RESOURCE
-	)
-	or
-	not RteSwComponentInstance.allInstances()
-		->select(rteExclusiveAreaImplementation->includes(self))
-		->any(true).rteSoftwareComponentInstance.instance.ownerPartition
-		->exists(not isTrusted())
-
 	/*
 	 * OsTask
 	 */
@@ -441,25 +411,6 @@ package ar4x::ecuc
 	comSignalEx.getVariableDataInstanceInCompositions(self).prototype.prototype
 		->select(type.oclIsTypeOf(ar4x::m2::ImplementationDataType) and type.oclAsType(ar4x::m2::ImplementationDataType).category = 'DATA_REFERENCE')->isEmpty()
 
-	inv nrte_sws_0379:
-	self.comBitSize.oclIsUndefined()
-	or
-	self.comSystemTemplateSystemSignal.oclIsUndefined()
-	or
-	comSignalEx.getVariableDataInstanceInCompositions(self).prototype.prototype
-		->select(self.comBitSize <> type.oclAsType(ar4x::m2::ImplementationDataType).getLeafImplementationDataType().swDataDefProps.baseType.baseTypeSize)->isEmpty()
-
-	inv nrte_sws_0381:
-	self.comSignalLength.oclIsUndefined()
-	or
-	self.comSystemTemplateSystemSignal.oclIsUndefined()
-	or
-	comSignalEx.getVariableDataInstanceInCompositions(self).prototype.prototype
-		->select(type.oclAsType(ar4x::m2::ImplementationDataType).category = 'ARRAY')->isEmpty()
-	or
-	comSignalEx.getVariableDataInstanceInCompositions(self).prototype.prototype.type.oclAsType(ar4x::m2::ImplementationDataType).subElement
-		->select(self.comSignalLength <> arraySize)->isEmpty()
-
 	/*
 	 * ComSignalGroup
 	 */
@@ -479,26 +430,12 @@ package ar4x::ecuc
 	 */
 	context ComGroupSignal
 
-	def:
-	comGroupSignalEx : rte::ex::ComGroupSignalEx = rte::ex::ComGroupSignalEx.allInstances()->any(true)
-
 	inv nrte_sws_0283:
 	self.comSystemTemplateSystemSignal.oclIsUndefined()
 	or
 	(self.comSystemTemplateSystemSignal.iSignalGroup.oclIsUndefined()
 		and
 		not self.comSystemTemplateSystemSignal.iSignal.oclIsUndefined())
-
-	inv nrte_sws_0380:
-	self.comBitSize.oclIsUndefined()
-	or
-	self.comSystemTemplateSystemSignal.oclIsUndefined()
-	or
-	comGroupSignalEx.getImplementationRecordElement(self)
-		->select(self.comBitSize <> swDataDefProps.baseType.baseTypeSize)->isEmpty()
-	and
-	comGroupSignalEx.getImplementationArrayElement(self)
-		->select(self.comBitSize <> swDataDefProps.baseType.baseTypeSize)->isEmpty()
 
 	/*
 	 * OsIocDataProperties

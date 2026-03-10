@@ -39,7 +39,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  * 
- *  $Id: senderReceiverOperation.mtl 28663 2016-12-12 05:36:20Z m-yamada $
+ *  $Id: senderReceiverOperation.mtl 21654 2016-03-30 06:49:59Z m-umeda $
  */
 [/comment]
 [comment encoding = UTF-8 /]
@@ -87,11 +87,7 @@
 	[aSendOperation.trustedFunctionParamVariable.genMemberAccess('tf_data')/] = (const void*) [aSendOperation.sendValue.genPointerAccess()/];
 	[aSendOperation.tempReturnVariable.genValueAccess()/] = Rte_Call_Bsw_CallTrustedFunction([aSendOperation.accessTrustedFunction.trustedFunctionIndex/], (TrustedFunctionParameterRefType)[aSendOperation.trustedFunctionParamVariable.genPointerAccess()/]);
 	if ([aSendOperation.tempReturnVariable.genValueAccess()/] != E_OK) {
-		if ([aSendOperation.tempReturnVariable.genValueAccess()/] == E_OS_ACCESS) {
-			[aSendOperation.returnVariable.genValueAccess()/] = RTE_E_SEG_FAULT;
-		} else {
-			[aSendOperation.returnVariable.genValueAccess()/] = RTE_E_DEV_DEFECT;
-		}
+		[aSendOperation.returnVariable.genValueAccess()/] = RTE_E_DEV_DEFECT;
 	}
 	[if (aSendOperation.activationFlagOnRxSuccess->notEmpty())]
 	else {
@@ -108,11 +104,7 @@
 	[aSendOperation.trustedFunctionParamVariable.genMemberAccess('tf_data')/] = NULL_PTR;
 	[aSendOperation.tempReturnVariable.genValueAccess()/] = Rte_Call_Bsw_CallTrustedFunction([aSendOperation.accessTrustedFunction.trustedFunctionIndex/], (TrustedFunctionParameterRefType)[aSendOperation.trustedFunctionParamVariable.genPointerAccess()/]);
 	if ([aSendOperation.tempReturnVariable.genValueAccess()/] != E_OK) {
-		if ([aSendOperation.tempReturnVariable.genValueAccess()/] == E_OS_ACCESS) {
-			[aSendOperation.returnVariable.genValueAccess()/] = RTE_E_SEG_FAULT;
-		} else {
-			[aSendOperation.returnVariable.genValueAccess()/] = RTE_E_DEV_DEFECT;
-		}
+		[aSendOperation.returnVariable.genValueAccess()/] = RTE_E_DEV_DEFECT;
 	}
 	[if (aSendOperation.activationFlagOnRxSuccess->notEmpty())]
 	else {
@@ -133,12 +125,8 @@
 [/if]
 	[aSendOperation.trustedFunctionParamVariable.genMemberAccess('tf_ercd')/] = RTE_E_OK;
 	[aSendOperation.tempReturnVariable.genValueAccess()/] = Rte_Call_Bsw_CallTrustedFunction([aSendOperation.accessTrustedFunction.trustedFunctionIndex/], [aSendOperation.trustedFunctionParamVariable.genPointerAccess()/]);
-	if ([aSendOperation.tempReturnVariable.genValueAccess()/] != E_OK) {
-		if ([aSendOperation.tempReturnVariable.genValueAccess()/] == E_OS_ACCESS) {
-			[aSendOperation.returnVariable.genValueAccess()/] = RTE_E_SEG_FAULT;
-		} else {
-			[aSendOperation.returnVariable.genValueAccess()/] = RTE_E_DEV_DEFECT;
-		}
+	if (tmp_ercd != E_OK) {
+		ercd = RTE_E_DEV_DEFECT;
 	}
 	else {
 		ercd = (ercd == RTE_E_OK) ? [aSendOperation.trustedFunctionParamVariable.genMemberAccess('tf_ercd')/] : ercd;
@@ -200,24 +188,21 @@
 
 [template private genSendOperation(aSendOperation : TrustedFunctionComSendOperation) ]
 [if not (aSendOperation.type.oclIsKindOf(PrimitiveType))]
+	[if (aSendOperation.isGroup)]
+		[aSendOperation.trustedFunctionParamVariable.genMemberAccess('meta')/] = (&[aSendOperation.accessApi.comSignalSymbolName/]);
+	[else]
+		[aSendOperation.trustedFunctionParamVariable.genMemberAccess('com_sig_id')/] = [aSendOperation.accessApi.comSignalSymbolName/];
+	[/if]
 	[aSendOperation.trustedFunctionParamVariable.genMemberAccess('com_data')/] = [aSendOperation.sendValue.genPointerAccess()/];
 	[aSendOperation.tempReturnVariable.genValueAccess()/] = Rte_Call_Bsw_CallTrustedFunction([aSendOperation.accessTrustedFunction.trustedFunctionIndex/], [aSendOperation.trustedFunctionParamVariable.genPointerAccess()/]);
-	if ([aSendOperation.tempReturnVariable.genValueAccess()/] != E_OK) {
-		if ([aSendOperation.tempReturnVariable.genValueAccess()/] == E_OS_ACCESS) {
-			[aSendOperation.returnVariable.genValueAccess()/] = RTE_E_SEG_FAULT;
-		} else {
-			[aSendOperation.returnVariable.genValueAccess()/] = RTE_E_DEV_DEFECT;
-		}
-		[if (not aSendOperation.tAckStatus.oclIsUndefined() or aSendOperation.activationFlagOnTxErr->notEmpty())]
-			if (([aSendOperation.tempReturnVariable.genValueAccess()/] != E_OS_CALLEVEL) && ([aSendOperation.tempReturnVariable.genValueAccess()/] != E_OS_ACCESS)) {
-				[if (not aSendOperation.tAckStatus.oclIsUndefined())]
-					[aSendOperation.tAckStatus.statusVariable.symbolName/] = RTE_E_DEV_DEFECT;
-				[/if]
-				[for (anActivationFlag : LocalVariable | aSendOperation.activationFlagOnTxErr)]
-					[anActivationFlag.symbolName/] = TRUE;
-				[/for]
-			}
+	if (tmp_ercd != E_OK) {
+		ercd = RTE_E_DEV_DEFECT;
+		[if (not aSendOperation.tAckStatus.oclIsUndefined())]
+			[aSendOperation.tAckStatus.statusVariable.symbolName/] = RTE_E_DEV_DEFECT;
 		[/if]
+		[for (anActivationFlag : LocalVariable | aSendOperation.activationFlagOnTxErr)]
+			[anActivationFlag.symbolName/] = TRUE;
+		[/for]
 	} else {
 		ercd = [aSendOperation.trustedFunctionParamVariable.genMemberAccess('tf_ercd')/];
 		[if ((not aSendOperation.tAckStatus.oclIsUndefined()) or (aSendOperation.activationFlagOnTxErr->notEmpty()))]
@@ -232,6 +217,7 @@
 		[/if]
 	}
 [else]
+	[aSendOperation.trustedFunctionParamVariable.genMemberAccess('com_sig_id')/] = [aSendOperation.accessApi.comSignalSymbolName/];
 	[aSendOperation.trustedFunctionParamVariable.genMemberAccess('com_data')/] = [aSendOperation.sendValue.genPointerAccess()/];
 	[aSendOperation.trustedFunctionParamVariable.genMemberAccess('tf_ercd')/] = RTE_E_OK;
 	[aSendOperation.tempReturnVariable.genValueAccess()/] = Rte_Call_Bsw_CallTrustedFunction([aSendOperation.accessTrustedFunction.trustedFunctionIndex/], [aSendOperation.trustedFunctionParamVariable.genPointerAccess()/]);
@@ -239,23 +225,21 @@
 [/if]
 [/template]
 
+[template private genTrustedInitValue(aSendOperation : TrustedFunctionComSendOperation) ]
+	[aSendOperation.trustedFunctionParamVariable.genMemberAccess('com_sig_id')/] = [aSendOperation.accessApi.comSignalSymbolName/];
+	[aSendOperation.trustedFunctionParamVariable.genMemberAccess('com_data')/] = [aSendOperation.sendValue.genPointerAccess()/];
+	[aSendOperation.tempReturnVariable.genValueAccess()/] = Rte_Call_Bsw_CallTrustedFunction([aSendOperation.accessTrustedFunction.trustedFunctionIndex/], [aSendOperation.trustedFunctionParamVariable.genPointerAccess()/]);
+[/template]
+
 [template private genTrustedReturn(aSendOperation : TrustedFunctionComSendOperation) ]
 if ([aSendOperation.tempReturnVariable.genValueAccess()/] != E_OK) {
-	if ([aSendOperation.tempReturnVariable.genValueAccess()/] == E_OS_ACCESS) {
-		[aSendOperation.returnVariable.genValueAccess()/] = RTE_E_SEG_FAULT;
-	} else {
-		[aSendOperation.returnVariable.genValueAccess()/] = RTE_E_DEV_DEFECT;
-	}
-	[if (not aSendOperation.tAckStatus.oclIsUndefined() or aSendOperation.activationFlagOnTxErr->notEmpty())]
-		if (([aSendOperation.tempReturnVariable.genValueAccess()/] != E_OS_CALLEVEL) && ([aSendOperation.tempReturnVariable.genValueAccess()/] != E_OS_ACCESS)) {
-			[if (not aSendOperation.tAckStatus.oclIsUndefined())]
-				[aSendOperation.tAckStatus.statusVariable.symbolName/] = RTE_E_DEV_DEFECT;
-			[/if]
-			[for (anActivationFlag : LocalVariable | aSendOperation.activationFlagOnTxErr)]
-				[anActivationFlag.symbolName/] = TRUE;
-			[/for]
-		}
+	[aSendOperation.returnVariable.genValueAccess()/] = RTE_E_DEV_DEFECT;
+	[if (not aSendOperation.tAckStatus.oclIsUndefined())]
+		[aSendOperation.tAckStatus.statusVariable.symbolName/] = RTE_E_DEV_DEFECT;
 	[/if]
+	[for (anActivationFlag : LocalVariable | aSendOperation.activationFlagOnTxErr)]
+		[anActivationFlag.symbolName/] = TRUE;
+	[/for]
 }
 else {
 	[aSendOperation.returnVariable.genValueAccess()/] = ([aSendOperation.returnVariable.genValueAccess()/] == RTE_E_OK) ? [aSendOperation.trustedFunctionParamVariable.genMemberAccess('tf_ercd')/] : [aSendOperation.returnVariable.genValueAccess()/];
@@ -496,7 +480,7 @@ ercd = RTE_E_OK;
 	[aReadOperation.readValueVariable.type.symbolName/] value = [aReadOperation.initValueConstant.genValueAccess()/];
 	Rte_StructMemcpy([aReadOperation.readValueVariable.genSymbolAccess()/], &value, [aReadOperation.readValueVariable.type.symbolName/]);
 [elseif aReadOperation.readValueVariable.type.oclIsKindOf(UnionType)]
-	[aReadOperation.readValueVariable.type.symbolName/] value = [aReadOperation.initValueConstant.genValueAccess()/]; /* MISRA RULE 18.4 VIOLATION : It won't be fixed because of RTE Specification rte_sws_7144 */
+	[aReadOperation.readValueVariable.type.symbolName/] value = [aReadOperation.initValueConstant.genValueAccess()/];
 	Rte_UnionMemcpy([aReadOperation.readValueVariable.genSymbolAccess()/], &value, [aReadOperation.readValueVariable.type.symbolName/]);
 [else]
 	[aReadOperation.readValueVariable.genValueAccess()/] = [aReadOperation.initValueConstant.genValueAccess()/];

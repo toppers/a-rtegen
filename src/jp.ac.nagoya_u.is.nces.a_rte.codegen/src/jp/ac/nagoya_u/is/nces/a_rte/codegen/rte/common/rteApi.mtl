@@ -59,7 +59,7 @@
 
 [template public genRteApi(aRteApi : WriteApi) ? (not aRteApi.isConnected)]
 [aRteApi.returnType.symbolName/]
-[aRteApi.symbolName/]([aRteApi.genFunctionParams()/])[if (aRteApi.dataParam.type.oclIsKindOf(PointerType))] /* MISRA RULE 16.7 VIOLATION : It won't be fixed because of RTE Specification rte_sws_7661 */[/if]
+[aRteApi.symbolName/]([aRteApi.genFunctionParams()/])
 {
 	[aRteApi.genActivationOperations()/]
 	return(RTE_E_OK);
@@ -68,7 +68,7 @@
 
 [template public genRteApi(aRteApi : WriteApi) ? (aRteApi.isConnected)]
 [aRteApi.returnType.symbolName/]
-[aRteApi.symbolName/]([aRteApi.genFunctionParams()/])[if (aRteApi.dataParam.type.oclIsKindOf(PointerType))] /* MISRA RULE 16.7 VIOLATION : It won't be fixed because of RTE Specification rte_sws_7661 */[/if]
+[aRteApi.symbolName/]([aRteApi.genFunctionParams()/])
 {
 	[aRteApi.genLocalVariableDeclarations()/]
 	[if (aRteApi.needsCheckArg)]
@@ -79,7 +79,7 @@
 	[if (aRteApi.needsCheckArg)]
 		[aRteApi.dataParam.genSrApiCheckOperation()/]
 	[/if]
-	[if (not aRteApi.tAckStatus.oclIsUndefined() and not aRteApi.isContainedTrustedOperation())]
+	[if (not aRteApi.tAckStatus.oclIsUndefined())]
 		[aRteApi.tAckStatus.statusVariable.symbolName/] = RTE_E_NO_DATA;
 	[/if]
 	[for (aSendOperation : SendOperation | aRteApi.operation)]
@@ -132,7 +132,7 @@
 	[aRteApi.genLocalVariableDeclarations()/]
 	[aRteApi.genLocalVariableInitializations()/]
 
-	[if (not aRteApi.tAckStatus.oclIsUndefined() and not aRteApi.isContainedTrustedOperation())]
+	[if (not aRteApi.tAckStatus.oclIsUndefined())]
 		[aRteApi.tAckStatus.statusVariable.symbolName/] = RTE_E_NO_DATA;
 	[/if]
 	[for (aSendOperation : SendOperation | aRteApi.operation)]
@@ -145,7 +145,7 @@
 
 [template public genRteApi(aRteApi : SendApi) ? (not aRteApi.isConnected)]
 [aRteApi.returnType.symbolName/]
-[aRteApi.symbolName/]([aRteApi.genFunctionParams()/])[if (aRteApi.dataParam.type.oclIsKindOf(PointerType))] /* MISRA RULE 16.7 VIOLATION : It won't be fixed because of RTE Specification rte_sws_7661 */[/if]
+[aRteApi.symbolName/]([aRteApi.genFunctionParams()/])
 {
 	[aRteApi.genActivationOperations()/]
 	return(RTE_E_OK);
@@ -154,7 +154,7 @@
 
 [template public genRteApi(aRteApi : SendApi) ? (aRteApi.isConnected)]
 [aRteApi.returnType.symbolName/]
-[aRteApi.symbolName/]([aRteApi.genFunctionParams()/])[if (aRteApi.dataParam.type.oclIsKindOf(PointerType))] /* MISRA RULE 16.7 VIOLATION : It won't be fixed because of RTE Specification rte_sws_7661 */[/if]
+[aRteApi.symbolName/]([aRteApi.genFunctionParams()/])
 {
 	[aRteApi.genLocalVariableDeclarations()/]
 	[if (aRteApi.needsCheckArg)]
@@ -165,7 +165,7 @@
 	[if (aRteApi.needsCheckArg)]
 		[aRteApi.dataParam.genSrApiCheckOperation()/]
 	[/if]
-	[if (not aRteApi.tAckStatus.oclIsUndefined() and not aRteApi.isContainedTrustedOperation())]
+	[if (not aRteApi.tAckStatus.oclIsUndefined())]
 		[aRteApi.tAckStatus.statusVariable.symbolName/] = RTE_E_NO_DATA;
 	[/if]
 	[for (aSendOperation : SendOperation | aRteApi.operation)]
@@ -238,7 +238,7 @@
 		[aExcludeOperation.genExcludeOperationEnter()/]
 	[/for]
 
-	[let paramValues : Sequence(Value) = aRteApi.operation.portArgValue.oclAsType(Value)->addAll(aRteApi.operationParam)]
+	[let paramValues : Sequence(Value) = aRteApi.portArgValue.oclAsType(Value)->addAll(aRteApi.operationParam)]
 		[if (aRteApi.operation.startServerRunnable.hasReturnValue)]
 			[aRteApi.returnVariable.genValueAccess()/] = [aRteApi.operation.startExecutable.symbolName/]([paramValues.genCsArgAccess()->sep(', ')/]);
 		[else]
@@ -258,25 +258,52 @@
 [aRteApi.symbolName/]([aRteApi.genFunctionParams()/])
 {
 	Std_ReturnType ercd;
-	StatusType tmp_tf_ercd;
+	Std_ReturnType tmp_ercd;
 	[aRteApi.csTfParamTypeName/] tfn_prm;
+	[for (aValue : Value | aRteApi.portArgValue)]
+		[if (aValue.oclIsKindOf(Constant) and (aValue.oclAsType(Constant).type.oclIsKindOf(PrimitiveType) or aValue.oclAsType(Constant).type.oclIsKindOf(PointerType)))]
+			[aValue.oclAsType(Constant).type.symbolName/] value_[aValue.oclAsType(Constant).symbolName/];
+		[/if]
+	[/for]
 	void *argv['['/][aRteApi.csTfArgcConstantName/][']'/];
+	[if (aRteApi.needsCheckArg)]
+		RTE_DECLARE_TASK_ID(taskId);
+		RTE_GET_TASK_ID(taskId); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification */
+	[/if]
 	[for (aParam : Parameter | aRteApi.param)]
-		argv['['/][i - 1/][']'/] = (void *)[aParam.genPointerAccess()/]; [if (aParam.hasConst)]/* MISRA RULE 11.5 VIOLATION : It is safe because the variable is managed by RTE codes */[/if]
+		[if ((aParam.type.oclIsKindOf(PointerType) and aParam.direction = ParameterDirectionEnum::_'in'))]
+			RTE_CHECK_ARG_POINTER_IN(taskId, [aParam.symbolName/], [aParam.type.symbolName/]); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification */
+		[elseif ((aParam.type.oclIsKindOf(PointerType) and aParam.direction <> ParameterDirectionEnum::_'in'))]
+			RTE_CHECK_ARG_POINTER_INOUT_OR_OUT(taskId, [aParam.symbolName/], [aParam.type.symbolName/]); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification */
+		[elseif ((not aParam.type.oclIsKindOf(PrimitiveType) and aParam.direction = ParameterDirectionEnum::_'in'))]
+			RTE_CHECK_ARG_IN(taskId, [aParam.symbolName/], [aParam.type.symbolName/]); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification */
+		[elseif ((not aParam.type.oclIsKindOf(PrimitiveType) and aParam.direction <> ParameterDirectionEnum::_'in'))]
+			RTE_CHECK_ARG_INOUT_OR_OUT(taskId, [aParam.symbolName/], [aParam.type.symbolName/]); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification */
+		[/if]
+	[/for]
+	[for (aValue : Value | aRteApi.portArgValue)]
+		[if (aValue.oclIsKindOf(Constant) and (aValue.oclAsType(Constant).type.oclIsKindOf(PrimitiveType) or aValue.oclAsType(Constant).type.oclIsKindOf(PointerType)))]
+			value_[aValue.oclAsType(Constant).symbolName/] = [aValue.oclAsType(Constant).genValueAccess()/];[if aValue.oclAsType(Constant).type.oclIsKindOf(PointerType)] /* MISRA RULE 3.1 11.3 VIOLATION : It won't be fixed because of RTE Specification rte_sws_1360 */[/if]
+			argv['['/][i - 1/][']'/] = (void *)&value_[aValue.oclAsType(Constant).symbolName/];
+		[else]
+			argv['['/][i - 1/][']'/] = (void *)[aValue.genPointerAccess()/]; /* MISRA RULE 11.5 VIOLATION : It is safe because the variable is managed by RTE codes */
+		[/if]
+	[/for]
+	[for (aParam : Parameter | aRteApi.param)]
+		argv['['/][aRteApi.portArgValue->size() + i - 1/][']'/] = (void *)[aParam.genPointerAccess()/]; [if (aParam.hasConst)]/* MISRA RULE 11.5 VIOLATION : It is safe because the variable is managed by RTE codes */[/if]
 	[/for]
 	tfn_prm.tf_opid = [aRteApi.csTfOpidConstantName/];
 	tfn_prm.tf_argv = &argv['['/]0[']'/];
-	tmp_tf_ercd = Rte_Call_Bsw_CallTrustedFunction([aRteApi.csTfName/], (TrustedFunctionParameterRefType) (&tfn_prm));
-	if (tmp_tf_ercd != E_OK) {
-		if (tmp_tf_ercd == E_OS_ACCESS) {
-			ercd = RTE_E_SEG_FAULT;
-		} else {
-			ercd = RTE_E_DEV_DEFECT;
-		}
+	tmp_ercd = Rte_Call_Bsw_CallTrustedFunction([aRteApi.csTfName/], (TrustedFunctionParameterRefType) (&tfn_prm));
+	if (tmp_ercd != E_OK) {
+		ercd = RTE_E_DEV_DEFECT;
 	}
 	else {
 		ercd = tfn_prm.tf_ercd;
 	}
+	[if (aRteApi.needsCheckArg)]
+		[aRteApi.genApiCheckArgErrLabel()/]
+	[/if]
 	return(ercd);
 }
 [/template]

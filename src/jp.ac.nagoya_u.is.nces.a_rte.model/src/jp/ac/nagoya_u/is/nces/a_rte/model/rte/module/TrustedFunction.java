@@ -54,7 +54,6 @@ package jp.ac.nagoya_u.is.nces.a_rte.model.rte.module;
  * The following features are supported:
  * <ul>
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.TrustedFunction#getTrustedFunctionIndex <em>Trusted Function Index</em>}</li>
- *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.TrustedFunction#getCallerOsApplicationName <em>Caller Os Application Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -88,31 +87,5 @@ public interface TrustedFunction extends Function {
 	 * @generated
 	 */
 	void setTrustedFunctionIndex(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Caller Os Application Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Caller Os Application Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Caller Os Application Name</em>' attribute.
-	 * @see #setCallerOsApplicationName(String)
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ModulePackage#getTrustedFunction_CallerOsApplicationName()
-	 * @model dataType="jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.m2.CIdentifier" required="true"
-	 * @generated
-	 */
-	String getCallerOsApplicationName();
-
-	/**
-	 * Sets the value of the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.TrustedFunction#getCallerOsApplicationName <em>Caller Os Application Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Caller Os Application Name</em>' attribute.
-	 * @see #getCallerOsApplicationName()
-	 * @generated
-	 */
-	void setCallerOsApplicationName(String value);
 
 } // TrustedFunction

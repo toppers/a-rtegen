@@ -2244,15 +2244,6 @@ public class ModuleSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ModulePackage.USER_DEFINED_EXCLUDE_OPERATION: {
-				UserDefinedExcludeOperation userDefinedExcludeOperation = (UserDefinedExcludeOperation)theEObject;
-				T result = caseUserDefinedExcludeOperation(userDefinedExcludeOperation);
-				if (result == null) result = caseExcludeOperation(userDefinedExcludeOperation);
-				if (result == null) result = caseOperation(userDefinedExcludeOperation);
-				if (result == null) result = caseModuleObject(userDefinedExcludeOperation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -5734,21 +5725,6 @@ public class ModuleSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTAckStatus(TAckStatus object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>User Defined Exclude Operation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>User Defined Exclude Operation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseUserDefinedExcludeOperation(UserDefinedExcludeOperation object) {
 		return null;
 	}
 

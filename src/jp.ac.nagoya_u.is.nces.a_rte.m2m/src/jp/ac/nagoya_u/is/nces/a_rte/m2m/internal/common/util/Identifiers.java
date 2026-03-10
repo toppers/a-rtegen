@@ -149,12 +149,12 @@ public class Identifiers { // COVERAGE 常に未達(インスタンス生成が�
 		return RTE_ID_PREFIX + "SrInvalidateTf" + getImplExtension(pDataInstanceInComposition.getPrototype()) + getImplExtension(rDataInstanceInComposition.getPrototype());
 	}
 
-	public static String createComSendSignalTrustedFunctionName(EcucReferrable comSignalOrComSignalGroup) {
-		return RTE_ID_PREFIX + "ComSendSignalTf" + "_" + comSignalOrComSignalGroup.getShortName();
+	public static String createComSendSignalTrustedFunctionName(EcucPartition sourceMasterBswPartition) {
+		return RTE_ID_PREFIX + "ComSendSignalTf" + "_" + sourceMasterBswPartition.getShortName();
 	}
 
-	public static String createComSendSignalGroupTrustedFunctionName(EcucReferrable comSignalOrComSignalGroup) {
-		return RTE_ID_PREFIX + "ComSendSignalGroupTf" + "_" + comSignalOrComSignalGroup.getShortName();
+	public static String createComSendSignalGroupTrustedFunctionName(EcucPartition sourceMasterBswPartition) {
+		return RTE_ID_PREFIX + "ComSendSignalGroupTf" + "_" + sourceMasterBswPartition.getShortName();
 	}
 
 	public static String createCsCallTfName(AtomicSwComponentType sourceSwComponentType) {

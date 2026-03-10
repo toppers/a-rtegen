@@ -1874,53 +1874,6 @@ public interface ExPackage extends EPackage {
 
 
 	/**
-	 * The meta object id for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.impl.ComGroupSignalExImpl <em>Com Group Signal Ex</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.impl.ComGroupSignalExImpl
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.impl.ExPackageImpl#getComGroupSignalEx()
-	 * @generated
-	 */
-	int COM_GROUP_SIGNAL_EX = 30;
-
-	/**
-	 * The number of structural features of the '<em>Com Group Signal Ex</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COM_GROUP_SIGNAL_EX_FEATURE_COUNT = 0;
-
-	/**
-	 * The operation id for the '<em>Get Implementation Record Element</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COM_GROUP_SIGNAL_EX___GET_IMPLEMENTATION_RECORD_ELEMENT__COMGROUPSIGNAL = 0;
-
-	/**
-	 * The operation id for the '<em>Get Implementation Array Element</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COM_GROUP_SIGNAL_EX___GET_IMPLEMENTATION_ARRAY_ELEMENT__COMGROUPSIGNAL = 1;
-
-	/**
-	 * The number of operations of the '<em>Com Group Signal Ex</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COM_GROUP_SIGNAL_EX_OPERATION_COUNT = 2;
-
-
-	/**
 	 * Returns the meta object for class '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.TimeValueEx <em>Time Value Ex</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2312,36 +2265,6 @@ public interface ExPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getRteEventEx__GetRelatedEntityStarter__RteEvent();
-
-	/**
-	 * Returns the meta object for class '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.ComGroupSignalEx <em>Com Group Signal Ex</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Com Group Signal Ex</em>'.
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.ComGroupSignalEx
-	 * @generated
-	 */
-	EClass getComGroupSignalEx();
-
-	/**
-	 * Returns the meta object for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.ComGroupSignalEx#getImplementationRecordElement(jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.ComGroupSignal) <em>Get Implementation Record Element</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Implementation Record Element</em>' operation.
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.ComGroupSignalEx#getImplementationRecordElement(jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.ComGroupSignal)
-	 * @generated
-	 */
-	EOperation getComGroupSignalEx__GetImplementationRecordElement__ComGroupSignal();
-
-	/**
-	 * Returns the meta object for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.ComGroupSignalEx#getImplementationArrayElement(jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.ComGroupSignal) <em>Get Implementation Array Element</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Implementation Array Element</em>' operation.
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.ComGroupSignalEx#getImplementationArrayElement(jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.ComGroupSignal)
-	 * @generated
-	 */
-	EOperation getComGroupSignalEx__GetImplementationArrayElement__ComGroupSignal();
 
 	/**
 	 * Returns the meta object for class '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.AssemblyDataInstanceConnectorEx <em>Assembly Data Instance Connector Ex</em>}'.
@@ -3642,32 +3565,6 @@ public interface ExPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation RTE_EVENT_EX___GET_RELATED_ENTITY_STARTER__RTEEVENT = eINSTANCE.getRteEventEx__GetRelatedEntityStarter__RteEvent();
-
-		/**
-		 * The meta object literal for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.impl.ComGroupSignalExImpl <em>Com Group Signal Ex</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.impl.ComGroupSignalExImpl
-		 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.impl.ExPackageImpl#getComGroupSignalEx()
-		 * @generated
-		 */
-		EClass COM_GROUP_SIGNAL_EX = eINSTANCE.getComGroupSignalEx();
-
-		/**
-		 * The meta object literal for the '<em><b>Get Implementation Record Element</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation COM_GROUP_SIGNAL_EX___GET_IMPLEMENTATION_RECORD_ELEMENT__COMGROUPSIGNAL = eINSTANCE.getComGroupSignalEx__GetImplementationRecordElement__ComGroupSignal();
-
-		/**
-		 * The meta object literal for the '<em><b>Get Implementation Array Element</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation COM_GROUP_SIGNAL_EX___GET_IMPLEMENTATION_ARRAY_ELEMENT__COMGROUPSIGNAL = eINSTANCE.getComGroupSignalEx__GetImplementationArrayElement__ComGroupSignal();
 
 		/**
 		 * The meta object literal for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.impl.AssemblyDataInstanceConnectorExImpl <em>Assembly Data Instance Connector Ex</em>}' class.

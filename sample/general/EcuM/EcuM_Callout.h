@@ -50,7 +50,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  *
- *  $Id: EcuM_Callout.h 802 2017-03-07 08:54:51Z suzuki-kawaguchi $
+ *  $Id: EcuM_Callout.h 651 2016-03-31 06:20:22Z mtakada $
  */
 
 #ifndef ECUM_CALLOUT_H
@@ -71,12 +71,10 @@
 
 #ifdef TOPPERS_USE_WDGSTACK
 #include "WdgM.h"
+#include "WdgM_PBcfg.h"
 #include "Wdg.h"
 #include "Wdg_Target.h"
 #include "Wdg_PBcfg.h"
-
-extern const WdgM_ConfigType WdgM_WdgMConfigSet_0;
-
 #endif /* TOPPERS_USE_WDGSTACK */
 
 #ifdef TOPPERS_PERFORMANCE
@@ -128,7 +126,7 @@ EcuM_BswStartupTwo(void)
 #ifdef TOPPERS_USE_WDGSTACK
 	/* WDGスタックモジュール初期化 */
 	Wdg_Init(&wdg_config_WdgSettingsConfig_0);
-	WdgM_Init(&WdgM_WdgMConfigSet_0);
+	WdgM_Init(&wdgm_config_WdgMConfigSet_0);
 	
 
 #endif /* TOPPERS_USE_WDGSTACK */

@@ -49,31 +49,19 @@
 
 [template public genActivationOperations(aFunction : WriteApi) ]
 [for (aActivationOperation : ActivationOperation | aFunction.activationOperation)]
-	[if (aFunction.isContainedTrustedOperation())]
-		[aActivationOperation.genActivationOperationForTrusted()/]
-	[else]
-		[aActivationOperation.genActivationOperation()/]
-	[/if]
+	[aActivationOperation.genActivationOperation()/]
 [/for]
 [/template]
 
 [template public genActivationOperations(aFunction : InvalidateApi) ]
 [for (aActivationOperation : ActivationOperation | aFunction.activationOperation)]
-	[if (aFunction.isContainedTrustedOperation())]
-		[aActivationOperation.genActivationOperationForTrusted()/]
-	[else]
-		[aActivationOperation.genActivationOperation()/]
-	[/if]
+	[aActivationOperation.genActivationOperation()/]
 [/for]
 [/template]
 
 [template public genActivationOperations(aFunction : SendApi) ]
 [for (aActivationOperation : ActivationOperation | aFunction.activationOperation)]
-	[if (aFunction.isContainedTrustedOperation())]
-		[aActivationOperation.genActivationOperationForTrusted()/]
-	[else]
-		[aActivationOperation.genActivationOperation()/]
-	[/if]
+	[aActivationOperation.genActivationOperation()/]
 [/for]
 [/template]
 
@@ -114,18 +102,6 @@
 		}
 	[else]
 		[aActivationOperation.activationApi.genOsApiCall()/]
-	[/if]
-[/template]
-
-[template private genActivationOperationForTrusted(aActivationOperation : ActivationOperation) ]
-	[if (not aActivationOperation.activationFlag.oclIsUndefined())]
-		if([activationFlag.symbolName/] == TRUE) {
-			[aActivationOperation.activationApi.genOsApiCall()/]
-		}
-	[else]
-		if((tmp_tf_ercd != E_OS_CALLEVEL) && (tmp_tf_ercd != E_OS_ACCESS)) {
-			[aActivationOperation.activationApi.genOsApiCall()/]
-		}
 	[/if]
 [/template]
 

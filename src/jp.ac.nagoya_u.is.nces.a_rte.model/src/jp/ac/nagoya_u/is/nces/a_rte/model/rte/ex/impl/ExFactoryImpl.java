@@ -128,7 +128,6 @@ public class ExFactoryImpl extends EFactoryImpl implements ExFactory {
 			case ExPackage.BSW_SCHEDULABLE_ENTITY_EX: return (EObject)createBswSchedulableEntityEx();
 			case ExPackage.MODE_DECLARATION_GROUP_PROTOTYPE_EX: return (EObject)createModeDeclarationGroupPrototypeEx();
 			case ExPackage.RTE_EVENT_EX: return (EObject)createRteEventEx();
-			case ExPackage.COM_GROUP_SIGNAL_EX: return (EObject)createComGroupSignalEx();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -222,16 +221,6 @@ public class ExFactoryImpl extends EFactoryImpl implements ExFactory {
 	public RteEventEx createRteEventEx() {
 		RteEventExImpl rteEventEx = new RteEventExImpl();
 		return rteEventEx;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ComGroupSignalEx createComGroupSignalEx() {
-		ComGroupSignalExImpl comGroupSignalEx = new ComGroupSignalExImpl();
-		return comGroupSignalEx;
 	}
 
 	/**

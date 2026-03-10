@@ -7,21 +7,21 @@
 ----------------------------------------------------------------------
 ECU Extractor
 
-Copyright (C) 2013-2017 by Center for Embedded Computing Systems
+Copyright (C) 2013-2016 by Center for Embedded Computing Systems
             Graduate School of Information Science, Nagoya Univ., JAPAN
 Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
 Copyright (C) 2014-2016 by eSOL Co.,Ltd., JAPAN
-Copyright (C) 2013-2017 by FUJI SOFT INCORPORATED, JAPAN
-Copyright (C) 2014-2017 by NEC Communication Systems, Ltd., JAPAN
+Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
+Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
 Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
 Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
-Copyright (C) 2014-2017 by SCSK Corporation, JAPAN
+Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
 Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
-Copyright (C) 2015-2017 by SUZUKI MOTOR CORPORATION
-Copyright (C) 2013-2017 by TOSHIBA CORPORATION, JAPAN
-Copyright (C) 2013-2017 by Witz Corporation
+Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
+Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
+Copyright (C) 2013-2016 by Witz Corporation
 
-上記著作権者は，以下の (1)〜(3)の条件を満たす場合に限り，本ドキュメ
+上記著作権者は，以下の (1)～(3)の条件を満たす場合に限り，本ドキュメ
 ント（本ドキュメントを改変したものを含む．以下同じ）を使用・複製・改
 変・再配布（以下，利用と呼ぶ）することを無償で許諾する．
 (1) 本ドキュメントを利用する場合には，上記の著作権表示，この利用条件
@@ -47,7 +47,7 @@ Copyright (C) 2013-2017 by Witz Corporation
 により直接的または間接的に生じたいかなる損害に関しても，その責任を負
 わない．
 
-$Id: readme.txt 822 2017-03-15 07:20:08Z mtakada $
+$Id: readme.txt 651 2016-03-31 06:20:22Z mtakada $
 ----------------------------------------------------------------------
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -58,26 +58,25 @@ ECU Extractorは，複数のECUを有するシステムコンフィギュレー�
 ル(XML)から，ECU毎のコンフィギュレーションファイルであるEcuExtractを，
 ECU毎に切り出して生成する．
 
-なお，本ツールで生成したEcuExtractは，A-RTEGEN及びECUコンフィギュレーション
-自動生成ツールへの入力とすることを想定している。
-A-RTEGENではECU-INSTANCEを必要としないが，ECUコンフィギュレーションツールでは
-該当ECUの情報が必要となるため，対象ECU以外のECU-INSTANCEの定義は本ツールによって削除する．
+なお，本ツールで生成したEcuExtractは，A-RTEGENへの入力とすることを想定
+しており，A-RTEGENではECU-INSTANCEを必要としないため，ECU-INSTANCEの定
+義は本ツールによって削除する．
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 (2) 使い方
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-———————————————————————————————————
+―――――――――――――――――――――――――――――――――――
 (2.1) 動作環境
-———————————————————————————————————
+―――――――――――――――――――――――――――――――――――
 
 ECU ExtractorはRubyによって記述されているため，Rubyの実行環境が必要であ
 る．RubyInstaller for Windows から配布されている以下のバージョンで動作確認済みである．
 
 ruby 2.0.0p645 (2015-04-13) [i386-mingw32]
 
-———————————————————————————————————
+―――――――――――――――――――――――――――――――――――
 (2.2) EcuExtract作成
-———————————————————————————————————
+―――――――――――――――――――――――――――――――――――
 
 SystemDesk等で作成したシステムコンフィギュレーションファイルを引数とし
 て与え，実行する．
@@ -90,9 +89,9 @@ $ ruby ecu_extractor.rb SystemDesign.arxml
 EcuExtractを作成する．この場合，出力するファイル名は，先頭の引数で与え
 たファイル名を採用する．
 
-———————————————————————————————————
+―――――――――――――――――――――――――――――――――――
 (2.3) 注意事項
-———————————————————————————————————
+―――――――――――――――――――――――――――――――――――
 
 ECU Extractorは，コンポジションが1つしか存在しないシステムを想定して開
 発した．また，複雑なシステム設計には対応できない可能性があるので注意す

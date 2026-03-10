@@ -1559,31 +1559,13 @@ public interface EcucPackage extends EPackage {
 	int COM_SIGNAL__COM_TRANSFER_PROPERTY = ECUC_CONTAINER_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Com Bit Size</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COM_SIGNAL__COM_BIT_SIZE = ECUC_CONTAINER_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Com Signal Length</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COM_SIGNAL__COM_SIGNAL_LENGTH = ECUC_CONTAINER_FEATURE_COUNT + 4;
-
-	/**
 	 * The number of structural features of the '<em>Com Signal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COM_SIGNAL_FEATURE_COUNT = ECUC_CONTAINER_FEATURE_COUNT + 5;
+	int COM_SIGNAL_FEATURE_COUNT = ECUC_CONTAINER_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Transfers Immediately</em>' operation.
@@ -1777,31 +1759,13 @@ public interface EcucPackage extends EPackage {
 	int COM_GROUP_SIGNAL__COM_HANDLE_ID = ECUC_CONTAINER_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Com Bit Size</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COM_GROUP_SIGNAL__COM_BIT_SIZE = ECUC_CONTAINER_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Com Signal Length</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COM_GROUP_SIGNAL__COM_SIGNAL_LENGTH = ECUC_CONTAINER_FEATURE_COUNT + 3;
-
-	/**
 	 * The number of structural features of the '<em>Com Group Signal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COM_GROUP_SIGNAL_FEATURE_COUNT = ECUC_CONTAINER_FEATURE_COUNT + 4;
+	int COM_GROUP_SIGNAL_FEATURE_COUNT = ECUC_CONTAINER_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Com Group Signal</em>' class.
@@ -3252,22 +3216,13 @@ public interface EcucPackage extends EPackage {
 	int OS_OS__OS_MASTER_CORE_ID = ECUC_CONTAINER_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Os System Cycle</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OS_OS__OS_SYSTEM_CYCLE = ECUC_CONTAINER_FEATURE_COUNT + 2;
-
-	/**
 	 * The number of structural features of the '<em>Os OS</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OS_OS_FEATURE_COUNT = ECUC_CONTAINER_FEATURE_COUNT + 3;
+	int OS_OS_FEATURE_COUNT = ECUC_CONTAINER_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Is Multicore Os</em>' operation.
@@ -3561,7 +3516,7 @@ public interface EcucPackage extends EPackage {
 	int RTE_BSW_MODULE_INSTANCE__RTE_BSW_EXCLUSIVE_AREA_IMPL = ECUC_CONTAINER_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Rte Bsw Implementation</b></em>' reference.
+	 * The feature id for the '<em><b>Rte Bsw Implementation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3697,70 +3652,6 @@ public interface EcucPackage extends EPackage {
 	int RTE_BSW_EXCLUSIVE_AREA_IMPL_OPERATION_COUNT = ECUC_CONTAINER_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.impl.OsSystemCycleImpl <em>Os System Cycle</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.impl.OsSystemCycleImpl
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.impl.EcucPackageImpl#getOsSystemCycle()
-	 * @generated
-	 */
-	int OS_SYSTEM_CYCLE = 40;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OS_SYSTEM_CYCLE__ID = ECUC_CONTAINER__ID;
-
-	/**
-	 * The feature id for the '<em><b>Short Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OS_SYSTEM_CYCLE__SHORT_NAME = ECUC_CONTAINER__SHORT_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Reference</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OS_SYSTEM_CYCLE__REFERENCE = ECUC_CONTAINER__REFERENCE;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OS_SYSTEM_CYCLE__SOURCE = ECUC_CONTAINER__SOURCE;
-
-	/**
-	 * The number of structural features of the '<em>Os System Cycle</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OS_SYSTEM_CYCLE_FEATURE_COUNT = ECUC_CONTAINER_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Os System Cycle</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OS_SYSTEM_CYCLE_OPERATION_COUNT = ECUC_CONTAINER_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.OsTaskScheduleEnum <em>Os Task Schedule Enum</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3768,7 +3659,7 @@ public interface EcucPackage extends EPackage {
 	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.impl.EcucPackageImpl#getOsTaskScheduleEnum()
 	 * @generated
 	 */
-	int OS_TASK_SCHEDULE_ENUM = 41;
+	int OS_TASK_SCHEDULE_ENUM = 40;
 
 	/**
 	 * The meta object id for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.RteExclusiveAreaImplMechanismEnum <em>Rte Exclusive Area Impl Mechanism Enum</em>}' enum.
@@ -3778,7 +3669,7 @@ public interface EcucPackage extends EPackage {
 	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.impl.EcucPackageImpl#getRteExclusiveAreaImplMechanismEnum()
 	 * @generated
 	 */
-	int RTE_EXCLUSIVE_AREA_IMPL_MECHANISM_ENUM = 42;
+	int RTE_EXCLUSIVE_AREA_IMPL_MECHANISM_ENUM = 41;
 
 	/**
 	 * The meta object id for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.ComTransferPropertyEnum <em>Com Transfer Property Enum</em>}' enum.
@@ -3788,7 +3679,7 @@ public interface EcucPackage extends EPackage {
 	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.impl.EcucPackageImpl#getComTransferPropertyEnum()
 	 * @generated
 	 */
-	int COM_TRANSFER_PROPERTY_ENUM = 43;
+	int COM_TRANSFER_PROPERTY_ENUM = 42;
 
 	/**
 	 * The meta object id for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.OsSpinlockLockMethodEnum <em>Os Spinlock Lock Method Enum</em>}' enum.
@@ -3798,7 +3689,7 @@ public interface EcucPackage extends EPackage {
 	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.impl.EcucPackageImpl#getOsSpinlockLockMethodEnum()
 	 * @generated
 	 */
-	int OS_SPINLOCK_LOCK_METHOD_ENUM = 44;
+	int OS_SPINLOCK_LOCK_METHOD_ENUM = 43;
 
 	/**
 	 * The meta object id for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.RteInitializationStrategyEnum <em>Rte Initialization Strategy Enum</em>}' enum.
@@ -3808,7 +3699,7 @@ public interface EcucPackage extends EPackage {
 	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.impl.EcucPackageImpl#getRteInitializationStrategyEnum()
 	 * @generated
 	 */
-	int RTE_INITIALIZATION_STRATEGY_ENUM = 45;
+	int RTE_INITIALIZATION_STRATEGY_ENUM = 44;
 
 	/**
 	 * Returns the meta object for class '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.Rte <em>Rte</em>}'.
@@ -4553,28 +4444,6 @@ public interface EcucPackage extends EPackage {
 	EAttribute getComSignal_ComTransferProperty();
 
 	/**
-	 * Returns the meta object for the attribute '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.ComSignal#getComBitSize <em>Com Bit Size</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Com Bit Size</em>'.
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.ComSignal#getComBitSize()
-	 * @see #getComSignal()
-	 * @generated
-	 */
-	EAttribute getComSignal_ComBitSize();
-
-	/**
-	 * Returns the meta object for the attribute '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.ComSignal#getComSignalLength <em>Com Signal Length</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Com Signal Length</em>'.
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.ComSignal#getComSignalLength()
-	 * @see #getComSignal()
-	 * @generated
-	 */
-	EAttribute getComSignal_ComSignalLength();
-
-	/**
 	 * Returns the meta object for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.ComSignal#transfersImmediately() <em>Transfers Immediately</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4679,28 +4548,6 @@ public interface EcucPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getComGroupSignal_ComHandleId();
-
-	/**
-	 * Returns the meta object for the attribute '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.ComGroupSignal#getComBitSize <em>Com Bit Size</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Com Bit Size</em>'.
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.ComGroupSignal#getComBitSize()
-	 * @see #getComGroupSignal()
-	 * @generated
-	 */
-	EAttribute getComGroupSignal_ComBitSize();
-
-	/**
-	 * Returns the meta object for the attribute '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.ComGroupSignal#getComSignalLength <em>Com Signal Length</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Com Signal Length</em>'.
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.ComGroupSignal#getComSignalLength()
-	 * @see #getComGroupSignal()
-	 * @generated
-	 */
-	EAttribute getComGroupSignal_ComSignalLength();
 
 	/**
 	 * Returns the meta object for class '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.OsAlarm <em>Os Alarm</em>}'.
@@ -5309,17 +5156,6 @@ public interface EcucPackage extends EPackage {
 	EAttribute getOsOS_OsMasterCoreId();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.OsOS#getOsSystemCycle <em>Os System Cycle</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Os System Cycle</em>'.
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.OsOS#getOsSystemCycle()
-	 * @see #getOsOS()
-	 * @generated
-	 */
-	EReference getOsOS_OsSystemCycle();
-
-	/**
 	 * Returns the meta object for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.OsOS#isMulticoreOs() <em>Is Multicore Os</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5481,10 +5317,10 @@ public interface EcucPackage extends EPackage {
 	EReference getRteBswModuleInstance_RteBswExclusiveAreaImpl();
 
 	/**
-	 * Returns the meta object for the reference '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.RteBswModuleInstance#getRteBswImplementation <em>Rte Bsw Implementation</em>}'.
+	 * Returns the meta object for the containment reference '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.RteBswModuleInstance#getRteBswImplementation <em>Rte Bsw Implementation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Rte Bsw Implementation</em>'.
+	 * @return the meta object for the containment reference '<em>Rte Bsw Implementation</em>'.
 	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.RteBswModuleInstance#getRteBswImplementation()
 	 * @see #getRteBswModuleInstance()
 	 * @generated
@@ -5544,16 +5380,6 @@ public interface EcucPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRteBswExclusiveAreaImpl_RteBswExclusiveAreaOsSpinlock();
-
-	/**
-	 * Returns the meta object for class '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.OsSystemCycle <em>Os System Cycle</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Os System Cycle</em>'.
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.OsSystemCycle
-	 * @generated
-	 */
-	EClass getOsSystemCycle();
 
 	/**
 	 * Returns the meta object for the reference '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.RteBswExclusiveAreaImpl#getRteBswExclusiveAreaOsResource <em>Rte Bsw Exclusive Area Os Resource</em>}'.
@@ -6226,22 +6052,6 @@ public interface EcucPackage extends EPackage {
 		EAttribute COM_SIGNAL__COM_TRANSFER_PROPERTY = eINSTANCE.getComSignal_ComTransferProperty();
 
 		/**
-		 * The meta object literal for the '<em><b>Com Bit Size</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COM_SIGNAL__COM_BIT_SIZE = eINSTANCE.getComSignal_ComBitSize();
-
-		/**
-		 * The meta object literal for the '<em><b>Com Signal Length</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COM_SIGNAL__COM_SIGNAL_LENGTH = eINSTANCE.getComSignal_ComSignalLength();
-
-		/**
 		 * The meta object literal for the '<em><b>Transfers Immediately</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6324,22 +6134,6 @@ public interface EcucPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COM_GROUP_SIGNAL__COM_HANDLE_ID = eINSTANCE.getComGroupSignal_ComHandleId();
-
-		/**
-		 * The meta object literal for the '<em><b>Com Bit Size</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COM_GROUP_SIGNAL__COM_BIT_SIZE = eINSTANCE.getComGroupSignal_ComBitSize();
-
-		/**
-		 * The meta object literal for the '<em><b>Com Signal Length</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COM_GROUP_SIGNAL__COM_SIGNAL_LENGTH = eINSTANCE.getComGroupSignal_ComSignalLength();
 
 		/**
 		 * The meta object literal for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.impl.OsAlarmImpl <em>Os Alarm</em>}' class.
@@ -6832,14 +6626,6 @@ public interface EcucPackage extends EPackage {
 		EAttribute OS_OS__OS_MASTER_CORE_ID = eINSTANCE.getOsOS_OsMasterCoreId();
 
 		/**
-		 * The meta object literal for the '<em><b>Os System Cycle</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference OS_OS__OS_SYSTEM_CYCLE = eINSTANCE.getOsOS_OsSystemCycle();
-
-		/**
 		 * The meta object literal for the '<em><b>Is Multicore Os</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6966,7 +6752,7 @@ public interface EcucPackage extends EPackage {
 		EReference RTE_BSW_MODULE_INSTANCE__RTE_BSW_EXCLUSIVE_AREA_IMPL = eINSTANCE.getRteBswModuleInstance_RteBswExclusiveAreaImpl();
 
 		/**
-		 * The meta object literal for the '<em><b>Rte Bsw Implementation</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Rte Bsw Implementation</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -7014,16 +6800,6 @@ public interface EcucPackage extends EPackage {
 		 * @generated
 		 */
 		EReference RTE_BSW_EXCLUSIVE_AREA_IMPL__RTE_BSW_EXCLUSIVE_AREA_OS_SPINLOCK = eINSTANCE.getRteBswExclusiveAreaImpl_RteBswExclusiveAreaOsSpinlock();
-
-		/**
-		 * The meta object literal for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.impl.OsSystemCycleImpl <em>Os System Cycle</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.impl.OsSystemCycleImpl
-		 * @see jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.impl.EcucPackageImpl#getOsSystemCycle()
-		 * @generated
-		 */
-		EClass OS_SYSTEM_CYCLE = eINSTANCE.getOsSystemCycle();
 
 		/**
 		 * The meta object literal for the '<em><b>Rte Bsw Exclusive Area Os Resource</b></em>' reference feature.

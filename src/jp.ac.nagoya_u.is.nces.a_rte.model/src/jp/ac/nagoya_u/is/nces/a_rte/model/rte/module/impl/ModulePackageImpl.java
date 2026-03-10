@@ -291,7 +291,6 @@ import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.TrustedFunctionRteBufferSen
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.Type;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.UnionMember;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.UnionType;
-import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.UserDefinedExcludeOperation;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.Value;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.Variable;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.VariableInitializeOperation;
@@ -1942,13 +1941,6 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass userDefinedExcludeOperationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EEnum parameterPassTypeEnumEEnum = null;
 
 	/**
@@ -2215,15 +2207,6 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 	 */
 	public EReference getWriteApi_TAckStatus() {
 		return (EReference)writeApiEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getWriteApi__IsContainedTrustedOperation() {
-		return writeApiEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -4040,15 +4023,6 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getInvalidateApi__IsContainedTrustedOperation() {
-		return invalidateApiEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getIocNonqueuedSendOperation() {
 		return iocNonqueuedSendOperationEClass;
 	}
@@ -5084,15 +5058,6 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getSendApi__IsContainedTrustedOperation() {
-		return sendApiEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getReceiveApi() {
 		return receiveApiEClass;
 	}
@@ -5363,8 +5328,17 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCallApi_ReturnVariable() {
+	public EReference getCallApi_PortArgValue() {
 		return (EReference)callApiEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCallApi_ReturnVariable() {
+		return (EReference)callApiEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -6416,15 +6390,6 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTrustedFunction_CallerOsApplicationName() {
-		return (EAttribute)trustedFunctionEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getComSendSignalTrustedFunction() {
 		return comSendSignalTrustedFunctionEClass;
 	}
@@ -6445,24 +6410,6 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 	 */
 	public EAttribute getComSendSignalTrustedFunction_SignalGroupSymbolName() {
 		return (EAttribute)comSendSignalTrustedFunctionEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getComSendSignalTrustedFunction_Operation() {
-		return (EReference)comSendSignalTrustedFunctionEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getComSendSignalTrustedFunction_SendValueType() {
-		return (EReference)comSendSignalTrustedFunctionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -6895,15 +6842,6 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 	 */
 	public EReference getServerRunnableStartOperation_StartServerRunnable() {
 		return (EReference)serverRunnableStartOperationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getServerRunnableStartOperation_PortArgValue() {
-		return (EReference)serverRunnableStartOperationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -8972,15 +8910,6 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getUserDefinedExcludeOperation() {
-		return userDefinedExcludeOperationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EEnum getParameterPassTypeEnum() {
 		return parameterPassTypeEnumEEnum;
 	}
@@ -9122,7 +9051,6 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 		createEReference(writeApiEClass, WRITE_API__ACTIVATION_OPERATION);
 		createEReference(writeApiEClass, WRITE_API__ACTIVATION_FLAG);
 		createEReference(writeApiEClass, WRITE_API__TACK_STATUS);
-		createEOperation(writeApiEClass, WRITE_API___IS_CONTAINED_TRUSTED_OPERATION);
 
 		sendOperationEClass = createEClass(SEND_OPERATION);
 		createEReference(sendOperationEClass, SEND_OPERATION__SEND_VALUE);
@@ -9380,7 +9308,6 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 		createEReference(invalidateApiEClass, INVALIDATE_API__ACTIVATION_OPERATION);
 		createEReference(invalidateApiEClass, INVALIDATE_API__ACTIVATION_FLAG);
 		createEReference(invalidateApiEClass, INVALIDATE_API__TACK_STATUS);
-		createEOperation(invalidateApiEClass, INVALIDATE_API___IS_CONTAINED_TRUSTED_OPERATION);
 
 		iocNonqueuedSendOperationEClass = createEClass(IOC_NONQUEUED_SEND_OPERATION);
 		createEReference(iocNonqueuedSendOperationEClass, IOC_NONQUEUED_SEND_OPERATION__ACCESS_API);
@@ -9543,7 +9470,6 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 		createEReference(sendApiEClass, SEND_API__ACTIVATION_OPERATION);
 		createEReference(sendApiEClass, SEND_API__ACTIVATION_FLAG);
 		createEReference(sendApiEClass, SEND_API__TACK_STATUS);
-		createEOperation(sendApiEClass, SEND_API___IS_CONTAINED_TRUSTED_OPERATION);
 
 		receiveApiEClass = createEClass(RECEIVE_API);
 		createEReference(receiveApiEClass, RECEIVE_API__OPERATION);
@@ -9585,6 +9511,7 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 		callApiEClass = createEClass(CALL_API);
 		createEReference(callApiEClass, CALL_API__OPERATION);
 		createEReference(callApiEClass, CALL_API__OPERATION_PARAM);
+		createEReference(callApiEClass, CALL_API__PORT_ARG_VALUE);
 		createEReference(callApiEClass, CALL_API__RETURN_VARIABLE);
 
 		tfCallApiEClass = createEClass(TF_CALL_API);
@@ -9695,13 +9622,10 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 
 		trustedFunctionEClass = createEClass(TRUSTED_FUNCTION);
 		createEAttribute(trustedFunctionEClass, TRUSTED_FUNCTION__TRUSTED_FUNCTION_INDEX);
-		createEAttribute(trustedFunctionEClass, TRUSTED_FUNCTION__CALLER_OS_APPLICATION_NAME);
 
 		comSendSignalTrustedFunctionEClass = createEClass(COM_SEND_SIGNAL_TRUSTED_FUNCTION);
 		createEAttribute(comSendSignalTrustedFunctionEClass, COM_SEND_SIGNAL_TRUSTED_FUNCTION__IS_GROUP);
 		createEAttribute(comSendSignalTrustedFunctionEClass, COM_SEND_SIGNAL_TRUSTED_FUNCTION__SIGNAL_GROUP_SYMBOL_NAME);
-		createEReference(comSendSignalTrustedFunctionEClass, COM_SEND_SIGNAL_TRUSTED_FUNCTION__OPERATION);
-		createEReference(comSendSignalTrustedFunctionEClass, COM_SEND_SIGNAL_TRUSTED_FUNCTION__SEND_VALUE_TYPE);
 
 		osSetEventApiEClass = createEClass(OS_SET_EVENT_API);
 		createEAttribute(osSetEventApiEClass, OS_SET_EVENT_API__OS_TASK_ID);
@@ -9769,7 +9693,6 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 
 		serverRunnableStartOperationEClass = createEClass(SERVER_RUNNABLE_START_OPERATION);
 		createEReference(serverRunnableStartOperationEClass, SERVER_RUNNABLE_START_OPERATION__START_SERVER_RUNNABLE);
-		createEReference(serverRunnableStartOperationEClass, SERVER_RUNNABLE_START_OPERATION__PORT_ARG_VALUE);
 
 		iocCommunicationEClass = createEClass(IOC_COMMUNICATION);
 
@@ -10081,8 +10004,6 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 		tAckStatusEClass = createEClass(TACK_STATUS);
 		createEReference(tAckStatusEClass, TACK_STATUS__STATUS_VARIABLE);
 
-		userDefinedExcludeOperationEClass = createEClass(USER_DEFINED_EXCLUDE_OPERATION);
-
 		// Create enums
 		parameterPassTypeEnumEEnum = createEEnum(PARAMETER_PASS_TYPE_ENUM);
 		parameterDirectionEnumEEnum = createEEnum(PARAMETER_DIRECTION_ENUM);
@@ -10360,7 +10281,6 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 		feedbackApiEClass.getESuperTypes().add(this.getRteApi());
 		logicalBlockEClass.getESuperTypes().add(this.getModuleReferrable());
 		tAckStatusEClass.getESuperTypes().add(this.getLogicalBlock());
-		userDefinedExcludeOperationEClass.getESuperTypes().add(this.getExcludeOperation());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(moduleObjectEClass, ModuleObject.class, "ModuleObject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -10400,8 +10320,6 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 		initEReference(getWriteApi_ActivationOperation(), this.getActivationOperation(), null, "activationOperation", null, 0, -1, WriteApi.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWriteApi_ActivationFlag(), this.getLocalVariable(), null, "activationFlag", null, 0, -1, WriteApi.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWriteApi_TAckStatus(), this.getTAckStatus(), null, "tAckStatus", null, 0, 1, WriteApi.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getWriteApi__IsContainedTrustedOperation(), this.getBoolean(), "isContainedTrustedOperation", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(sendOperationEClass, SendOperation.class, "SendOperation", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSendOperation_SendValue(), this.getValue(), null, "sendValue", null, 1, 1, SendOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -10660,8 +10578,6 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 		initEReference(getInvalidateApi_ActivationFlag(), this.getLocalVariable(), null, "activationFlag", null, 0, -1, InvalidateApi.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getInvalidateApi_TAckStatus(), this.getTAckStatus(), null, "tAckStatus", null, 0, 1, InvalidateApi.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getInvalidateApi__IsContainedTrustedOperation(), this.getBoolean(), "isContainedTrustedOperation", 1, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(iocNonqueuedSendOperationEClass, IocNonqueuedSendOperation.class, "IocNonqueuedSendOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getIocNonqueuedSendOperation_AccessApi(), this.getIocWriteApi(), null, "accessApi", null, 1, 1, IocNonqueuedSendOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -10824,8 +10740,6 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 		initEReference(getSendApi_ActivationFlag(), this.getLocalVariable(), null, "activationFlag", null, 0, -1, SendApi.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSendApi_TAckStatus(), this.getTAckStatus(), null, "tAckStatus", null, 0, 1, SendApi.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getSendApi__IsContainedTrustedOperation(), this.getBoolean(), "isContainedTrustedOperation", 1, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(receiveApiEClass, ReceiveApi.class, "ReceiveApi", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getReceiveApi_Operation(), this.getReadOperation(), null, "operation", null, 0, 1, ReceiveApi.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getReceiveApi_DataParam(), this.getParameter(), null, "dataParam", null, 1, 1, ReceiveApi.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -10866,6 +10780,7 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 		initEClass(callApiEClass, CallApi.class, "CallApi", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCallApi_Operation(), this.getServerRunnableStartOperation(), null, "operation", null, 0, 1, CallApi.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCallApi_OperationParam(), this.getParameter(), null, "operationParam", null, 0, -1, CallApi.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCallApi_PortArgValue(), this.getValue(), null, "portArgValue", null, 0, -1, CallApi.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCallApi_ReturnVariable(), this.getLocalVariable(), null, "returnVariable", null, 0, 1, CallApi.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tfCallApiEClass, TfCallApi.class, "TfCallApi", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -10976,13 +10891,10 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 
 		initEClass(trustedFunctionEClass, TrustedFunction.class, "TrustedFunction", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTrustedFunction_TrustedFunctionIndex(), this.getCIdentifier(), "trustedFunctionIndex", null, 1, 1, TrustedFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTrustedFunction_CallerOsApplicationName(), theM2Package.getCIdentifier(), "callerOsApplicationName", null, 1, 1, TrustedFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(comSendSignalTrustedFunctionEClass, ComSendSignalTrustedFunction.class, "ComSendSignalTrustedFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getComSendSignalTrustedFunction_IsGroup(), this.getBoolean(), "isGroup", null, 1, 1, ComSendSignalTrustedFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComSendSignalTrustedFunction_SignalGroupSymbolName(), this.getCIdentifier(), "signalGroupSymbolName", null, 1, 1, ComSendSignalTrustedFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getComSendSignalTrustedFunction_Operation(), this.getDirectComSendOperation(), null, "operation", null, 1, 1, ComSendSignalTrustedFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getComSendSignalTrustedFunction_SendValueType(), this.getType(), null, "sendValueType", null, 1, 1, ComSendSignalTrustedFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(osSetEventApiEClass, OsSetEventApi.class, "OsSetEventApi", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOsSetEventApi_OsTaskId(), this.getCIdentifier(), "osTaskId", null, 1, 1, OsSetEventApi.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -11050,7 +10962,6 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 
 		initEClass(serverRunnableStartOperationEClass, ServerRunnableStartOperation.class, "ServerRunnableStartOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getServerRunnableStartOperation_StartServerRunnable(), this.getRunnableEntity(), null, "startServerRunnable", null, 1, 1, ServerRunnableStartOperation.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getServerRunnableStartOperation_PortArgValue(), this.getValue(), null, "portArgValue", null, 0, -1, ServerRunnableStartOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iocCommunicationEClass, IocCommunication.class, "IocCommunication", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -11365,8 +11276,6 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 		initEClass(tAckStatusEClass, TAckStatus.class, "TAckStatus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTAckStatus_StatusVariable(), this.getGlobalVariable(), null, "statusVariable", null, 1, 1, TAckStatus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(userDefinedExcludeOperationEClass, UserDefinedExcludeOperation.class, "UserDefinedExcludeOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
 		// Initialize enums and add enum literals
 		initEEnum(parameterPassTypeEnumEEnum, ParameterPassTypeEnum.class, "ParameterPassTypeEnum");
 		addEEnumLiteral(parameterPassTypeEnumEEnum, ParameterPassTypeEnum.VALUE);
@@ -11415,7 +11324,7 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 			 "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
 			 "settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
 			 "validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"
-		   });																																		
+		   });																															
 	}
 
 	/**
@@ -11425,25 +11334,7 @@ public class ModulePackageImpl extends EPackageImpl implements ModulePackage {
 	 * @generated
 	 */
 	protected void createPivotAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";				
-		addAnnotation
-		  (getWriteApi__IsContainedTrustedOperation(), 
-		   source, 
-		   new String[] {
-			 "body", "self.operation->exists(oclIsKindOf(TrustedFunctionRteOperation) or oclIsKindOf(TrustedFunctionComSendOperation))"
-		   });					
-		addAnnotation
-		  (getInvalidateApi__IsContainedTrustedOperation(), 
-		   source, 
-		   new String[] {
-			 "body", "self.operation->exists(oclIsKindOf(TrustedFunctionRteOperation) or oclIsKindOf(TrustedFunctionComSendOperation))"
-		   });		
-		addAnnotation
-		  (getSendApi__IsContainedTrustedOperation(), 
-		   source, 
-		   new String[] {
-			 "body", "self.operation->exists(oclIsKindOf(TrustedFunctionRteOperation) or oclIsKindOf(TrustedFunctionComSendOperation))"
-		   });		
+		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";							
 		addAnnotation
 		  (getRteBufferQueuedVariable_QueueType(), 
 		   source, 

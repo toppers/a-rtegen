@@ -57,8 +57,6 @@ import jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.m2.ISignalToIPduMapping;
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.ComSignal#getComSystemTemplateSystemSignal <em>Com System Template System Signal</em>}</li>
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.ComSignal#getComHandleId <em>Com Handle Id</em>}</li>
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.ComSignal#getComTransferProperty <em>Com Transfer Property</em>}</li>
- *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.ComSignal#getComBitSize <em>Com Bit Size</em>}</li>
- *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.ComSignal#getComSignalLength <em>Com Signal Length</em>}</li>
  * </ul>
  * </p>
  *
@@ -147,58 +145,6 @@ public interface ComSignal extends EcucContainer {
 	 * @generated
 	 */
 	void setComTransferProperty(ComTransferPropertyEnum value);
-
-	/**
-	 * Returns the value of the '<em><b>Com Bit Size</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Com Bit Size</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Com Bit Size</em>' attribute.
-	 * @see #setComBitSize(Integer)
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.EcucPackage#getComSignal_ComBitSize()
-	 * @model dataType="jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.m2.Integer"
-	 * @generated
-	 */
-	Integer getComBitSize();
-
-	/**
-	 * Sets the value of the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.ComSignal#getComBitSize <em>Com Bit Size</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Com Bit Size</em>' attribute.
-	 * @see #getComBitSize()
-	 * @generated
-	 */
-	void setComBitSize(Integer value);
-
-	/**
-	 * Returns the value of the '<em><b>Com Signal Length</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Com Signal Length</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Com Signal Length</em>' attribute.
-	 * @see #setComSignalLength(Integer)
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.EcucPackage#getComSignal_ComSignalLength()
-	 * @model dataType="jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.m2.Integer"
-	 * @generated
-	 */
-	Integer getComSignalLength();
-
-	/**
-	 * Sets the value of the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.ComSignal#getComSignalLength <em>Com Signal Length</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Com Signal Length</em>' attribute.
-	 * @see #getComSignalLength()
-	 * @generated
-	 */
-	void setComSignalLength(Integer value);
 
 	/**
 	 * <!-- begin-user-doc -->

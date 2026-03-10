@@ -1,0 +1,20 @@
+PACKAGE a-rtegen
+VERSION 1.3.0
+
+MANIFEST
+readme.txt
+version.txt
+
+bin/bin/atk2style.cfg
+bin/bin/logging.properties
+bin/bin/rtegen.bat
+bin/bin/rtegen.sh
+bin/bin/uncrustify.exe
+bin/lib/
+bin/model/Rte_InternalDataTypes.arxml
+bin/schema/README.txt
+
+ecu_extractor/ecu_extractor.rb
+ecu_extractor/readme.txt
+
+INCLUDE sample/MANIFEST

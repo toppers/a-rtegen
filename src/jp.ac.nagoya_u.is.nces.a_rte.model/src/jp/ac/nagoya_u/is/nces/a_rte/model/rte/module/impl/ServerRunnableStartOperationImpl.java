@@ -44,16 +44,12 @@
  */
 package jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl;
 
-import java.util.Collection;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ModulePackage;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.RunnableEntity;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ServerRunnableStartOperation;
 
-import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.Value;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -63,7 +59,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.ServerRunnableStartOperationImpl#getStartServerRunnable <em>Start Server Runnable</em>}</li>
- *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.ServerRunnableStartOperationImpl#getPortArgValue <em>Port Arg Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -79,16 +74,6 @@ public class ServerRunnableStartOperationImpl extends ExecutableStartOperationIm
 	 * @ordered
 	 */
 	protected EStructuralFeature.Internal.SettingDelegate START_SERVER_RUNNABLE__ESETTING_DELEGATE = ((EStructuralFeature.Internal)ModulePackage.Literals.SERVER_RUNNABLE_START_OPERATION__START_SERVER_RUNNABLE).getSettingDelegate();
-
-	/**
-	 * The cached value of the '{@link #getPortArgValue() <em>Port Arg Value</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPortArgValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Value> portArgValue;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -123,59 +108,13 @@ public class ServerRunnableStartOperationImpl extends ExecutableStartOperationIm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Value> getPortArgValue() {
-		if (portArgValue == null) {
-			portArgValue = new EObjectResolvingEList<Value>(Value.class, this, ModulePackage.SERVER_RUNNABLE_START_OPERATION__PORT_ARG_VALUE);
-		}
-		return portArgValue;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ModulePackage.SERVER_RUNNABLE_START_OPERATION__START_SERVER_RUNNABLE:
 				return getStartServerRunnable();
-			case ModulePackage.SERVER_RUNNABLE_START_OPERATION__PORT_ARG_VALUE:
-				return getPortArgValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ModulePackage.SERVER_RUNNABLE_START_OPERATION__PORT_ARG_VALUE:
-				getPortArgValue().clear();
-				getPortArgValue().addAll((Collection<? extends Value>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ModulePackage.SERVER_RUNNABLE_START_OPERATION__PORT_ARG_VALUE:
-				getPortArgValue().clear();
-				return;
-		}
-		super.eUnset(featureID);
 	}
 
 	/**
@@ -188,8 +127,6 @@ public class ServerRunnableStartOperationImpl extends ExecutableStartOperationIm
 		switch (featureID) {
 			case ModulePackage.SERVER_RUNNABLE_START_OPERATION__START_SERVER_RUNNABLE:
 				return START_SERVER_RUNNABLE__ESETTING_DELEGATE.dynamicIsSet(this, null, 0);
-			case ModulePackage.SERVER_RUNNABLE_START_OPERATION__PORT_ARG_VALUE:
-				return portArgValue != null && !portArgValue.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

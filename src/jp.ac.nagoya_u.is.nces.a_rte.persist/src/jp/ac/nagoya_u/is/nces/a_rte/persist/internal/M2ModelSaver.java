@@ -152,7 +152,7 @@ public class M2ModelSaver {
 			return Iterables.filter(eClass.getEAllStructuralFeatures(), new Predicate<EStructuralFeature>() {
 				@Override
 				public boolean apply(EStructuralFeature input) {
-					return !input.isTransient() && !input.isDerived() && !isID(input) && !M2ModelUtils.isNonM2Feature(input); // COVERAGE (分岐網羅はされているのでテスト要件を満たしている)
+					return !input.isTransient() && !input.isDerived() && !isID(input) && !M2ModelUtils.isNonM2Feature(input); // (分岐網羅はされているのでテスト要件を満たしている)
 				}
 			});
 		}

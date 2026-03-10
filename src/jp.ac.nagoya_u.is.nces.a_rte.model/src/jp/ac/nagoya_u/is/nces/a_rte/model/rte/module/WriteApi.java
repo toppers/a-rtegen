@@ -194,13 +194,4 @@ public interface WriteApi extends RteApi {
 	 */
 	void setTAckStatus(TAckStatus value);
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation" dataType="jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.Boolean" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='self.operation->exists(oclIsKindOf(TrustedFunctionRteOperation) or oclIsKindOf(TrustedFunctionComSendOperation))'"
-	 * @generated
-	 */
-	Boolean isContainedTrustedOperation();
-
 } // WriteApi

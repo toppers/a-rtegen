@@ -1036,10 +1036,6 @@ public class ModuleAdapterFactory extends AdapterFactoryImpl {
 				return createTAckStatusAdapter();
 			}
 			@Override
-			public Adapter caseUserDefinedExcludeOperation(UserDefinedExcludeOperation object) {
-				return createUserDefinedExcludeOperationAdapter();
-			}
-			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -3226,20 +3222,6 @@ public class ModuleAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTAckStatusAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.UserDefinedExcludeOperation <em>User Defined Exclude Operation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.UserDefinedExcludeOperation
-	 * @generated
-	 */
-	public Adapter createUserDefinedExcludeOperationAdapter() {
 		return null;
 	}
 

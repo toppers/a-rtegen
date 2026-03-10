@@ -77,13 +77,13 @@
 	[if (not aSchmApi.modeMachineInstance.oclIsUndefined()) ]
 		[aSchmApi.returnType.symbolName/] return_mode;
 
-		Rte_Call_Bsw_SuspendOSInterrupts();
+		Rte_Call_Bsw_SuspendAllInterrupts();
 		if ([aSchmApi.modeMachineInstance.currentModeVariable.symbolName/] != [aSchmApi.modeMachineInstance.nextModeVariable.symbolName/]) {
 			return_mode = [aSchmApi.modeDeclarationGroup.modeTransitionStatusConstant.symbolName/];
 		} else {
 			return_mode = [aSchmApi.modeMachineInstance.currentModeVariable.symbolName/];
 		}
-		Rte_Call_Bsw_ResumeOSInterrupts();
+		Rte_Call_Bsw_ResumeAllInterrupts();
 		return return_mode;
 	[else]
 		return [aSchmApi.modeDeclarationGroup.initModeConstant.symbolName/];
@@ -99,25 +99,25 @@
 	[aSchmApi.returnType.symbolName/] ercd;
 	ercd = SCHM_E_OK;
 
-	Rte_Call_Bsw_SuspendOSInterrupts();
+	Rte_Call_Bsw_SuspendAllInterrupts();
 	queueing_num = SchM_Queue_Count([aSchmApi.modeMachineInstance.requestModeQueue.symbolName/]);
 	SchM_SwitchMode_Enqueue([aSchmApi.modeMachineInstance.requestModeQueue.symbolName/], [aSchmApi.param->at(1).symbolName/], [aSchmApi.modeMachineInstance.requestModeQueue.queueType.maxLengthConstant.symbolName /], ercd);
 	if (queueing_num == 0U) {
 		[aSchmApi.modeMachineInstance.nextModeVariable.symbolName/] = [aSchmApi.param->at(1).symbolName/];
-		Rte_Call_Bsw_ResumeOSInterrupts();
+		Rte_Call_Bsw_ResumeAllInterrupts();
 		do {
 			[for (aExecutableStartOperation : ModeSwitchTriggeringExecutableStartOperation | aSchmApi.executableStartOperation) ]
 				[if (not aExecutableStartOperation.disabledInMode->isEmpty())]
-					Rte_Call_Bsw_SuspendOSInterrupts();
+					Rte_Call_Bsw_SuspendAllInterrupts();
 				[/if]
 				if ([aExecutableStartOperation.genStartCheckModeIf(aSchmApi) /]){
 					[if (not aExecutableStartOperation.disabledInMode->isEmpty())]
-						Rte_Call_Bsw_ResumeOSInterrupts();
+						Rte_Call_Bsw_ResumeAllInterrupts();
 					[/if]
 					[aExecutableStartOperation.genDoExecutableStartOperation() /]
 				} else {
 					[if (not aExecutableStartOperation.disabledInMode->isEmpty())]
-						Rte_Call_Bsw_ResumeOSInterrupts();
+						Rte_Call_Bsw_ResumeAllInterrupts();
 					[else]
 						/* Nothing to do */
 					[/if]
@@ -142,14 +142,14 @@
 				}
 			[/for]
 
-			Rte_Call_Bsw_SuspendOSInterrupts();
+			Rte_Call_Bsw_SuspendAllInterrupts();
 			[aSchmApi.modeMachineInstance.currentModeVariable.symbolName/] = [aSchmApi.modeMachineInstance.nextModeVariable.symbolName/];
 			SchM_SwitchMode_Dequeue([aSchmApi.modeMachineInstance.requestModeQueue.symbolName/], [aSchmApi.modeMachineInstance.nextModeVariable.symbolName/]);
 			queueing_num = SchM_Queue_Count([aSchmApi.modeMachineInstance.requestModeQueue.symbolName/]);
-			Rte_Call_Bsw_ResumeOSInterrupts();
+			Rte_Call_Bsw_ResumeAllInterrupts();
 		} while (queueing_num > 0U);
 	} else {
-		Rte_Call_Bsw_ResumeOSInterrupts();
+		Rte_Call_Bsw_ResumeAllInterrupts();
 	}
 	return ercd;
 }

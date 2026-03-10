@@ -71,9 +71,6 @@ import static jp.ac.nagoya_u.is.nces.a_rte.model.util.EObjectConditions.hasOp;
 import static jp.ac.nagoya_u.is.nces.a_rte.model.util.EObjectConditions.isKindOf;
 import static jp.ac.nagoya_u.is.nces.a_rte.model.util.EObjectConditions.ref;
 import static jp.ac.nagoya_u.is.nces.a_rte.model.util.EObjectConditions.refExists;
-
-import java.util.List;
-
 import jp.ac.nagoya_u.is.nces.a_rte.m2m.internal.common.util.ConfigValues;
 import jp.ac.nagoya_u.is.nces.a_rte.m2m.internal.common.util.Identifiers;
 import jp.ac.nagoya_u.is.nces.a_rte.m2m.internal.common.util.SymbolNames;
@@ -517,36 +514,34 @@ public class GeneratedEcucModelBuilder {
 	}
 	
 	private void buildComSendSignalTrustedFunctions() {
-		List<TrustedFunctionComSendImplementation> sourceImplForComSignals = this.context.query.<TrustedFunctionComSendImplementation> find(isKindOf(TRUSTED_FUNCTION_COM_SEND_IMPLEMENTATION).AND(refExists(COM_SEND_IMPLEMENTATION__COM_SIGNAL)));
-		for (TrustedFunctionComSendImplementation sourceImplForComSignal : sourceImplForComSignals) {
-			buildComSendSignalTrustedFunction(sourceImplForComSignal, Identifiers.createComSendSignalTrustedFunctionName(sourceImplForComSignal.getComSignal()), SymbolNames.createComSendSignalTrustedFunctionName(sourceImplForComSignal.getComSignal()));
+		Optional<TrustedFunctionComSendImplementation> sourceImplForComSignal = this.context.query.tryFindSingle(isKindOf(TRUSTED_FUNCTION_COM_SEND_IMPLEMENTATION).AND(
+				refExists(COM_SEND_IMPLEMENTATION__COM_SIGNAL)));
+		if (sourceImplForComSignal.isPresent()) {
+			EcucPartition sourceMasterBswPartition = this.context.cache.sourceMasterBswPartition.get(); // NOTE 信頼関数を構築する場合には必ずマスタパーティションが存在するため、存在チェックを行わない
+			buildComSendSignalTrustedFunction(Identifiers.createComSendSignalTrustedFunctionName(sourceMasterBswPartition), SymbolNames.createComSendSignalTrustedFunctionName(sourceMasterBswPartition));
 		}
 
-		List<TrustedFunctionComSendImplementation> sourceImplForComSignalGroups = this.context.query.<TrustedFunctionComSendImplementation> find(isKindOf(TRUSTED_FUNCTION_COM_SEND_IMPLEMENTATION).AND(refExists(COM_SEND_IMPLEMENTATION__COM_SIGNAL_GROUP)));
-		for (TrustedFunctionComSendImplementation sourceImplForComSignalGroup : sourceImplForComSignalGroups) {
-			buildComSendSignalTrustedFunction(sourceImplForComSignalGroup, Identifiers.createComSendSignalGroupTrustedFunctionName(sourceImplForComSignalGroup.getComSignalGroup()), SymbolNames.createComSendSignalGroupTrustedFunctionName(sourceImplForComSignalGroup.getComSignalGroup()));
+		Optional<TrustedFunctionComSendImplementation> sourceImplForComSignalGroup = this.context.query.tryFindSingle(isKindOf(TRUSTED_FUNCTION_COM_SEND_IMPLEMENTATION).AND(refExists(COM_SEND_IMPLEMENTATION__COM_SIGNAL_GROUP)));
+		if (sourceImplForComSignalGroup.isPresent()) {
+			EcucPartition sourceMasterBswPartition = this.context.cache.sourceMasterBswPartition.get(); // NOTE 信頼関数を構築する場合には必ずマスタパーティションが存在するため、存在チェックを行わない
+			buildComSendSignalTrustedFunction(Identifiers.createComSendSignalGroupTrustedFunctionName(sourceMasterBswPartition), SymbolNames.createComSendSignalGroupTrustedFunctionName(sourceMasterBswPartition));
 		}
 	}
 
-	private void buildComSendSignalTrustedFunction(TrustedFunctionComSendImplementation sourceImplementation, String tfShortName, String tfSymbolName) {
+	private void buildComSendSignalTrustedFunction(String tfShortName, String tfSymbolName) {
 		EcucPartition sourceMasterBswPartition = this.context.cache.sourceMasterBswPartition.get(); // NOTE 信頼関数を構築する場合には必ずマスタパーティションが存在するため、存在チェックを行わない
-		OsApplication targetOsApplication = sourceMasterBswPartition.getImplOsApplication().get(0);
-
-		// データ書き込み用の信頼関数の構築
-		OsApplicationTrustedFunction destOsTrustedFunction;
 
 		Optional<OsApplicationTrustedFunction> inputTrustedFunction = tryFindOsConfig(OS_APPLICATION_TRUSTED_FUNCTION, tfShortName);
-		if (inputTrustedFunction.isPresent()) {
-			destOsTrustedFunction = inputTrustedFunction.get();
-		} else {
-			destOsTrustedFunction = EcucFactory.eINSTANCE.createOsApplicationTrustedFunction();
+		if (!inputTrustedFunction.isPresent()) {
+			OsApplication targetOsApplication = sourceMasterBswPartition.getImplOsApplication().get(0);
+
+			OsApplicationTrustedFunction destOsTrustedFunction = EcucFactory.eINSTANCE.createOsApplicationTrustedFunction();
 			destOsTrustedFunction.setShortName(tfShortName);
 			destOsTrustedFunction.setOsTrustedFunctionName(tfSymbolName);
 			targetOsApplication.getOsApplicationTrustedFunction().add(destOsTrustedFunction);
 
 			getOrCreateGeneratedEcuConfiguration().getGeneratedOsTrustedFunction().add(destOsTrustedFunction);
 		}
-		sourceImplementation.setOsTrustedFunction(destOsTrustedFunction);
 	}
 
 	private void buildRteBufferSendTrustedFunctions(TrustedFunctionRteSendImplementation sourceAndTargetSendImplementation) throws ModelException {

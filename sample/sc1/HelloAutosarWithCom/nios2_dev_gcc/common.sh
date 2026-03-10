@@ -3,19 +3,19 @@
 #  TOPPERS/A-RTEGEN
 #      Automotive Runtime Environment Generator
 #
-#  Copyright (C) 2013-2017 by Center for Embedded Computing Systems
+#  Copyright (C) 2013-2016 by Center for Embedded Computing Systems
 #              Graduate School of Information Science, Nagoya Univ., JAPAN
 #  Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
 #  Copyright (C) 2014-2016 by eSOL Co.,Ltd., JAPAN
-#  Copyright (C) 2013-2017 by FUJI SOFT INCORPORATED, JAPAN
-#  Copyright (C) 2014-2017 by NEC Communication Systems, Ltd., JAPAN
+#  Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
+#  Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
 #  Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
 #  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
-#  Copyright (C) 2014-2017 by SCSK Corporation, JAPAN
+#  Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
 #  Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
-#  Copyright (C) 2015-2017 by SUZUKI MOTOR CORPORATION
-#  Copyright (C) 2013-2017 by TOSHIBA CORPORATION, JAPAN
-#  Copyright (C) 2013-2017 by Witz Corporation
+#  Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
+#  Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
+#  Copyright (C) 2013-2016 by Witz Corporation
 #
 #  上記著作権者は，以下の(1)〜(4)の条件を満たす場合に限り，本ソフトウェ
 #  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
@@ -51,29 +51,24 @@
 #  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
 #  の責任を負わない．
 #
-# $Id: common.sh 822 2017-03-15 07:20:08Z mtakada $
+# $Id: common.sh 651 2016-03-31 06:20:22Z mtakada $
 #
 
 #
 # 各定義
 #
 
-# 環境変数が設定されていない場合は、A-RTEGENフォルダの相対パス
-if [ -z "${TOPPERS_SRC+x}" ] ; then
-	TOPPERS_SRC=../../../../../..
-fi
+# ATK2ソースコードまでの相対パス
+OS_PATH=../../../../../../atk2-sc1
 
-# OSソースコードまでのパス
-OS_PATH=$TOPPERS_SRC/atk2-sc1
+# A-RTEGENまでの相対パス
+RTE_PATH=../../../../../
 
-# A-RTEGENまでのパス
-RTE_PATH=$TOPPERS_SRC/a-rtegen
-
-# 共通ソースコードまでのパス
+# 共通ソースコードまでの相対パス
 GENERAL_PATH=$RTE_PATH/sample/general
 
 # A-COMSTACKまでの相対パス
-COMSTACK_PATH=$TOPPERS_SRC/a-comstack
+COMSTACK_PATH=../../../../../../a-comstack
 
 # ターゲット名
 TARGET=nios2_dev_gcc
@@ -130,7 +125,7 @@ generate_code()
 {
 	# configureスクリプトによるMakefile作成
 	perl $OS_PATH/configure -T $TARGET -A Rte $CFG_OPT \
-		-a "$COM_PATH $PDUR_PATH $CANIF_PATH $CAN_PATH $COM_STUB_PATH $COM_GENERAL_PATH $CAN_TARGET_PATH $GENERAL_PATH/EcuM $GENERAL_PATH/HelloAutosar $INCLUDE ../stub" \
+		-a "$COM_PATH $PDUR_PATH $CANIF_PATH $CAN_PATH $COM_STUB_PATH $COM_GENERAL_PATH $CAN_TARGET_PATH $GENERAL_PATH/EcuM $GENERAL_PATH/HelloAutosar $INCLUDE" \
 		-C $APPLICATION \
 		-U "$MODULE C_Init_Code.o EcuM.o EcuM_StartupTask.o Os_Hook.o" "$CMP_OPT"
 
@@ -143,17 +138,17 @@ generate_code()
 
 	# A-COMジェネレータによるA-COMモジュール作成
 	echo "Generate Com"
-	$OS_PATH/cfg/cfg/cfg --omit-symbol --pass 2 --kernel atk2 --ini-file $COM_PATH/com.ini --api-table $COM_PATH/com.csv -T $COM_PATH/com.tf $APPLICATION.arxml
+	$OS_PATH/cfg/cfg/cfg.exe --omit-symbol --pass 2 --kernel atk2 --ini-file $COM_PATH/com.ini --api-table $COM_PATH/com.csv -T $COM_PATH/com.tf $APPLICATION.arxml
 
 	# A-PDURジェネレータによるA-PDURモジュール作成
 	echo "Generate PduR"
-	$OS_PATH/cfg/cfg/cfg --omit-symbol --pass 2 --kernel atk2 --ini-file $PDUR_PATH/pdur.ini --api-table $PDUR_PATH/pdur.csv -T $PDUR_PATH/pdur.tf $APPLICATION.arxml
+	$OS_PATH/cfg/cfg/cfg.exe --omit-symbol --pass 2 --kernel atk2 --ini-file $PDUR_PATH/pdur.ini --api-table $PDUR_PATH/pdur.csv -T $PDUR_PATH/pdur.tf $APPLICATION.arxml
 
 	# A-CANIFジェネレータによるA-CANIFモジュール作成
 	echo "Generate CanIf"
-	$OS_PATH/cfg/cfg/cfg --omit-symbol --pass 2 --kernel atk2 --ini-file $CANIF_PATH/canif.ini --api-table $CANIF_PATH/canif.csv -T $CANIF_PATH/canif.tf $APPLICATION.arxml
+	$OS_PATH/cfg/cfg/cfg.exe --omit-symbol --pass 2 --kernel atk2 --ini-file $CANIF_PATH/canif.ini --api-table $CANIF_PATH/canif.csv -T $CANIF_PATH/canif.tf $APPLICATION.arxml
 
 	# A-CANジェネレータによるA-CANモジュール作成
 	echo "Generate Can"
-	$OS_PATH/cfg/cfg/cfg --omit-symbol --pass 2 --kernel atk2 --ini-file $CAN_PATH/can.ini --api-table $CAN_PATH/can.csv -I $CAN_PATH -T $CAN_PATH/target/$TARGET/Can_Target.tf $APPLICATION.arxml $OS_PATH/target/$TARGET/target_hw_counter.arxml
+	$OS_PATH/cfg/cfg/cfg.exe --omit-symbol --pass 2 --kernel atk2 --ini-file $CAN_PATH/can.ini --api-table $CAN_PATH/can.csv -I $CAN_PATH -T $CAN_PATH/target/$TARGET/Can_Target.tf $APPLICATION.arxml $OS_PATH/target/$TARGET/target_hw_counter.arxml
 }

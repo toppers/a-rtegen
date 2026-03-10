@@ -55,7 +55,6 @@ package jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc;
  * <ul>
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.OsOS#getOsNumberOfCores <em>Os Number Of Cores</em>}</li>
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.OsOS#getOsMasterCoreId <em>Os Master Core Id</em>}</li>
- *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.OsOS#getOsSystemCycle <em>Os System Cycle</em>}</li>
  * </ul>
  * </p>
  *
@@ -115,32 +114,6 @@ public interface OsOS extends EcucContainer {
 	 * @generated
 	 */
 	void setOsMasterCoreId(Integer value);
-
-	/**
-	 * Returns the value of the '<em><b>Os System Cycle</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Os System Cycle</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Os System Cycle</em>' containment reference.
-	 * @see #setOsSystemCycle(OsSystemCycle)
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.EcucPackage#getOsOS_OsSystemCycle()
-	 * @model containment="true"
-	 * @generated
-	 */
-	OsSystemCycle getOsSystemCycle();
-
-	/**
-	 * Sets the value of the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.OsOS#getOsSystemCycle <em>Os System Cycle</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Os System Cycle</em>' containment reference.
-	 * @see #getOsSystemCycle()
-	 * @generated
-	 */
-	void setOsSystemCycle(OsSystemCycle value);
 
 	/**
 	 * <!-- begin-user-doc -->

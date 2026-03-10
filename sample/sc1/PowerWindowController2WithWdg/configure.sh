@@ -3,19 +3,19 @@
 #  TOPPERS/A-RTEGEN
 #      Automotive Runtime Environment Generator
 #
-#  Copyright (C) 2013-2017 by Center for Embedded Computing Systems
+#  Copyright (C) 2013-2016 by Center for Embedded Computing Systems
 #              Graduate School of Information Science, Nagoya Univ., JAPAN
 #  Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
 #  Copyright (C) 2014-2016 by eSOL Co.,Ltd., JAPAN
-#  Copyright (C) 2013-2017 by FUJI SOFT INCORPORATED, JAPAN
-#  Copyright (C) 2014-2017 by NEC Communication Systems, Ltd., JAPAN
+#  Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
+#  Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
 #  Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
 #  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
-#  Copyright (C) 2014-2017 by SCSK Corporation, JAPAN
+#  Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
 #  Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
-#  Copyright (C) 2015-2017 by SUZUKI MOTOR CORPORATION
-#  Copyright (C) 2013-2017 by TOSHIBA CORPORATION, JAPAN
-#  Copyright (C) 2013-2017 by Witz Corporation
+#  Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
+#  Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
+#  Copyright (C) 2013-2016 by Witz Corporation
 #
 #  上記著作権者は，以下の(1)〜(4)の条件を満たす場合に限り，本ソフトウェ
 #  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
@@ -51,7 +51,7 @@
 #  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
 #  の責任を負わない．
 #
-# $Id: configure.sh 822 2017-03-15 07:20:08Z mtakada $
+# $Id: configure.sh 651 2016-03-31 06:20:22Z mtakada $
 #
 
 #
@@ -111,21 +111,16 @@
 # 各定義
 #
 
-# 環境変数が設定されていない場合は、A-RTEGENフォルダの相対パス
-if [ -z "${TOPPERS_SRC+x}" ] ; then
-	TOPPERS_SRC=../../../..
-fi
+# OSソースコードまでの相対パス
+OS_PATH=../../../../atk2-sc1
 
-# OSソースコードまでのパス
-OS_PATH=$TOPPERS_SRC/atk2-sc1
-
-# A-RTEGENまでのパス
-RTE_PATH=$TOPPERS_SRC/a-rtegen
+# A-RTEGENまでの相対パス
+RTE_PATH=../../../
 
 # A-WDGSTACKまでの相対パス
-WDG_PATH=$TOPPERS_SRC/a-wdgstack
+WDG_PATH=../../../../a-wdgstack
 
-# 共通ソースコードまでのパス
+# 共通ソースコードまでの相対パス
 GENERAL_PATH=$RTE_PATH/sample/general
 
 # ターゲット名
@@ -150,7 +145,7 @@ then
 fi
 
 # A-WDGSTACKで必要なモジュール
-MODULE="$MODULE WdgM.o WdgM_NonInitialized_RAM.o WdgM_PBcfg.o WdgM_Cfg.o WdgIf.o Wdg.o Wdg_PBcfg.o Wdg_Irq.o"
+MODULE="$MODULE WdgM.o WdgM_PBcfg.o WdgM_Cfg.o WdgIf.o Wdg.o Wdg_PBcfg.o Wdg_Irq.o"
 
 #
 # コード生成
@@ -173,13 +168,13 @@ $RTE_PATH/bin/bin/rtegen.sh $OS_PATH/target/$TARGET/target_hw_counter.arxml ./Sy
 
 # A-WdgMジェネレータによるA-WdgMモジュール作成
 echo "Generate WdgM"
-ruby $WDG_PATH/utils/ruby_cfg/gen/gen.rb --container-info $WDG_PATH/wdgm/WdgM.yaml -T $WDG_PATH/wdgm/WdgM.trb $APPLICATION.arxml $OS_PATH/target/$TARGET/target_hw_counter.arxml
+$OS_PATH/cfg/cfg/cfg.exe --omit-symbol --pass 2 --kernel atk2 --ini-file $WDG_PATH/wdgm/wdgm.ini --api-table $WDG_PATH/wdgm/wdgm.csv -T $WDG_PATH/wdgm/wdgm.tf $APPLICATION.arxml $OS_PATH/target/$TARGET/target_hw_counter.arxml
 
 echo "Generate WdgIf"
-ruby $WDG_PATH/utils/ruby_cfg/gen/gen.rb --container-info $WDG_PATH/wdgif/WdgIf.yaml -T $WDG_PATH/wdgif/WdgIf.trb $APPLICATION.arxml $OS_PATH/target/$TARGET/target_hw_counter.arxml
+$OS_PATH/cfg/cfg/cfg.exe --omit-symbol --pass 2 --kernel atk2 --ini-file $WDG_PATH/wdgif/wdgif.ini --api-table $WDG_PATH/wdgif/wdgif.csv -T $WDG_PATH/wdgif/wdgif.tf $APPLICATION.arxml
 
 echo "Generate Wdg"
-$OS_PATH/cfg/cfg/cfg --omit-symbol --pass 2 --kernel atk2 --ini-file $WDG_PATH/wdg/wdg.ini --api-table $WDG_PATH/wdg/wdg.csv -I $WDG_PATH/wdg -T $WDG_PATH/wdg/target/$TARGET/Wdg_Target.tf $APPLICATION.arxml
+$OS_PATH/cfg/cfg/cfg.exe --omit-symbol --pass 2 --kernel atk2 --ini-file $WDG_PATH/wdg/wdg.ini --api-table $WDG_PATH/wdg/wdg.csv -I $WDG_PATH/wdg -T $WDG_PATH/wdg/target/$TARGET/Wdg_Target.tf $APPLICATION.arxml
 
 # RTEGENがmode switchを対応するまでの間，Rte_WdgM.hにRte_Stub.hを追加する
 if [ -e Rte_WdgM.h ]

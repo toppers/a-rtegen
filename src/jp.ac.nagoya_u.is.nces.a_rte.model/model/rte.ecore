@@ -174,7 +174,7 @@
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
           <details key="body" value="let bswInternalBehavior : ar4x::m2::BswInternalBehavior = this_.parent.oclAsType(ar4x::m2::BswInternalBehavior)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;in&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;bswInternalBehavior.bswSchedulableEntity->select(canEnterExclusiveArea->includes(this_))&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->union(bswInternalBehavior.bswSchedulableEntity->select(runsInsideExclusiveArea->includes(this_)))&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->collect(m | bswSchedulableEntityEx.getUsingPartition(m))->asSet()"/>
-          <details key="pre_" value="this_.parent.oclIsKindOf(ar4x::m2::BswInternalBehavior)"/>
+          <details key="pre" value="this_.parent.oclIsKindOf(ar4x::m2::BswInternalBehavior)"/>
         </eAnnotations>
         <eParameters name="this_" lowerBound="1" eType="ecore:EClass ar4x.ecore#//m2/ExclusiveArea"/>
       </eOperations>
@@ -184,7 +184,7 @@
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
           <details key="body" value="this_.parent.oclAsType(ar4x::m2::SwcInternalBehavior).runnable.canEnterExclusiveArea->includes(this_)"/>
-          <details key="pre_" value="this_.parent.oclIsKindOf(ar4x::m2::SwcInternalBehavior)"/>
+          <details key="pre" value="this_.parent.oclIsKindOf(ar4x::m2::SwcInternalBehavior)"/>
         </eAnnotations>
         <eParameters name="this_" lowerBound="1" eType="ecore:EClass ar4x.ecore#//m2/ExclusiveArea"/>
       </eOperations>
@@ -194,7 +194,7 @@
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
           <details key="body" value="this_.parent.oclAsType(ar4x::m2::BswInternalBehavior).bswSchedulableEntity.canEnterExclusiveArea->includes(this_)"/>
-          <details key="pre_" value="this_.parent.oclIsKindOf(ar4x::m2::BswInternalBehavior)"/>
+          <details key="pre" value="this_.parent.oclIsKindOf(ar4x::m2::BswInternalBehavior)"/>
         </eAnnotations>
         <eParameters name="this_" lowerBound="1" eType="ecore:EClass ar4x.ecore#//m2/ExclusiveArea"/>
       </eOperations>
@@ -844,22 +844,6 @@
         <eParameters name="this_" lowerBound="1" eType="ecore:EClass ar4x.ecore#//m2/RteEvent"/>
       </eOperations>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ComGroupSignalEx">
-      <eOperations name="getImplementationRecordElement" ordered="false" upperBound="-1"
-          eType="ecore:EClass ar4x.ecore#//m2/ImplementationDataTypeElement">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-          <details key="body" value="let systemSignal : ar4x::m2::SystemSignal = this_.comSystemTemplateSystemSignal.iSignal.systemSignal&#xA;&#x9;&#x9;&#x9;&#x9;in if systemSignal.oclIsUndefined()&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;then OrderedSet{}&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;else ar4x::m2::SenderRecRecordElementMapping.allInstances()&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->select(m | m.systemSignal = systemSignal)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->collect(m | m.implementationRecordElement)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->select(not oclIsUndefined())&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->asOrderedSet()&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;endif"/>
-        </eAnnotations>
-        <eParameters name="this_" lowerBound="1" eType="ecore:EClass ar4x.ecore#//ecuc/ComGroupSignal"/>
-      </eOperations>
-      <eOperations name="getImplementationArrayElement" ordered="false" upperBound="-1"
-          eType="ecore:EClass ar4x.ecore#//m2/ImplementationDataTypeElement">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-          <details key="body" value="let systemSignal : ar4x::m2::SystemSignal = this_.comSystemTemplateSystemSignal.iSignal.systemSignal&#xA;&#x9;&#x9;&#x9;&#x9;in if systemSignal.oclIsUndefined()&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;then OrderedSet{}&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;else ar4x::m2::SenderRecArrayElementMapping.allInstances()&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->select(m | m.systemSignal = systemSignal)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->collect(m | m.indexedArrayElement.implementationArrayElement)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->select(not oclIsUndefined())&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;->asOrderedSet()&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;endif"/>
-        </eAnnotations>
-        <eParameters name="this_" lowerBound="1" eType="ecore:EClass ar4x.ecore#//ecuc/ComGroupSignal"/>
-      </eOperations>
-    </eClassifiers>
   </eSubpackages>
   <eSubpackages name="interaction" nsURI="http://nces.is.nagoya-u.ac.jp/a-rte/rte/interaction"
       nsPrefix="interaction">
@@ -1088,10 +1072,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="DirectComSendImplementation" eSuperTypes="#//interaction/ComSendImplementation"/>
     <eClassifiers xsi:type="ecore:EClass" name="TrustedFunctionComSendImplementation"
-        eSuperTypes="#//interaction/ComSendImplementation">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="osTrustedFunction" lowerBound="1"
-          eType="ecore:EClass ar4x.ecore#//ecuc/OsApplicationTrustedFunction"/>
-    </eClassifiers>
+        eSuperTypes="#//interaction/ComSendImplementation"/>
     <eClassifiers xsi:type="ecore:EClass" name="PeriodicProxyComSendImplementation"
         eSuperTypes="#//interaction/ProxyComSendImplementation"/>
     <eClassifiers xsi:type="ecore:EClass" name="ImmediateProxyComSendImplementation"
@@ -1369,11 +1350,6 @@
           upperBound="-1" eType="#//module/RunnableEntity"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="WriteApi" eSuperTypes="#//module/RteApi">
-      <eOperations name="isContainedTrustedOperation" lowerBound="1" eType="#//module/Boolean">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-          <details key="body" value="self.operation->exists(oclIsKindOf(TrustedFunctionRteOperation) or oclIsKindOf(TrustedFunctionComSendOperation))"/>
-        </eAnnotations>
-      </eOperations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="operation" upperBound="-1"
           eType="#//module/SendOperation" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="dataParam" lowerBound="1"
@@ -1824,11 +1800,6 @@
           lowerBound="1" eType="#//module/Boolean"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="InvalidateApi" eSuperTypes="#//module/RteApi">
-      <eOperations name="isContainedTrustedOperation" lowerBound="1" eType="#//module/Boolean">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-          <details key="body" value="self.operation->exists(oclIsKindOf(TrustedFunctionRteOperation) or oclIsKindOf(TrustedFunctionComSendOperation))"/>
-        </eAnnotations>
-      </eOperations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="operation" upperBound="-1"
           eType="#//module/SendOperation" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="activationOperation"
@@ -2042,11 +2013,6 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="RteLifecycleApi" abstract="true" eSuperTypes="#//module/Function"/>
     <eClassifiers xsi:type="ecore:EClass" name="SendApi" eSuperTypes="#//module/RteApi">
-      <eOperations name="isContainedTrustedOperation" lowerBound="1" eType="#//module/Boolean">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-          <details key="body" value="self.operation->exists(oclIsKindOf(TrustedFunctionRteOperation) or oclIsKindOf(TrustedFunctionComSendOperation))"/>
-        </eAnnotations>
-      </eOperations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="operation" upperBound="-1"
           eType="#//module/SendOperation" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="dataParam" lowerBound="1"
@@ -2124,6 +2090,8 @@
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="operationParam" upperBound="-1"
           eType="#//module/Parameter"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="portArgValue" upperBound="-1"
+          eType="#//module/Value"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="returnVariable" eType="#//module/LocalVariable"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TfCallApi" eSuperTypes="#//module/CallApi">
@@ -2293,18 +2261,12 @@
     <eClassifiers xsi:type="ecore:EClass" name="TrustedFunction" abstract="true" eSuperTypes="#//module/Function">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="trustedFunctionIndex"
           lowerBound="1" eType="#//module/CIdentifier"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="callerOsApplicationName"
-          lowerBound="1" eType="ecore:EDataType ar4x.ecore#//m2/CIdentifier"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ComSendSignalTrustedFunction" eSuperTypes="#//module/TrustedFunction">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="isGroup" lowerBound="1"
           eType="#//module/Boolean"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="signalGroupSymbolName"
           lowerBound="1" eType="#//module/CIdentifier"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="operation" lowerBound="1"
-          eType="#//module/DirectComSendOperation" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="sendValueType" lowerBound="1"
-          eType="#//module/Type"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="OsSetEventApi" eSuperTypes="#//module/OsApi">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="osTaskId" lowerBound="1"
@@ -2418,8 +2380,6 @@
           <details key="derivation" value="self.startExecutable.oclAsType(RunnableEntity)"/>
         </eAnnotations>
       </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="portArgValue" upperBound="-1"
-          eType="#//module/Value"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="IocCommunication" abstract="true"/>
     <eClassifiers xsi:type="ecore:EClass" name="ProxyComSendOperation" abstract="true"
@@ -2959,6 +2919,5 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="statusVariable" lowerBound="1"
           eType="#//module/GlobalVariable" containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="UserDefinedExcludeOperation" eSuperTypes="#//module/ExcludeOperation"/>
   </eSubpackages>
 </ecore:EPackage>

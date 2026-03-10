@@ -56,6 +56,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.CallApi#getOperation <em>Operation</em>}</li>
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.CallApi#getOperationParam <em>Operation Param</em>}</li>
+ *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.CallApi#getPortArgValue <em>Port Arg Value</em>}</li>
  *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.CallApi#getReturnVariable <em>Return Variable</em>}</li>
  * </ul>
  * </p>
@@ -106,6 +107,22 @@ public interface CallApi extends RteApi {
 	 * @generated
 	 */
 	EList<Parameter> getOperationParam();
+
+	/**
+	 * Returns the value of the '<em><b>Port Arg Value</b></em>' reference list.
+	 * The list contents are of type {@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.Value}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Port Arg Value</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Port Arg Value</em>' reference list.
+	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ModulePackage#getCallApi_PortArgValue()
+	 * @model
+	 * @generated
+	 */
+	EList<Value> getPortArgValue();
 
 	/**
 	 * Returns the value of the '<em><b>Return Variable</b></em>' reference.

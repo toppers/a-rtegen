@@ -268,10 +268,6 @@ public class EcucAdapterFactory extends AdapterFactoryImpl {
 				return createRteBswExclusiveAreaImplAdapter();
 			}
 			@Override
-			public Adapter caseOsSystemCycle(OsSystemCycle object) {
-				return createOsSystemCycleAdapter();
-			}
-			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -848,20 +844,6 @@ public class EcucAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRteBswExclusiveAreaImplAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.OsSystemCycle <em>Os System Cycle</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.OsSystemCycle
-	 * @generated
-	 */
-	public Adapter createOsSystemCycleAdapter() {
 		return null;
 	}
 

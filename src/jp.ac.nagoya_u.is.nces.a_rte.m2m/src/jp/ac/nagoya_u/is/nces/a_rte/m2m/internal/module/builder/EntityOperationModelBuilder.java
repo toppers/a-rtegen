@@ -53,12 +53,10 @@ import static jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ModulePackage.Litera
 import static jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ModulePackage.Literals.EXECUTABLE_ENTITY;
 import static jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ModulePackage.Literals.GLOBAL_VARIABLE;
 import static jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ModulePackage.Literals.MODE_MACHINE_INSTANCE;
-import static jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ModulePackage.Literals.VALUE;
 import static jp.ac.nagoya_u.is.nces.a_rte.model.util.EObjectConditions.hasAttr;
 import static jp.ac.nagoya_u.is.nces.a_rte.model.util.EObjectConditions.isKindOf;
 import static jp.ac.nagoya_u.is.nces.a_rte.model.util.EObjectConditions.ref;
 
-import java.util.Collections;
 import java.util.List;
 
 import jp.ac.nagoya_u.is.nces.a_rte.m2m.internal.common.util.SymbolNames;
@@ -66,14 +64,12 @@ import jp.ac.nagoya_u.is.nces.a_rte.m2m.internal.module.util.RoleNames;
 import jp.ac.nagoya_u.is.nces.a_rte.model.ModelException;
 import jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.OsTask;
 import jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.RteBswRequiredModeGroupConnection;
-import jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.instance.POperationInstanceInSwc;
 import jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.m2.BswEvent;
 import jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.m2.BswModeSwitchEvent;
 import jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.m2.BswModuleDescription;
 import jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.m2.ExclusiveArea;
 import jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.m2.ModeDeclarationGroupPrototype;
 import jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.m2.ModeInBswModuleDescriptionInstanceRef;
-import jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.m2.PortApiOption;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.interaction.BswSchedulableEntityStartInteraction;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.interaction.CycleCounterImplementation;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.interaction.EntityStartInteraction;
@@ -101,7 +97,6 @@ import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.PlainExecutableStartOperati
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ServerRunnableStartOperation;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.StartOffsetCountupOperation;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.TimingTriggeringExecutableStartOperation;
-import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.Value;
 
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.ecore.EObject;
@@ -331,17 +326,8 @@ public class EntityOperationModelBuilder {
 		return destStartOffsetCountupOperation;
 	}
 
-	public ServerRunnableStartOperation createServerRunnableStartOperation(POperationInstanceInSwc sourceProvidedOperationInstanceInSwc) throws ModelException {
-		jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.m2.ExecutableEntity sourceExecutableEntity = sourceProvidedOperationInstanceInSwc.getOperationInvokedEvent().get(0).getStartOnEvent();
-		// 使用するポート定義引数を関連付
-		List<Value> portArgValues = Collections.emptyList();
-		if (!sourceProvidedOperationInstanceInSwc.getContextPort().getPortApiOption().isEmpty()) {
-			PortApiOption portApiOption = sourceProvidedOperationInstanceInSwc.getContextPort().getPortApiOption().get(0);
-			portArgValues = this.context.builtQuery.<Value> findDests(VALUE, portApiOption.getPortArgValue());
-		}
-
+	public ServerRunnableStartOperation createServerRunnableStartOperation(jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.m2.ExecutableEntity sourceExecutableEntity) throws ModelException {
 		ServerRunnableStartOperation destOperation = ModuleFactory.eINSTANCE.createServerRunnableStartOperation();
-		destOperation.getPortArgValue().addAll(portArgValues);
 		buildCommonPartOfExecutableStartOperation(destOperation, sourceExecutableEntity);
 		return destOperation;
 	}

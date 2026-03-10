@@ -8,19 +8,19 @@
 TOPPERS/A-RTEGEN
     Automotive Runtime Environment Generator
 
-Copyright (C) 2013-2017 by Center for Embedded Computing Systems
+Copyright (C) 2013-2016 by Center for Embedded Computing Systems
             Graduate School of Information Science, Nagoya Univ., JAPAN
 Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
 Copyright (C) 2014-2016 by eSOL Co.,Ltd., JAPAN
-Copyright (C) 2013-2017 by FUJI SOFT INCORPORATED, JAPAN
-Copyright (C) 2014-2017 by NEC Communication Systems, Ltd., JAPAN
+Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
+Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
 Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
 Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
-Copyright (C) 2014-2017 by SCSK Corporation, JAPAN
+Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
 Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
-Copyright (C) 2015-2017 by SUZUKI MOTOR CORPORATION
-Copyright (C) 2013-2017 by TOSHIBA CORPORATION, JAPAN
-Copyright (C) 2013-2017 by Witz Corporation
+Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
+Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
+Copyright (C) 2013-2016 by Witz Corporation
 
 上記著作権者は，以下の (1)〜(3)の条件を満たす場合に限り，本ドキュメ
 ント（本ドキュメントを改変したものを含む．以下同じ）を使用・複製・改
@@ -48,7 +48,7 @@ Copyright (C) 2013-2017 by Witz Corporation
 により直接的または間接的に生じたいかなる損害に関しても，その責任を負
 わない．
 
-$Id: readme.txt 822 2017-03-15 07:20:08Z mtakada $
+$Id: readme.txt 651 2016-03-31 06:20:22Z mtakada $
 ----------------------------------------------------------------------
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -114,20 +114,7 @@ configure.shを参照すること．HelloAutosarおよびHelloAutosarWithComは�
 (2.3) 実行方法
 ———————————————————————————————————
 ----------------------------------------------------------------------
-(2.3.1) 環境変数
-----------------------------------------------------------------------
-
-リンボリックリンクを利用してフォルダ構成を設定した場合，A-RTEGENのサンプルにある、
-configureを実行する際にBSWのパス情報が正しく取得できない場合がある。
-その場合はsampleフォルダにあるsetvars.shを使って，A-RTEGENが置かれたフォルダの
-フルパスを環境変数(TOPPERS_PATH)として設定する。
-
-$ source setvars.sh
-
-環境変数が設定されていない場合は、A-RTEGENからの相対パスでBSWを指定する。
-
-----------------------------------------------------------------------
-(2.3.2) コード生成
+(2.3.1) コード生成
 ----------------------------------------------------------------------
 
 configure.shを実行することにより，各コードを生成する．
@@ -140,7 +127,7 @@ $ sh configure.sh
 $ sh configure.sh del
 
 ----------------------------------------------------------------------
-(2.3.3) ビルド
+(2.3.2) ビルド
 ----------------------------------------------------------------------
 
 configure.shによって，ATK2用Makefileが生成されるので，makeによりビルド
@@ -150,7 +137,7 @@ $ make depend
 $ make
 
 ----------------------------------------------------------------------
-(2.3.4) 実行
+(2.3.3) 実行
 ----------------------------------------------------------------------
 
 ターゲットに応じた実行方法でビルドしたモジュールを実行する．
@@ -293,125 +280,7 @@ HelloAutosarと同じSW-Cを使用する．
   - OS，RTE，COMのECU2(送信)用コンフィギュレーションファイル
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-(5) PowerWindowController2WithWdg
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-———————————————————————————————————
-(5.1) サンプルアプリケーション概要
-———————————————————————————————————
-
-PowerWindowController2WithWdgは，KEY操作による窓の開閉要求に基づいた窓
-の開閉状態をLEDで模擬したサンプルである．
-SW17～15の何れかをONにすることにより，ロック機能を模擬し，KEY操作によ
-る窓の開閉要求を受け付けなくなる．各SWは以下のWatchdogの監視機能も付随
-する．
-SW17をONにすることによりアライブ監視異常を引き起こし，一定時間が経過し
-た場合リセットが発生する．一定時間が経過するまでにOFFにすることで，故
-障から復帰したと見なしてリセットが発生しない．
-SW16をONにすることによりデッドライン監視が開始する．一定時間経過後にSW
-をOFFにするとデッドライン監視異常と見なしリセットが発生する．一定時間
-経過前にSWをOFFにするとデッドライン監視正常と見なしリセットが発生しな
-い．
-SW15をONにすることによりロジカル監視異常を引き起こし，リセットが発生す
-る．SWをOFFにしてもロジカル監視異常から復帰することはなく必ずリセット
-が発生する．
-
-———————————————————————————————————
-(5.2) SW-C構成
-———————————————————————————————————
-
-・CddButton
-  - KEY0，KEY1の状態を取得する
-・SensorButton
-  - 運転席ロックスイッチがONの場合は，ロックライトを点灯し，開閉指示をしない
-  - 運転席ロックスイッチがOFFの場合は，ロックライトを消灯し，
-    KEY0，KEY1の状態からPowerWindowControllerへ開閉の要求を出す
-・PowerWindowController
-  - SensorButtonから要求を受け取り，CddWindowへ開閉の指示を出す
-・CddWindow
-  - PowerWindowControllerから情報を受け取り，GREEN LEDに開閉の様子を表現する
-・CddLockLed
-  - RED LED17にロック状態の様子を表現する
-・CddLockSwitch
-  - SW17～SW15の状態を取得する
-
-———————————————————————————————————
-(5.3) ファイル構成
-———————————————————————————————————
-
-・SystemDesk.arxml
-  - SystemDeskで作成したシステムディスクリプションファイル
-・CddButton.c
-  - CddButton実装コード
-・SensorButton.c
-  - SensorButton実装コード
-・PowerWindowController.c
-  - PowerWindowController実装コード
-・CddWindow.c
-  - CddWindow実装コード
-・CddLockLed.c
-  - CddLockLed実装コード
-・CddLockSwitch.c
-  - CddLockSwitch実装コード
-・PWCTopLevel.png
-  - SystemDeskによるSW-C構成図
-・PowerWindowController2.yaml
-  - OS，RTEのコンフィギュレーションファイル
-#
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-(6) WatchdogDemo
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-———————————————————————————————————
-(6.1) サンプルアプリケーション概要
-———————————————————————————————————
-
-WatchdogDemoはロジカル監視およびデッドライン監視動作のサンプルである．
-・SWを操作してLEDを点灯させる
-・SW操作順の表示前にスイッチ操作した場合，A-WDGSTACKによるリセットが発生
-・SWが特定の順番，一定タイミング(前回のスイッチ操作から1秒以上5秒以内)で操作されなかった場合，
-  A-WDGSTACKによるリセットが発生
-
-＜操作方法＞
-・KEY3：押している間，スイッチの操作順をLEDで表示
-・SW0～9：LED表示操作スイッチ
-
-———————————————————————————————————
-(6.2) SW-C構成
-———————————————————————————————————
-
-・CddButton
-  - KEY3の状態を取得する
-・SensorButton
-  - SW0～9の状態に応じてLEDR0～9を点灯する
-  - KEY3が押されている間，LEDR0～9を順に点灯する
-・CddLockLed
-  - LEDRにSW状態を表現する
-・CddLockSwitch
-  - SWの状態を取得する
-
-———————————————————————————————————
-(6.3) ファイル構成
-———————————————————————————————————
-
-・SystemDesk.arxml
-  - SystemDeskで作成したシステムディスクリプションファイル
-・CddButton.c
-  - CddButton実装コード
-・SensorButton.c
-  - SensorButton実装コード
-・CddLockLed.c
-  - CddLockLed実装コード
-・CddLockSwitch.c
-  - CddLockSwitch実装コード
-・PWCTopLevel.png
-  - SystemDeskによるSW-C構成図
-・WatchdogDemo.yaml
-  - OS，RTEのコンフィギュレーションファイル
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-(7) 性能評価
+(5) 性能評価
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 構成によって，HelloAutosar，HelloAutosarWithComで生成されるRTE APIの実
@@ -432,10 +301,10 @@ HelloAutosar，HelloAutosarWithComにおいては，configure.shにperfオプシ
 $ sh configure.sh perf
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-(8) 注意事項
+(6) 注意事項
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ———————————————————————————————————
-(8.1) xxx_MemMap.hに関して
+(6.1) xxx_MemMap.hに関して
 ———————————————————————————————————
 
 AUTOSARでは，各SW-Cのメモリ配置指定のために，xxx_MemMap.hというヘッダフ
@@ -447,7 +316,7 @@ AUTOSARでは，各SW-Cのメモリ配置指定のために，xxx_MemMap.hとい
 configure.shでは，xxx_MemMap.hについては説明しない．
 
 ———————————————————————————————————
-(8.2) configure.sh実行時のエラー
+(6.2) configure.sh実行時のエラー
 ———————————————————————————————————
 
 コード生成に使用する各ツールの実行権限が無いと，configure.sh実行時に権

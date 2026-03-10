@@ -199,13 +199,13 @@ Rte_Call_Client1_clientPort6_operation1()  /* MISRA RULE 8.8 VIOLATION : It won'
 #endif
 
 Std_ReturnType
-Rte_Switch_mode0_currentMode(Rte_ModeType_WdgM_Mode mode)
+Rte_Switch_modeWdgMSupervisedEntity_0_currentMode(Rte_ModeType_WdgM_Mode mode)
 {
 	return (RTE_E_OK);
 }
 
 Std_ReturnType
-Rte_Switch_mode1_currentMode(Rte_ModeType_WdgM_Mode mode)
+Rte_Switch_modeWdgMSupervisedEntity_1_currentMode(Rte_ModeType_WdgM_Mode mode)
 {
 	return (RTE_E_OK);
 }

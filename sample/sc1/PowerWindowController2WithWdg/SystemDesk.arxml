@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--Created with SystemDesk 4.5.1.8961-->
+<!--Created with SystemDesk 4.2.0.6962-->
 <AUTOSAR xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://autosar.org/schema/r4.0" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-0-3.xsd">
 	<AR-PACKAGES>
 		<AR-PACKAGE>
@@ -139,24 +139,12 @@
 										<EXCLUSIVE-AREA>
 											<SHORT-NAME>Reentrant</SHORT-NAME>
 										</EXCLUSIVE-AREA>
-										<EXCLUSIVE-AREA UUID="67f6e4f9-03fa-4809-8935-bc52496acab4">
-											<SHORT-NAME>CriticalSection_FirstExpiredSEID</SHORT-NAME>
-										</EXCLUSIVE-AREA>
-										<EXCLUSIVE-AREA UUID="906df4d9-1230-423a-96ff-a45f7b95540a">
-											<SHORT-NAME>CriticalSection_Supervision</SHORT-NAME>
-										</EXCLUSIVE-AREA>
-										<EXCLUSIVE-AREA UUID="c9a12c99-fbbe-4997-8b05-8ec1761dd838">
-											<SHORT-NAME>CriticalSection_SetTriggerCondition</SHORT-NAME>
-										</EXCLUSIVE-AREA>
 									</EXCLUSIVE-AREAS>
 									<ENTITYS>
 										<BSW-SCHEDULABLE-ENTITY>
 											<SHORT-NAME>MainFunction</SHORT-NAME>
 											<CAN-ENTER-EXCLUSIVE-AREA-REFS>
 												<CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/BSWScheduler/BswModuleDescriptions/WdgM/InternalBehavior/Reentrant</CAN-ENTER-EXCLUSIVE-AREA-REF>
-												<CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/BSWScheduler/BswModuleDescriptions/WdgM/InternalBehavior/CriticalSection_FirstExpiredSEID</CAN-ENTER-EXCLUSIVE-AREA-REF>
-												<CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/BSWScheduler/BswModuleDescriptions/WdgM/InternalBehavior/CriticalSection_Supervision</CAN-ENTER-EXCLUSIVE-AREA-REF>
-												<CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/BSWScheduler/BswModuleDescriptions/WdgM/InternalBehavior/CriticalSection_SetTriggerCondition</CAN-ENTER-EXCLUSIVE-AREA-REF>
 											</CAN-ENTER-EXCLUSIVE-AREA-REFS>
 											<MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
 											<IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/BSWScheduler/BswModuleEntrys/MainFunction</IMPLEMENTED-ENTRY-REF>
@@ -990,8 +978,8 @@
 								<TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/PowerWindowController/SensorButton/se1</TARGET-R-PORT-REF>
 							</REQUESTER-IREF>
 						</ASSEMBLY-SW-CONNECTOR>
-						<ASSEMBLY-SW-CONNECTOR UUID="8dcd22a6-50b7-4437-b58e-3adc136bf6ec">
-							<SHORT-NAME>AssemblySwConnector8</SHORT-NAME>
+						<ASSEMBLY-SW-CONNECTOR UUID="5e496076-72a3-4e3f-94f1-eb7c782daf21">
+							<SHORT-NAME>AssemblySwConnector6</SHORT-NAME>
 							<PROVIDER-IREF>
 								<CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/PowerWindowController/PWCTopLevel/WdgM</CONTEXT-COMPONENT-REF>
 								<TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/Services/WdgM/alive002</TARGET-P-PORT-REF>
@@ -999,6 +987,50 @@
 							<REQUESTER-IREF>
 								<CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/PowerWindowController/PWCTopLevel/SensorButton</CONTEXT-COMPONENT-REF>
 								<TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/PowerWindowController/SensorButton/se2</TARGET-R-PORT-REF>
+							</REQUESTER-IREF>
+						</ASSEMBLY-SW-CONNECTOR>
+						<ASSEMBLY-SW-CONNECTOR UUID="49141440-1522-494b-8bb1-e9a725baeecd">
+							<SHORT-NAME>AssemblySwConnector7</SHORT-NAME>
+							<PROVIDER-IREF>
+								<CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/PowerWindowController/PWCTopLevel/WdgM</CONTEXT-COMPONENT-REF>
+								<TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/Services/WdgM/alive003</TARGET-P-PORT-REF>
+							</PROVIDER-IREF>
+							<REQUESTER-IREF>
+								<CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/PowerWindowController/PWCTopLevel/SensorButton</CONTEXT-COMPONENT-REF>
+								<TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/PowerWindowController/SensorButton/se3</TARGET-R-PORT-REF>
+							</REQUESTER-IREF>
+						</ASSEMBLY-SW-CONNECTOR>
+						<ASSEMBLY-SW-CONNECTOR UUID="8dcd22a6-50b7-4437-b58e-3adc136bf6ec">
+							<SHORT-NAME>AssemblySwConnector8</SHORT-NAME>
+							<PROVIDER-IREF>
+								<CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/PowerWindowController/PWCTopLevel/WdgM</CONTEXT-COMPONENT-REF>
+								<TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/Services/WdgM/alive004</TARGET-P-PORT-REF>
+							</PROVIDER-IREF>
+							<REQUESTER-IREF>
+								<CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/PowerWindowController/PWCTopLevel/SensorButton</CONTEXT-COMPONENT-REF>
+								<TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/PowerWindowController/SensorButton/se4</TARGET-R-PORT-REF>
+							</REQUESTER-IREF>
+						</ASSEMBLY-SW-CONNECTOR>
+						<ASSEMBLY-SW-CONNECTOR UUID="224d6415-91cf-43a4-96e0-deddfba55f19">
+							<SHORT-NAME>AssemblySwConnector9</SHORT-NAME>
+							<PROVIDER-IREF>
+								<CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/PowerWindowController/PWCTopLevel/WdgM</CONTEXT-COMPONENT-REF>
+								<TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/Services/WdgM/alive005</TARGET-P-PORT-REF>
+							</PROVIDER-IREF>
+							<REQUESTER-IREF>
+								<CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/PowerWindowController/PWCTopLevel/SensorButton</CONTEXT-COMPONENT-REF>
+								<TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/PowerWindowController/SensorButton/se5</TARGET-R-PORT-REF>
+							</REQUESTER-IREF>
+						</ASSEMBLY-SW-CONNECTOR>
+						<ASSEMBLY-SW-CONNECTOR UUID="c4c6ea25-9161-44c2-bc67-3ff41b24c0e3">
+							<SHORT-NAME>AssemblySwConnector10</SHORT-NAME>
+							<PROVIDER-IREF>
+								<CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/PowerWindowController/PWCTopLevel/WdgM</CONTEXT-COMPONENT-REF>
+								<TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE">/Services/WdgM/alive006</TARGET-P-PORT-REF>
+							</PROVIDER-IREF>
+							<REQUESTER-IREF>
+								<CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE">/PowerWindowController/PWCTopLevel/SensorButton</CONTEXT-COMPONENT-REF>
+								<TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE">/PowerWindowController/SensorButton/se6</TARGET-R-PORT-REF>
 							</REQUESTER-IREF>
 						</ASSEMBLY-SW-CONNECTOR>
 					</CONNECTORS>
@@ -1147,6 +1179,22 @@
 							<SHORT-NAME>se2</SHORT-NAME>
 							<REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/Interfaces/WdgM_AliveSupervision</REQUIRED-INTERFACE-TREF>
 						</R-PORT-PROTOTYPE>
+						<R-PORT-PROTOTYPE>
+							<SHORT-NAME>se3</SHORT-NAME>
+							<REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/Interfaces/WdgM_AliveSupervision</REQUIRED-INTERFACE-TREF>
+						</R-PORT-PROTOTYPE>
+						<R-PORT-PROTOTYPE>
+							<SHORT-NAME>se4</SHORT-NAME>
+							<REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/Interfaces/WdgM_AliveSupervision</REQUIRED-INTERFACE-TREF>
+						</R-PORT-PROTOTYPE>
+						<R-PORT-PROTOTYPE>
+							<SHORT-NAME>se5</SHORT-NAME>
+							<REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/Interfaces/WdgM_AliveSupervision</REQUIRED-INTERFACE-TREF>
+						</R-PORT-PROTOTYPE>
+						<R-PORT-PROTOTYPE>
+							<SHORT-NAME>se6</SHORT-NAME>
+							<REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/Interfaces/WdgM_AliveSupervision</REQUIRED-INTERFACE-TREF>
+						</R-PORT-PROTOTYPE>
 					</PORTS>
 					<INTERNAL-BEHAVIORS>
 						<SWC-INTERNAL-BEHAVIOR>
@@ -1218,6 +1266,14 @@
 											<TIMEOUT>0</TIMEOUT>
 										</SYNCHRONOUS-SERVER-CALL-POINT>
 										<SYNCHRONOUS-SERVER-CALL-POINT>
+											<SHORT-NAME>SSCP_se2_CheckpointReached</SHORT-NAME>
+											<OPERATION-IREF>
+												<CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/PowerWindowController/SensorButton/se2</CONTEXT-R-PORT-REF>
+												<TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/Interfaces/WdgM_AliveSupervision/CheckpointReached</TARGET-REQUIRED-OPERATION-REF>
+											</OPERATION-IREF>
+											<TIMEOUT>0</TIMEOUT>
+										</SYNCHRONOUS-SERVER-CALL-POINT>
+										<SYNCHRONOUS-SERVER-CALL-POINT>
 											<SHORT-NAME>SSCP_LedStateOut_SetLedState2</SHORT-NAME>
 											<OPERATION-IREF>
 												<CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/PowerWindowController/SensorButton/LedStateOut</CONTEXT-R-PORT-REF>
@@ -1249,10 +1305,34 @@
 											</OPERATION-IREF>
 											<TIMEOUT>0</TIMEOUT>
 										</SYNCHRONOUS-SERVER-CALL-POINT>
+										<SYNCHRONOUS-SERVER-CALL-POINT UUID="f9258f2f-d6a0-4508-89b6-487fbb3b4139">
+											<SHORT-NAME>SSCP_se3_CheckpointReached</SHORT-NAME>
+											<OPERATION-IREF>
+												<CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/PowerWindowController/SensorButton/se3</CONTEXT-R-PORT-REF>
+												<TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/Interfaces/WdgM_AliveSupervision/CheckpointReached</TARGET-REQUIRED-OPERATION-REF>
+											</OPERATION-IREF>
+											<TIMEOUT>0</TIMEOUT>
+										</SYNCHRONOUS-SERVER-CALL-POINT>
 										<SYNCHRONOUS-SERVER-CALL-POINT UUID="d387dc78-8327-4e5b-8f5b-db40a8e2c952">
 											<SHORT-NAME>SSCP_se4_CheckpointReached</SHORT-NAME>
 											<OPERATION-IREF>
-												<CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/PowerWindowController/SensorButton/se2</CONTEXT-R-PORT-REF>
+												<CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/PowerWindowController/SensorButton/se4</CONTEXT-R-PORT-REF>
+												<TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/Interfaces/WdgM_AliveSupervision/CheckpointReached</TARGET-REQUIRED-OPERATION-REF>
+											</OPERATION-IREF>
+											<TIMEOUT>0</TIMEOUT>
+										</SYNCHRONOUS-SERVER-CALL-POINT>
+										<SYNCHRONOUS-SERVER-CALL-POINT UUID="5ea40408-37cb-41f3-a10e-01bba3092021">
+											<SHORT-NAME>SSCP_se5_CheckpointReached</SHORT-NAME>
+											<OPERATION-IREF>
+												<CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/PowerWindowController/SensorButton/se5</CONTEXT-R-PORT-REF>
+												<TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/Interfaces/WdgM_AliveSupervision/CheckpointReached</TARGET-REQUIRED-OPERATION-REF>
+											</OPERATION-IREF>
+											<TIMEOUT>0</TIMEOUT>
+										</SYNCHRONOUS-SERVER-CALL-POINT>
+										<SYNCHRONOUS-SERVER-CALL-POINT UUID="b7e649f0-22bf-4844-af6b-7fddb564378a">
+											<SHORT-NAME>SSCP_se6_CheckpointReached</SHORT-NAME>
+											<OPERATION-IREF>
+												<CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/PowerWindowController/SensorButton/se6</CONTEXT-R-PORT-REF>
 												<TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/Interfaces/WdgM_AliveSupervision/CheckpointReached</TARGET-REQUIRED-OPERATION-REF>
 											</OPERATION-IREF>
 											<TIMEOUT>0</TIMEOUT>
@@ -1286,6 +1366,28 @@
 						</P-PORT-PROTOTYPE>
 						<P-PORT-PROTOTYPE>
 							<SHORT-NAME>alive002</SHORT-NAME>
+							<PROVIDED-COM-SPECS>
+								<SERVER-COM-SPEC>
+									<OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/Interfaces/WdgM_AliveSupervision/CheckpointReached</OPERATION-REF>
+									<QUEUE-LENGTH>1</QUEUE-LENGTH>
+								</SERVER-COM-SPEC>
+							</PROVIDED-COM-SPECS>
+							<PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/Interfaces/WdgM_AliveSupervision</PROVIDED-INTERFACE-TREF>
+						</P-PORT-PROTOTYPE>
+						<P-PORT-PROTOTYPE>
+							<SHORT-NAME>alive003</SHORT-NAME>
+							<PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/Interfaces/WdgM_AliveSupervision</PROVIDED-INTERFACE-TREF>
+						</P-PORT-PROTOTYPE>
+						<P-PORT-PROTOTYPE>
+							<SHORT-NAME>alive004</SHORT-NAME>
+							<PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/Interfaces/WdgM_AliveSupervision</PROVIDED-INTERFACE-TREF>
+						</P-PORT-PROTOTYPE>
+						<P-PORT-PROTOTYPE>
+							<SHORT-NAME>alive005</SHORT-NAME>
+							<PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/Interfaces/WdgM_AliveSupervision</PROVIDED-INTERFACE-TREF>
+						</P-PORT-PROTOTYPE>
+						<P-PORT-PROTOTYPE>
+							<SHORT-NAME>alive006</SHORT-NAME>
 							<PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/Interfaces/WdgM_AliveSupervision</PROVIDED-INTERFACE-TREF>
 						</P-PORT-PROTOTYPE>
 					</PORTS>
@@ -1301,11 +1403,43 @@
 										<TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/Interfaces/WdgM_AliveSupervision/CheckpointReached</TARGET-PROVIDED-OPERATION-REF>
 									</OPERATION-IREF>
 								</OPERATION-INVOKED-EVENT>
-								<OPERATION-INVOKED-EVENT UUID="1b818a41-5b39-4ec4-8064-79581694cb23">
+								<OPERATION-INVOKED-EVENT>
 									<SHORT-NAME>OperationInvokedEvent_alive002</SHORT-NAME>
 									<START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/Services/WdgM/InternalBehavior/CheckpointReached</START-ON-EVENT-REF>
 									<OPERATION-IREF>
 										<CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/Services/WdgM/alive002</CONTEXT-P-PORT-REF>
+										<TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/Interfaces/WdgM_AliveSupervision/CheckpointReached</TARGET-PROVIDED-OPERATION-REF>
+									</OPERATION-IREF>
+								</OPERATION-INVOKED-EVENT>
+								<OPERATION-INVOKED-EVENT UUID="eb59ee8d-2332-4b0f-bf27-8f918eb45b86">
+									<SHORT-NAME>OperationInvokedEvent_alive003</SHORT-NAME>
+									<START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/Services/WdgM/InternalBehavior/CheckpointReached</START-ON-EVENT-REF>
+									<OPERATION-IREF>
+										<CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/Services/WdgM/alive003</CONTEXT-P-PORT-REF>
+										<TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/Interfaces/WdgM_AliveSupervision/CheckpointReached</TARGET-PROVIDED-OPERATION-REF>
+									</OPERATION-IREF>
+								</OPERATION-INVOKED-EVENT>
+								<OPERATION-INVOKED-EVENT UUID="1b818a41-5b39-4ec4-8064-79581694cb23">
+									<SHORT-NAME>OperationInvokedEvent_alive004</SHORT-NAME>
+									<START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/Services/WdgM/InternalBehavior/CheckpointReached</START-ON-EVENT-REF>
+									<OPERATION-IREF>
+										<CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/Services/WdgM/alive004</CONTEXT-P-PORT-REF>
+										<TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/Interfaces/WdgM_AliveSupervision/CheckpointReached</TARGET-PROVIDED-OPERATION-REF>
+									</OPERATION-IREF>
+								</OPERATION-INVOKED-EVENT>
+								<OPERATION-INVOKED-EVENT UUID="8b8305a6-f017-4b23-95d2-fb9d7a0d1a13">
+									<SHORT-NAME>OperationInvokedEvent_alive005</SHORT-NAME>
+									<START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/Services/WdgM/InternalBehavior/CheckpointReached</START-ON-EVENT-REF>
+									<OPERATION-IREF>
+										<CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/Services/WdgM/alive005</CONTEXT-P-PORT-REF>
+										<TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/Interfaces/WdgM_AliveSupervision/CheckpointReached</TARGET-PROVIDED-OPERATION-REF>
+									</OPERATION-IREF>
+								</OPERATION-INVOKED-EVENT>
+								<OPERATION-INVOKED-EVENT UUID="cc75f308-d6f3-4713-b48e-00587e024342">
+									<SHORT-NAME>OperationInvokedEvent_alive006</SHORT-NAME>
+									<START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/Services/WdgM/InternalBehavior/CheckpointReached</START-ON-EVENT-REF>
+									<OPERATION-IREF>
+										<CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/Services/WdgM/alive006</CONTEXT-P-PORT-REF>
 										<TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/Interfaces/WdgM_AliveSupervision/CheckpointReached</TARGET-PROVIDED-OPERATION-REF>
 									</OPERATION-IREF>
 								</OPERATION-INVOKED-EVENT>
@@ -1336,13 +1470,77 @@
 											<VALUE>
 												<CONSTANT-REFERENCE>
 													<SHORT-LABEL>ReferenceToConstant</SHORT-LABEL>
-													<CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/Services/WdgMSupervisedEntity_1</CONSTANT-REF>
+													<CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/Services/WdgMSupervisedEntity_0</CONSTANT-REF>
 												</CONSTANT-REFERENCE>
 											</VALUE>
 											<VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/ImplDataTypes/WdgM_SupervisedEntityIdType</VALUE-TYPE-TREF>
 										</PORT-DEFINED-ARGUMENT-VALUE>
 									</PORT-ARG-VALUES>
 									<PORT-REF DEST="P-PORT-PROTOTYPE">/Services/WdgM/alive002</PORT-REF>
+								</PORT-API-OPTION>
+								<PORT-API-OPTION>
+									<ENABLE-TAKE-ADDRESS>false</ENABLE-TAKE-ADDRESS>
+									<INDIRECT-API>false</INDIRECT-API>
+									<PORT-ARG-VALUES>
+										<PORT-DEFINED-ARGUMENT-VALUE>
+											<VALUE>
+												<CONSTANT-REFERENCE>
+													<SHORT-LABEL>ReferenceToConstant</SHORT-LABEL>
+													<CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/Services/WdgMSupervisedEntity_0</CONSTANT-REF>
+												</CONSTANT-REFERENCE>
+											</VALUE>
+											<VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/ImplDataTypes/WdgM_SupervisedEntityIdType</VALUE-TYPE-TREF>
+										</PORT-DEFINED-ARGUMENT-VALUE>
+									</PORT-ARG-VALUES>
+									<PORT-REF DEST="P-PORT-PROTOTYPE">/Services/WdgM/alive003</PORT-REF>
+								</PORT-API-OPTION>
+								<PORT-API-OPTION>
+									<ENABLE-TAKE-ADDRESS>false</ENABLE-TAKE-ADDRESS>
+									<INDIRECT-API>false</INDIRECT-API>
+									<PORT-ARG-VALUES>
+										<PORT-DEFINED-ARGUMENT-VALUE>
+											<VALUE>
+												<CONSTANT-REFERENCE>
+													<SHORT-LABEL>ReferenceToConstant</SHORT-LABEL>
+													<CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/Services/WdgMSupervisedEntity_1</CONSTANT-REF>
+												</CONSTANT-REFERENCE>
+											</VALUE>
+											<VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/ImplDataTypes/WdgM_SupervisedEntityIdType</VALUE-TYPE-TREF>
+										</PORT-DEFINED-ARGUMENT-VALUE>
+									</PORT-ARG-VALUES>
+									<PORT-REF DEST="P-PORT-PROTOTYPE">/Services/WdgM/alive004</PORT-REF>
+								</PORT-API-OPTION>
+								<PORT-API-OPTION>
+									<ENABLE-TAKE-ADDRESS>false</ENABLE-TAKE-ADDRESS>
+									<INDIRECT-API>false</INDIRECT-API>
+									<PORT-ARG-VALUES>
+										<PORT-DEFINED-ARGUMENT-VALUE>
+											<VALUE>
+												<CONSTANT-REFERENCE>
+													<SHORT-LABEL>ReferenceToConstant</SHORT-LABEL>
+													<CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/Services/WdgMSupervisedEntity_1</CONSTANT-REF>
+												</CONSTANT-REFERENCE>
+											</VALUE>
+											<VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/ImplDataTypes/WdgM_SupervisedEntityIdType</VALUE-TYPE-TREF>
+										</PORT-DEFINED-ARGUMENT-VALUE>
+									</PORT-ARG-VALUES>
+									<PORT-REF DEST="P-PORT-PROTOTYPE">/Services/WdgM/alive005</PORT-REF>
+								</PORT-API-OPTION>
+								<PORT-API-OPTION>
+									<ENABLE-TAKE-ADDRESS>false</ENABLE-TAKE-ADDRESS>
+									<INDIRECT-API>false</INDIRECT-API>
+									<PORT-ARG-VALUES>
+										<PORT-DEFINED-ARGUMENT-VALUE>
+											<VALUE>
+												<CONSTANT-REFERENCE>
+													<SHORT-LABEL>ReferenceToConstant</SHORT-LABEL>
+													<CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/Services/WdgMSupervisedEntity_1</CONSTANT-REF>
+												</CONSTANT-REFERENCE>
+											</VALUE>
+											<VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/ImplDataTypes/WdgM_SupervisedEntityIdType</VALUE-TYPE-TREF>
+										</PORT-DEFINED-ARGUMENT-VALUE>
+									</PORT-ARG-VALUES>
+									<PORT-REF DEST="P-PORT-PROTOTYPE">/Services/WdgM/alive006</PORT-REF>
 								</PORT-API-OPTION>
 							</PORT-API-OPTIONS>
 							<RUNNABLES>

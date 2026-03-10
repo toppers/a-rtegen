@@ -55,7 +55,7 @@ public class GeneratorInfos { // COVERAGE 常に未達(インスタンス生成�
 	/**
 	 * RTEジェネレータのバージョン
 	 */
-    public static final String GENERATOR_VERSION = "1.4.0";
+    public static final String GENERATOR_VERSION = "1.3.0";
 
 	/**
 	 * RTEジェネレータのコマンド名

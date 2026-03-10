@@ -100,26 +100,26 @@ public interface RteBswModuleInstance extends EcucContainer {
 	EList<RteBswExclusiveAreaImpl> getRteBswExclusiveAreaImpl();
 
 	/**
-	 * Returns the value of the '<em><b>Rte Bsw Implementation</b></em>' reference.
+	 * Returns the value of the '<em><b>Rte Bsw Implementation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Rte Bsw Implementation</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Rte Bsw Implementation</em>' reference.
+	 * @return the value of the '<em>Rte Bsw Implementation</em>' containment reference.
 	 * @see #setRteBswImplementation(BswImplementation)
 	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.EcucPackage#getRteBswModuleInstance_RteBswImplementation()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	BswImplementation getRteBswImplementation();
 
 	/**
-	 * Sets the value of the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.RteBswModuleInstance#getRteBswImplementation <em>Rte Bsw Implementation</em>}' reference.
+	 * Sets the value of the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.RteBswModuleInstance#getRteBswImplementation <em>Rte Bsw Implementation</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Rte Bsw Implementation</em>' reference.
+	 * @param value the new value of the '<em>Rte Bsw Implementation</em>' containment reference.
 	 * @see #getRteBswImplementation()
 	 * @generated
 	 */

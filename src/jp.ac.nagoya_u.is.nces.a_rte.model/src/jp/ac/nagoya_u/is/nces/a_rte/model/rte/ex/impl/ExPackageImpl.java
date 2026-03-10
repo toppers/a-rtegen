@@ -58,7 +58,6 @@ import jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.ApplicationDataTypeEx;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.AssemblyDataInstanceConnectorEx;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.AtomicSwComponentTypeEx;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.BswSchedulableEntityEx;
-import jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.ComGroupSignalEx;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.ComSignalEx;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.ComSignalGroupEx;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.ex.CompuMethodEx;
@@ -167,13 +166,6 @@ public class ExPackageImpl extends EPackageImpl implements ExPackage {
 	 * @generated
 	 */
 	private EClass rteEventExEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass comGroupSignalExEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -762,28 +754,6 @@ public class ExPackageImpl extends EPackageImpl implements ExPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getComGroupSignalEx() {
-		return comGroupSignalExEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getComGroupSignalEx__GetImplementationRecordElement__ComGroupSignal() {
-		return comGroupSignalExEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getComGroupSignalEx__GetImplementationArrayElement__ComGroupSignal() {
-		return comGroupSignalExEClass.getEOperations().get(1);
-	}
-
 	public EClass getAssemblyDataInstanceConnectorEx() {
 		return assemblyDataInstanceConnectorExEClass;
 	}
@@ -1815,10 +1785,6 @@ public class ExPackageImpl extends EPackageImpl implements ExPackage {
 
 		rteEventExEClass = createEClass(RTE_EVENT_EX);
 		createEOperation(rteEventExEClass, RTE_EVENT_EX___GET_RELATED_ENTITY_STARTER__RTEEVENT);
-
-		comGroupSignalExEClass = createEClass(COM_GROUP_SIGNAL_EX);
-		createEOperation(comGroupSignalExEClass, COM_GROUP_SIGNAL_EX___GET_IMPLEMENTATION_RECORD_ELEMENT__COMGROUPSIGNAL);
-		createEOperation(comGroupSignalExEClass, COM_GROUP_SIGNAL_EX___GET_IMPLEMENTATION_ARRAY_ELEMENT__COMGROUPSIGNAL);
 	}
 
 	/**
@@ -2217,14 +2183,6 @@ public class ExPackageImpl extends EPackageImpl implements ExPackage {
 		op = initEOperation(getRteEventEx__GetRelatedEntityStarter__RteEvent(), theInteractionPackage.getEntityStarter(), "getRelatedEntityStarter", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theM2Package.getRteEvent(), "this_", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(comGroupSignalExEClass, ComGroupSignalEx.class, "ComGroupSignalEx", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		op = initEOperation(getComGroupSignalEx__GetImplementationRecordElement__ComGroupSignal(), theM2Package.getImplementationDataTypeElement(), "getImplementationRecordElement", 0, -1, IS_UNIQUE, !IS_ORDERED);
-		addEParameter(op, theEcucPackage.getComGroupSignal(), "this_", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = initEOperation(getComGroupSignalEx__GetImplementationArrayElement__ComGroupSignal(), theM2Package.getImplementationDataTypeElement(), "getImplementationArrayElement", 0, -1, IS_UNIQUE, !IS_ORDERED);
-		addEParameter(op, theEcucPackage.getComGroupSignal(), "this_", 1, 1, IS_UNIQUE, IS_ORDERED);
-
 		// Create annotations
 		// stereotypes
 		createStereotypesAnnotations();
@@ -2247,7 +2205,7 @@ public class ExPackageImpl extends EPackageImpl implements ExPackage {
 		   source, 
 		   new String[] {
 			 "extension", "true"
-		   });																																																																																																																																																							
+		   });																																																																																																																																																					
 	}
 
 	/**
@@ -2265,7 +2223,7 @@ public class ExPackageImpl extends EPackageImpl implements ExPackage {
 			 "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
 			 "settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
 			 "validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"
-		   });																																																																																																																																																						
+		   });																																																																																																																																																				
 	}
 
 	/**
@@ -2806,18 +2764,6 @@ public class ExPackageImpl extends EPackageImpl implements ExPackage {
 		   source, 
 		   new String[] {
 			 "body", "let reStartInteraction : interaction::RunnableEntityStartInteraction = interaction::RunnableEntityStartInteraction.allInstances()->any(sourceEvent = this_)\n\t\t\t\t\tin\n\t\t\t\t\tinteraction::EntityStarter.allInstances()->any(startInteraction->includes(reStartInteraction))"
-		   });		
-		addAnnotation
-		  (getComGroupSignalEx__GetImplementationRecordElement__ComGroupSignal(), 
-		   source, 
-		   new String[] {
-			 "body", "let systemSignal : ar4x::m2::SystemSignal = this_.comSystemTemplateSystemSignal.iSignal.systemSignal\n\t\t\t\tin if systemSignal.oclIsUndefined()\n\t\t\t\t\tthen OrderedSet{}\n\t\t\t\t\telse ar4x::m2::SenderRecRecordElementMapping.allInstances()\n\t\t\t\t\t\t->select(m | m.systemSignal = systemSignal)\n\t\t\t\t\t\t->collect(m | m.implementationRecordElement)\n\t\t\t\t\t\t->select(not oclIsUndefined())\n\t\t\t\t\t\t->asOrderedSet()\n\t\t\t\t\tendif"
-		   });		
-		addAnnotation
-		  (getComGroupSignalEx__GetImplementationArrayElement__ComGroupSignal(), 
-		   source, 
-		   new String[] {
-			 "body", "let systemSignal : ar4x::m2::SystemSignal = this_.comSystemTemplateSystemSignal.iSignal.systemSignal\n\t\t\t\tin if systemSignal.oclIsUndefined()\n\t\t\t\t\tthen OrderedSet{}\n\t\t\t\t\telse ar4x::m2::SenderRecArrayElementMapping.allInstances()\n\t\t\t\t\t\t->select(m | m.systemSignal = systemSignal)\n\t\t\t\t\t\t->collect(m | m.indexedArrayElement.implementationArrayElement)\n\t\t\t\t\t\t->select(not oclIsUndefined())\n\t\t\t\t\t\t->asOrderedSet()\n\t\t\t\t\tendif"
 		   });
 	}
 

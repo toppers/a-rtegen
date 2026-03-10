@@ -145,15 +145,6 @@ public interface ExFactory extends EFactory {
 	RteEventEx createRteEventEx();
 
 	/**
-	 * Returns a new object of class '<em>Com Group Signal Ex</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Com Group Signal Ex</em>'.
-	 * @generated
-	 */
-	ComGroupSignalEx createComGroupSignalEx();
-
-	/**
 	 * Returns a new object of class '<em>Assembly Data Instance Connector Ex</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

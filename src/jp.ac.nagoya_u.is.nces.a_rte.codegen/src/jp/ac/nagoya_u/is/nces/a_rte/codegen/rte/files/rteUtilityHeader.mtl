@@ -39,7 +39,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  * 
- *  $Id: rteUtilityHeader.mtl 28663 2016-12-12 05:36:20Z m-yamada $
+ *  $Id: rteUtilityHeader.mtl 19918 2016-01-08 06:05:46Z hiroki.kitagawa $
  */
 [/comment]
 [comment encoding = UTF-8 /]
@@ -63,8 +63,6 @@
 	[aRteUtilityHeader.genModeControlMacroDefinitions()/]
 
 	[aRteUtilityHeader.genFilterCheckMacroDefinitions()/]
-
-	[aRteUtilityHeader.genExclusiveAreaMacroDefinitions()/]
 
 	[aRteUtilityHeader.genFileFooter()/]
 [/file]
@@ -94,7 +92,7 @@ do {	\
 	for (rte_arraymemcpy_inx = 0U; rte_arraymemcpy_inx < sizeof(type); rte_arraymemcpy_inx++) {	\
 		((uint8*)(dest))['['/]rte_arraymemcpy_inx[']'/] = ((uint8*)(src))['['/]rte_arraymemcpy_inx[']'/];	\
 	}	\
-} while (0) /* MISRA RULE 11.4, 11.5, 17.4 VIOLATION : It is safe because the arguments are managed by RTE codes */
+} while (0) /* MISRA RULE 11.4, 11.5 VIOLATION : It is safe because the arguments are managed by RTE codes */
 #define Rte_StructMemcpy(dest, src, type)	\
 do {	\
 	*((type *)(dest))  = *((type *)(src)); /* MISRA RULE 19.10 VIOLATION: "((type) *)" causes a compile error.  */	\
@@ -102,7 +100,7 @@ do {	\
 #define Rte_UnionMemcpy(dest, src, type)	\
 do {	\
 	*((type *)(dest))  = *((type *)(src));  /* MISRA RULE 19.10 VIOLATION: "((type) *)" causes a compile error.  */	\
-} while (0) /* MISRA RULE 11.4, 11.5 VIOLATION : It is safe because the arguments are managed by RTE codes */
+} while (0) /* MISRA RULE 11.4, 11.5, 17.4 VIOLATION : It is safe because the arguments are managed by RTE codes */
 [/template]
 
 [comment]
@@ -272,7 +270,7 @@ do {	\
 			Rte_ArrayMemcpy(((queue)->element['['/]((queue)->head  + (queue)->quecnt) % (sizeof((queue)->element) / sizeof((queue)->element['['/]0[']'/]))[']'/]), value, type);	\
 			++((queue)->quecnt);	\
 		}	\
-	} while (0) /* MISRA RULE 11.4, 17.4 VIOLATION : It is safe because the arguments are managed by RTE codes */
+	} while (0) /* MISRA RULE 11.4 VIOLATION : It is safe because the arguments are managed by RTE codes */
 
 #define Rte_EnqueueStructNoReturn(queue, value, type, max_quecnt)	\
 	do {	\
@@ -368,7 +366,8 @@ do {	\
 #define RTE_DECLARE_TASK_ID(val)    TaskType (val) /* MISRA RULE 19.7 VIOLATION: use macro func for optimization. */
 #define RTE_GET_TASK_ID(val)	\
 	do {	\
-		if ((Rte_Call_Bsw_GetTaskID(&(val)) != E_OK) || ((val) == INVALID_TASK)) {	\
+		ercd = Rte_Call_Bsw_GetTaskID(&(val));	\
+		if ((ercd != E_OK) || ((val) == INVALID_TASK)) {	\
 			ercd = RTE_E_DEV_DEFECT;	\
 			goto err_return;	\
 		}	\
@@ -400,49 +399,7 @@ do {	\
 			goto err_return;	\
 		}	\
 	} while (0)
-#define RTE_CHECK_ARG_POINTER_INOUT_OR_OUT RTE_CHECK_ARG_INOUT_OR_OUT
-#define RTE_CHECK_CALLER_OSAP_FOR_TRUSTED(osap)	\
-	do {	\
-		if (Rte_Call_Bsw_GetApplicationID() != (osap)) {	\
-			ercd = E_OS_CALLEVEL;	\
-			goto err_return;	\
-		}	\
-	} while (0)
-#define RTE_GET_TASK_ID_FOR_TRUSTED(val)	\
-	do {	\
-		if ((Rte_Call_Bsw_GetTaskID(&(val)) != E_OK) || ((val) == INVALID_TASK)) {	\
-			ercd = E_OS_CALLEVEL;	\
-			goto err_return;	\
-		}	\
-	} while (0)
-	#define RTE_CHECK_ARG_IN_FOR_TRUSTED(val, arg, type)	\
-	do {	\
-		AccessType rte_status;	\
-		rte_status = Rte_Call_Bsw_CheckTaskMemoryAccess((val), (MemoryStartAddressType)(arg), sizeof(type));	\
-		if ((Rte_Call_Bsw_ALIGNED_TYPE((arg), type) == FALSE) || (Rte_Call_Bsw_OSMEMORY_IS_READABLE(rte_status) == FALSE)) {	\
-			ercd = E_OS_ACCESS;	\
-			goto err_return;	\
-		}	\
-	} while (0)
-	#define RTE_CHECK_ARG_INOUT_OR_OUT_FOR_TRUSTED(val, arg, type)	\
-	do {	\
-		AccessType rte_status;	\
-		rte_status = Rte_Call_Bsw_CheckTaskMemoryAccess((val), (MemoryStartAddressType)(arg), sizeof(type));	\
-		if ((Rte_Call_Bsw_ALIGNED_TYPE((arg), type) == FALSE) || (Rte_Call_Bsw_OSMEMORY_IS_WRITEABLE(rte_status) == FALSE)) {	\
-			ercd = E_OS_ACCESS;	\
-			goto err_return;	\
-		}	\
-	} while (0)
-	#define RTE_CHECK_ARG_POINTER_IN_FOR_TRUSTED(val, arg, type)	\
-	do {	\
-		AccessType rte_status;	\
-		rte_status = Rte_Call_Bsw_CheckTaskMemoryAccess((val), (MemoryStartAddressType)(arg), 1U);	\
-		if (Rte_Call_Bsw_OSMEMORY_IS_READABLE(rte_status) == FALSE) {	\
-			ercd = E_OS_ACCESS;	\
-			goto err_return;	\
-		}	\
-	} while (0)
-#define RTE_CHECK_ARG_POINTER_INOUT_OR_OUT_FOR_TRUSTED RTE_CHECK_ARG_INOUT_OR_OUT_FOR_TRUSTED
+#define RTE_CHECK_ARG_POINTER_INOUT_OR_OUT CHECK_ARG_INOUT_OR_OUT
 #else
 #define RTE_DECLARE_TASK_ID(val)
 #define RTE_GET_TASK_ID(val)
@@ -450,19 +407,5 @@ do {	\
 #define RTE_CHECK_ARG_INOUT_OR_OUT(val, arg, type)
 #define RTE_CHECK_ARG_POINTER_IN(val, arg, type)
 #define RTE_CHECK_ARG_POINTER_INOUT_OR_OUT
-#define RTE_CHECK_CALLER_OSAP_FOR_TRUSTED(osap)
-#define RTE_GET_TASK_ID_FOR_TRUSTED(val)
-#define RTE_CHECK_ARG_IN_FOR_TRUSTED(val, arg, type)
-#define RTE_CHECK_ARG_INOUT_OR_OUT_FOR_TRUSTED(val, arg, type)
-#define RTE_CHECK_ARG_POINTER_IN_FOR_TRUSTED(val, arg, type)
-#define RTE_CHECK_ARG_POINTER_INOUT_OR_OUT_FOR_TRUSTED
 #endif
-[/template]
-
-[template private genExclusiveAreaMacroDefinitions(aRteUtilityHeader : RteUtilityHeader)]
-/*
- * Internal Exclusive Area Macro Definitions
- */
-#define RTE_INTERNAL_EXCLUSIVE_AREA_ENTER()
-#define RTE_INTERNAL_EXCLUSIVE_AREA_EXIT()
 [/template]

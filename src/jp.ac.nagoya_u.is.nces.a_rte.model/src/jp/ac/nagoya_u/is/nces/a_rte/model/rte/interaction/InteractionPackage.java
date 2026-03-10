@@ -1844,22 +1844,13 @@ public interface InteractionPackage extends EPackage {
 	int TRUSTED_FUNCTION_COM_SEND_IMPLEMENTATION__COM_SIGNAL_GROUP = COM_SEND_IMPLEMENTATION__COM_SIGNAL_GROUP;
 
 	/**
-	 * The feature id for the '<em><b>Os Trusted Function</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRUSTED_FUNCTION_COM_SEND_IMPLEMENTATION__OS_TRUSTED_FUNCTION = COM_SEND_IMPLEMENTATION_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>Trusted Function Com Send Implementation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRUSTED_FUNCTION_COM_SEND_IMPLEMENTATION_FEATURE_COUNT = COM_SEND_IMPLEMENTATION_FEATURE_COUNT + 1;
+	int TRUSTED_FUNCTION_COM_SEND_IMPLEMENTATION_FEATURE_COUNT = COM_SEND_IMPLEMENTATION_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Is Event Semantics</em>' operation.
@@ -4740,17 +4731,6 @@ public interface InteractionPackage extends EPackage {
 	EClass getTrustedFunctionComSendImplementation();
 
 	/**
-	 * Returns the meta object for the reference '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.interaction.TrustedFunctionComSendImplementation#getOsTrustedFunction <em>Os Trusted Function</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Os Trusted Function</em>'.
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.interaction.TrustedFunctionComSendImplementation#getOsTrustedFunction()
-	 * @see #getTrustedFunctionComSendImplementation()
-	 * @generated
-	 */
-	EReference getTrustedFunctionComSendImplementation_OsTrustedFunction();
-
-	/**
 	 * Returns the meta object for class '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.interaction.PeriodicProxyComSendImplementation <em>Periodic Proxy Com Send Implementation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6349,14 +6329,6 @@ public interface InteractionPackage extends EPackage {
 		 * @generated
 		 */
 		EClass TRUSTED_FUNCTION_COM_SEND_IMPLEMENTATION = eINSTANCE.getTrustedFunctionComSendImplementation();
-
-		/**
-		 * The meta object literal for the '<em><b>Os Trusted Function</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TRUSTED_FUNCTION_COM_SEND_IMPLEMENTATION__OS_TRUSTED_FUNCTION = eINSTANCE.getTrustedFunctionComSendImplementation_OsTrustedFunction();
 
 		/**
 		 * The meta object literal for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.interaction.impl.PeriodicProxyComSendImplementationImpl <em>Periodic Proxy Com Send Implementation</em>}' class.

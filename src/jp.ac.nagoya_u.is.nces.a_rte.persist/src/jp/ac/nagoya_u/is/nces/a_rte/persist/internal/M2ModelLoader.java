@@ -55,7 +55,9 @@ import jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.m2.M2Root;
 import jp.ac.nagoya_u.is.nces.a_rte.persist.PersistException;
 import jp.ac.nagoya_u.is.nces.a_rte.persist.internal.util.M2XmlUtils;
 
+import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 import org.xml.sax.XMLReader;
 
 public class M2ModelLoader {
@@ -92,9 +94,23 @@ public class M2ModelLoader {
 		try {
 			XMLReader xmlReader = this.saxParser.getXMLReader();
 			xmlReader.setContentHandler(handler);
-			xmlReader.setErrorHandler(handler);
-			
+			xmlReader.setErrorHandler(new ErrorHandler() {
+				@Override
+				public void warning(SAXParseException exception) throws SAXException { // COVERAGE (常用ケースではないため，コードレビューで問題ないことを確認)
+				}
+
+				@Override
+				public void error(SAXParseException exception) throws SAXException {
+					throw exception;
+				}
+
+				@Override
+				public void fatalError(SAXParseException exception) throws SAXException {
+					throw exception;
+				}
+			});
 			xmlReader.parse(convertToFileURL(file));
+
 		} catch (SAXException e) {
 			throw new PersistException("Error occurred while loading file " + file + ". " + e.getMessage(), e);
 

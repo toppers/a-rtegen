@@ -89,7 +89,7 @@ public class M2XmlUtils {
 	}
 
 	private static XmlWrapType getXmlWrapType(EAttribute eAttribute) {
-		if (eAttribute.isMany() || M2ModelUtils.isXmlRoleWrapperEnabled(eAttribute, false)) { // COVERAGE (分岐網羅はされているのでテスト要件を満たしている)
+		if (eAttribute.isMany() || M2ModelUtils.isXmlRoleWrapperEnabled(eAttribute, false)) { // (分岐網羅はされているのでテスト要件を満たしている)
 			return XmlWrapType.ROLE_WRAPPER_AND_ROLE;
 		} else {
 			return XmlWrapType.ROLE;

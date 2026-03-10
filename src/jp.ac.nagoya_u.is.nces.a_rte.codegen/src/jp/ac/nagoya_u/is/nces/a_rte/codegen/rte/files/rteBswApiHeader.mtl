@@ -84,7 +84,6 @@
 #define Rte_Call_Bsw_WaitEvent WaitEvent
 #define Rte_Call_Bsw_CallTrustedFunction CallTrustedFunction
 #define Rte_Call_Bsw_GetTaskID GetTaskID
-#define Rte_Call_Bsw_GetApplicationID GetApplicationID
 #define Rte_Call_Bsw_CheckTaskMemoryAccess CheckTaskMemoryAccess
 #define Rte_Call_Bsw_GetSpinlock GetSpinlock
 #define Rte_Call_Bsw_ReleaseSpinlock ReleaseSpinlock

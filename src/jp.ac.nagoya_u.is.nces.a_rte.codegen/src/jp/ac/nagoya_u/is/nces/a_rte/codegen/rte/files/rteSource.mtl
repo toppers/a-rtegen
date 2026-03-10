@@ -39,7 +39,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  * 
- *  $Id: rteSource.mtl 28166 2016-11-22 05:49:53Z m-yamada $
+ *  $Id: rteSource.mtl 19918 2016-01-08 06:05:46Z hiroki.kitagawa $
  */
 [/comment]
 [comment encoding = UTF-8 /]
@@ -434,26 +434,8 @@ BSWスケジューラ ライフサイクルAPIの定義
 [aTrustedFunction.returnType.symbolName/]
 [aTrustedFunction.symbolName/]([aTrustedFunction.genFunctionParams()/]) /* MISRA RULE 16.7 VIOLATION : It can't be fixed because the type(TrustedFunctionParameterRefType) is a pointer typedef */
 {
-	StatusType ercd;
-	RTE_DECLARE_TASK_ID(taskId);
 	[aTrustedFunction.localVariable.type.symbolName/] *p_tfn_prm = ([aTrustedFunction.localVariable.type.symbolName/] *) tfn_prm; /* MISRA RULE 11.4 VIOLATION : It is safe because the argument variable(tfn_prm) is passed from RTE codes */
-	ercd = E_OK;
-	
-	RTE_CHECK_CALLER_OSAP_FOR_TRUSTED([aTrustedFunction.callerOsApplicationName/]); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification */
-	RTE_GET_TASK_ID_FOR_TRUSTED(taskId); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification */
-	RTE_CHECK_ARG_INOUT_OR_OUT_FOR_TRUSTED(taskId, p_tfn_prm, [aTrustedFunction.localVariable.type.symbolName/]); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification */
-	RTE_CHECK_ARG_IN_FOR_TRUSTED(taskId, p_tfn_prm->com_data, [aTrustedFunction.sendValueType.symbolName/]); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification. MISRA RULE 11.5 VIOLATION : It is safe because the argument variable(tfn_prm) is passed from RTE codes */
-	
-	[if (not aTrustedFunction.operation.tAckStatus.oclIsUndefined())]
-		[aTrustedFunction.operation.tAckStatus.statusVariable.symbolName/] = RTE_E_NO_DATA;
-	[/if]
-	
-	[if (aTrustedFunction.isGroup)]
-		p_tfn_prm->tf_ercd = [aTrustedFunction.signalGroupSymbolName/]((&[aTrustedFunction.operation.accessApi.comSignalSymbolName/]), p_tfn_prm->com_data); /* MISRA RULE 11.4 VIOLATION : It is safe because the argument variable(tfn_prm) is passed from RTE codes */
-	[else]
-		p_tfn_prm->tf_ercd = [aTrustedFunction.signalGroupSymbolName/]([aTrustedFunction.operation.accessApi.comSignalSymbolName/], p_tfn_prm->com_data); /* MISRA RULE 11.4 VIOLATION : It is safe because the argument variable(tfn_prm) is passed from RTE codes */
-	[/if]
-
+	p_tfn_prm->tf_ercd = [aTrustedFunction.signalGroupSymbolName/]([if (aTrustedFunction.isGroup)]p_tfn_prm->meta, (const uint8*)p_tfn_prm->com_data[else]p_tfn_prm->com_sig_id, p_tfn_prm->com_data[/if]); /* MISRA RULE 11.4 VIOLATION : It is safe because the argument variable(tfn_prm) is passed from RTE codes */
 	if (p_tfn_prm->tf_ercd == E_OK) {
 		/* Nothing to do */
 	}
@@ -463,9 +445,7 @@ BSWスケジューラ ライフサイクルAPIの定義
 	else {
 		p_tfn_prm->tf_ercd = RTE_E_DEV_DEFECT;	
 	}
-	
-  err_return:
-	return(ercd);
+	return(E_OK);
 }
 [/template]
 
@@ -473,30 +453,22 @@ BSWスケジューラ ライフサイクルAPIの定義
 [aTrustedFunction.returnType.symbolName/]
 [aTrustedFunction.symbolName/]([aTrustedFunction.genFunctionParams()/]) /* MISRA RULE 16.7 VIOLATION : It can't be fixed because the type(TrustedFunctionParameterRefType) is a pointer typedef */
 {
-	StatusType ercd;
 	[if (aTrustedFunction.operation.accessVariable.valueVariable.type.oclIsKindOf(PrimitiveType) or aTrustedFunction.operation.accessVariable.valueVariable.type.oclIsKindOf(PointerType))]
 		[aTrustedFunction.genLocalVariableDeclarations()/]
-	[/if]
-	Rte_NonqueuedSendTrustedFunctionParamType *p_tfn_prm;
-	RTE_DECLARE_TASK_ID(taskId);
+		Rte_NonqueuedSendTrustedFunctionParamType *p_tfn_prm;
 	
-	ercd = E_OK;
-	p_tfn_prm = (Rte_NonqueuedSendTrustedFunctionParamType *) tfn_prm; /* MISRA RULE 11.4 VIOLATION : It is safe because the argument variable(tfn_prm) is passed from RTE codes */
-	[aTrustedFunction.genLocalVariableInitializations()/]
+		p_tfn_prm = (Rte_NonqueuedSendTrustedFunctionParamType *) tfn_prm; /* MISRA RULE 11.4 VIOLATION : It is safe because the argument variable(tfn_prm) is passed from RTE codes */
 	
-	RTE_CHECK_CALLER_OSAP_FOR_TRUSTED([aTrustedFunction.callerOsApplicationName/]); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification */
-	RTE_GET_TASK_ID_FOR_TRUSTED(taskId); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification */
-	RTE_CHECK_ARG_INOUT_OR_OUT_FOR_TRUSTED(taskId, p_tfn_prm, Rte_NonqueuedSendTrustedFunctionParamType); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification */
-	[if (aTrustedFunction.operation.accessVariable.valueVariable.type.oclIsKindOf(PointerType)) ]
-		RTE_CHECK_ARG_POINTER_IN_FOR_TRUSTED(taskId, p_tfn_prm->tf_data, [aTrustedFunction.dataVariable.type.symbolName/]); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification. MISRA RULE 11.5 VIOLATION : It is safe because the argument variable(tfn_prm) is passed from RTE codes */
-	[else]
-		RTE_CHECK_ARG_IN_FOR_TRUSTED(taskId, p_tfn_prm->tf_data, [aTrustedFunction.dataVariable.type.symbolName/]); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification. MISRA RULE 11.5 VIOLATION : It is safe because the argument variable(tfn_prm) is passed from RTE codes */
-	[/if]
+		[aTrustedFunction.genLocalVariableInitializations()/]
 	
-	[if (aTrustedFunction.operation.accessVariable.valueVariable.type.oclIsKindOf(PrimitiveType) or aTrustedFunction.operation.accessVariable.valueVariable.type.oclIsKindOf(PointerType))]
-		[aTrustedFunction.dataVariable.genValueAccess()/] = *(([aTrustedFunction.dataVariable.type.symbolName/] *) p_tfn_prm->tf_data); /* MISRA RULE 11.4, 11.5 VIOLATION : It is safe because the argument variable(tfn_prm) is passed from RTE codes */
+		[aTrustedFunction.dataVariable.genValueAccess()/] = *(([aTrustedFunction.dataVariable.type.symbolName/] *) p_tfn_prm->tf_data); /* MISRA RULE 11.4 VIOLATION : It is safe because the argument variable(tfn_prm) is passed from RTE codes */
+	
 		[aTrustedFunction.operation.genSendOperation()/]
 	[else]
+		Rte_NonqueuedSendTrustedFunctionParamType *p_tfn_prm;
+	
+		p_tfn_prm = (Rte_NonqueuedSendTrustedFunctionParamType *) tfn_prm; /* MISRA RULE 11.4 VIOLATION : It is safe because the argument variable(tfn_prm) is passed from RTE codes */
+	
 		[let aExcludeOperation : ExcludeOperation = aTrustedFunction.operation.excludeOperation]
 			[aExcludeOperation.genExcludeOperationEnter()/]
 		[/let]
@@ -519,9 +491,8 @@ BSWスケジューラ ライフサイクルAPIの定義
 	[else]
 		p_tfn_prm->tf_rx_res = TRUE;
 	[/if]
-	
-  err_return:
-	return(ercd);
+
+	return(E_OK);
 }
 [/template]
 
@@ -529,18 +500,11 @@ BSWスケジューラ ライフサイクルAPIの定義
 [aTrustedFunction.returnType.symbolName/]
 [aTrustedFunction.symbolName/]([aTrustedFunction.genFunctionParams()/]) /* MISRA RULE 16.7 VIOLATION : It can't be fixed because the type(TrustedFunctionParameterRefType) is a pointer typedef */
 {	
-	StatusType ercd;
-	RTE_DECLARE_TASK_ID(taskId);
 	[aTrustedFunction.genLocalVariableDeclarations()/]
 	Rte_NonqueuedSendTrustedFunctionParamType *p_tfn_prm;
 
-	ercd = E_OK;
 	p_tfn_prm = (Rte_NonqueuedSendTrustedFunctionParamType *) tfn_prm; /* MISRA RULE 11.4 VIOLATION : It is safe because the argument variable(tfn_prm) is passed from RTE codes */
 	[aTrustedFunction.genLocalVariableInitializations()/]
-
-	RTE_CHECK_CALLER_OSAP_FOR_TRUSTED([aTrustedFunction.callerOsApplicationName/]); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification */
-	RTE_GET_TASK_ID_FOR_TRUSTED(taskId); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification */
-	RTE_CHECK_ARG_INOUT_OR_OUT_FOR_TRUSTED(taskId, p_tfn_prm, Rte_NonqueuedSendTrustedFunctionParamType); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification */
 
 	[aTrustedFunction.operation.genSendOperation()/]
 	[if (not aTrustedFunction.operation.filterOperation.oclIsUndefined())]
@@ -548,9 +512,8 @@ BSWスケジューラ ライフサイクルAPIの定義
 	[else]
 		p_tfn_prm->tf_rx_res = TRUE;
 	[/if]
-	
-  err_return:
-	return(ercd);
+
+	return(E_OK);
 }
 [/template]
 
@@ -558,19 +521,7 @@ BSWスケジューラ ライフサイクルAPIの定義
 [aTrustedFunction.returnType.symbolName/]
 [aTrustedFunction.symbolName/]([aTrustedFunction.genFunctionParams()/]) /* MISRA RULE 16.7 VIOLATION : It can't be fixed because the type(TrustedFunctionParameterRefType) is a pointer typedef */
 {
-	StatusType ercd;
-	RTE_DECLARE_TASK_ID(taskId);
 	Rte_QueuedSendTrustedFunctionParamType *p_tfn_prm = (Rte_QueuedSendTrustedFunctionParamType *) tfn_prm; /* MISRA RULE 11.4 VIOLATION : It is safe because the argument variable(tfn_prm) is passed from RTE codes */
-	ercd = E_OK;
-
-	RTE_CHECK_CALLER_OSAP_FOR_TRUSTED([aTrustedFunction.callerOsApplicationName/]); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification */
-	RTE_GET_TASK_ID_FOR_TRUSTED(taskId); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification */
-	RTE_CHECK_ARG_INOUT_OR_OUT_FOR_TRUSTED(taskId, p_tfn_prm, Rte_QueuedSendTrustedFunctionParamType); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification */
-	[if (aTrustedFunction.operation.type.oclIsKindOf(PointerType)) ]
-		RTE_CHECK_ARG_POINTER_IN_FOR_TRUSTED(taskId, p_tfn_prm->tf_data, [aTrustedFunction.dataVariable.type.symbolName/]); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification. MISRA RULE 11.5 VIOLATION : It is safe because the argument variable(tfn_prm) is passed from RTE codes */
-	[else]
-		RTE_CHECK_ARG_IN_FOR_TRUSTED(taskId, p_tfn_prm->tf_data, [aTrustedFunction.dataVariable.type.symbolName/]); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification. MISRA RULE 11.5 VIOLATION : It is safe because the argument variable(tfn_prm) is passed from RTE codes */
-	[/if]
 	[let aExcludeOperation : ExcludeOperation = aTrustedFunction.operation.excludeOperation]
 		[aExcludeOperation.genExcludeOperationEnter()/]
 	[/let]
@@ -587,8 +538,7 @@ BSWスケジューラ ライフサイクルAPIの定義
 		[aExcludeOperation.genExcludeOperationExit()/]
 	[/let]
 
-  err_return:
-	return(ercd);
+	return(E_OK);
 }
 [/template]
 
@@ -596,38 +546,18 @@ BSWスケジューラ ライフサイクルAPIの定義
 [aTrustedFunction.returnType.symbolName/]
 [aTrustedFunction.symbolName/]([aTrustedFunction.genFunctionParams()/]) /* MISRA RULE 16.7 VIOLATION : It can't be fixed because the type(TrustedFunctionParameterRefType) is a pointer typedef */
 {
-	StatusType ercd;
-	RTE_DECLARE_TASK_ID(taskId);
 	[aTrustedFunction.csTfParamTypeName/] *p_tfn_prm = ([aTrustedFunction.csTfParamTypeName/] *) tfn_prm; /* MISRA RULE 11.4 VIOLATION : It is safe because the argument variable(tfn_prm) is passed from RTE codes */
-	ercd = E_OK;
-	
-	RTE_CHECK_CALLER_OSAP_FOR_TRUSTED([aTrustedFunction.callerOsApplicationName/]);  /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification */
-	RTE_GET_TASK_ID_FOR_TRUSTED(taskId); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification */
-	RTE_CHECK_ARG_INOUT_OR_OUT_FOR_TRUSTED(taskId, p_tfn_prm, [aTrustedFunction.csTfParamTypeName/]); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification */
-	
 	switch (p_tfn_prm->tf_opid) {	
 		[for (aCsTfCalledRunnable : CsTfCalledRunnable | aTrustedFunction.csTfCalledRunnable)]
 		case ([aCsTfCalledRunnable.csTfOpidConstantName/]):
-			[for (aParam : Parameter |  aCsTfCalledRunnable.startOperation.startServerRunnable.roleParam)]
-				RTE_CHECK_ARG_IN_FOR_TRUSTED(taskId, &p_tfn_prm->tf_argv['['/][i-1/][']'/], [aParam.type.symbolName/] *); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification. MISRA RULE 17.4 VIOLATION : It is safe because the variable is managed by RTE codes */
-				[if ((aParam.type.oclIsKindOf(PointerType) and aParam.direction = ParameterDirectionEnum::_'in'))]
-					RTE_CHECK_ARG_POINTER_IN_FOR_TRUSTED(taskId, p_tfn_prm->tf_argv['['/][i-1/][']'/], [aParam.type.symbolName/]); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification. MISRA RULE 17.4 VIOLATION : It is safe because the variable is managed by RTE codes */
-				[elseif ((aParam.type.oclIsKindOf(PointerType) and aParam.direction <> ParameterDirectionEnum::_'in'))]
-					RTE_CHECK_ARG_POINTER_INOUT_OR_OUT_FOR_TRUSTED(taskId, p_tfn_prm->tf_argv['['/][i-1/][']'/], [aParam.type.symbolName/]); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification. MISRA RULE 17.4 VIOLATION : It is safe because the variable is managed by RTE codes */
-				[elseif ((not aParam.type.oclIsKindOf(PointerType) and aParam.direction = ParameterDirectionEnum::_'in'))]
-					RTE_CHECK_ARG_IN_FOR_TRUSTED(taskId, p_tfn_prm->tf_argv['['/][i-1/][']'/], [aParam.type.symbolName/]); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification. MISRA RULE 17.4 VIOLATION : It is safe because the variable is managed by RTE codes */
-				[elseif ((not aParam.type.oclIsKindOf(PointerType) and aParam.direction <> ParameterDirectionEnum::_'in'))]
-					RTE_CHECK_ARG_INOUT_OR_OUT_FOR_TRUSTED(taskId, p_tfn_prm->tf_argv['['/][i-1/][']'/], [aParam.type.symbolName/]); /* MISRA RULE 14.4 VIOLATION: use "goto" for simplification. MISRA RULE 17.4 VIOLATION : It is safe because the variable is managed by RTE codes */
-				[/if]
-			[/for]
 			[for (aExcludeOperation : ExcludeOperation | aCsTfCalledRunnable.startOperation.rieaExcludeOperation)]
 				[aExcludeOperation.genExcludeOperationEnter()/]
 			[/for]
 			[if (aCsTfCalledRunnable.startOperation.startServerRunnable.hasReturnValue)]
-				p_tfn_prm->tf_ercd = [aCsTfCalledRunnable.startOperation.startServerRunnable.symbolName/]([aCsTfCalledRunnable.genFunctionRunnablePortArgValues()/][if (aCsTfCalledRunnable.startOperation.portArgValue->notEmpty() and aCsTfCalledRunnable.startOperation.startServerRunnable.roleParam->notEmpty())],[/if][aCsTfCalledRunnable.genFunctionRunnableParams()/]);[if (aCsTfCalledRunnable.startOperation.startServerRunnable.roleParam->notEmpty())] /* MISRA RULE 11.4, 17.4 VIOLATION : It is safe because the argument variable(tfn_prm) is passed from RTE codes */[/if]
+				p_tfn_prm->tf_ercd = [aCsTfCalledRunnable.startOperation.startServerRunnable.symbolName/]([aCsTfCalledRunnable.genFunctionRunnableParams()/]); /* MISRA RULE 11.4 VIOLATION : It is safe because the argument variable(tfn_prm) is passed from RTE codes */
 			[else]
 				p_tfn_prm->tf_ercd = RTE_E_OK; 
-				[aCsTfCalledRunnable.startOperation.startServerRunnable.symbolName/]([aCsTfCalledRunnable.genFunctionRunnablePortArgValues()/][if (aCsTfCalledRunnable.startOperation.portArgValue->notEmpty() and aCsTfCalledRunnable.startOperation.startServerRunnable.roleParam->notEmpty())],[/if][aCsTfCalledRunnable.genFunctionRunnableParams()/]);[if (aCsTfCalledRunnable.startOperation.startServerRunnable.roleParam->notEmpty())] /* MISRA RULE 11.4, 17.4 VIOLATION : It is safe because the argument variable(tfn_prm) is passed from RTE codes */[/if]
+				[aCsTfCalledRunnable.startOperation.startServerRunnable.symbolName/]([aCsTfCalledRunnable.genFunctionRunnableParams()/]); /* MISRA RULE 11.4 VIOLATION : It is safe because the argument variable(tfn_prm) is passed from RTE codes */
 			[/if]
 			[for (aExcludeOperation : ExcludeOperation | aCsTfCalledRunnable.startOperation.rieaExcludeOperation->reverse())]
 				[aExcludeOperation.genExcludeOperationExit()/]
@@ -637,9 +567,7 @@ BSWスケジューラ ライフサイクルAPIの定義
 		default:
 			break;
 	}
-	
-  err_return:
-	return(ercd);
+	return(E_OK);
 }
 [/template]
 

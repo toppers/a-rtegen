@@ -39,7 +39,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  * 
- *  $Id: entityOperation.mtl 27834 2016-11-10 07:50:05Z m-yamada $
+ *  $Id: entityOperation.mtl 19918 2016-01-08 06:05:46Z hiroki.kitagawa $
  */
 [/comment]
 [comment encoding = UTF-8 /]
@@ -98,12 +98,12 @@
 [if (aExecutableStartOperation.disabledInMode->isEmpty()) ]
 	[aExecutableStartOperation.genDoExecutableStartOperation()/]
 [else]
-	Rte_Call_Bsw_SuspendOSInterrupts();
+	Rte_Call_Bsw_SuspendAllInterrupts();
 	if ([aExecutableStartOperation.genDisabledInModeIf() /]){
-		Rte_Call_Bsw_ResumeOSInterrupts();
+		Rte_Call_Bsw_ResumeAllInterrupts();
 		[aExecutableStartOperation.genDoExecutableStartOperation()/]
 	} else {
-		Rte_Call_Bsw_ResumeOSInterrupts();
+		Rte_Call_Bsw_ResumeAllInterrupts();
 	}
 [/if]
 [/template]

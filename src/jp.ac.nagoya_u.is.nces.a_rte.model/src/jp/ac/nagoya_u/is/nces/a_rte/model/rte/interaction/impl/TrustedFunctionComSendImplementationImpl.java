@@ -44,40 +44,21 @@
  */
 package jp.ac.nagoya_u.is.nces.a_rte.model.rte.interaction.impl;
 
-import jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.OsApplicationTrustedFunction;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.interaction.InteractionPackage;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.interaction.TrustedFunctionComSendImplementation;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Trusted Function Com Send Implementation</b></em>'.
  * <!-- end-user-doc -->
  * <p>
- * The following features are implemented:
- * <ul>
- *   <li>{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.interaction.impl.TrustedFunctionComSendImplementationImpl#getOsTrustedFunction <em>Os Trusted Function</em>}</li>
- * </ul>
  * </p>
  *
  * @generated
  */
 public class TrustedFunctionComSendImplementationImpl extends ComSendImplementationImpl implements TrustedFunctionComSendImplementation {
-	/**
-	 * The cached value of the '{@link #getOsTrustedFunction() <em>Os Trusted Function</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOsTrustedFunction()
-	 * @generated
-	 * @ordered
-	 */
-	protected OsApplicationTrustedFunction osTrustedFunction;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -95,103 +76,6 @@ public class TrustedFunctionComSendImplementationImpl extends ComSendImplementat
 	@Override
 	protected EClass eStaticClass() {
 		return InteractionPackage.Literals.TRUSTED_FUNCTION_COM_SEND_IMPLEMENTATION;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OsApplicationTrustedFunction getOsTrustedFunction() {
-		if (osTrustedFunction != null && ((EObject)osTrustedFunction).eIsProxy()) {
-			InternalEObject oldOsTrustedFunction = (InternalEObject)osTrustedFunction;
-			osTrustedFunction = (OsApplicationTrustedFunction)eResolveProxy(oldOsTrustedFunction);
-			if (osTrustedFunction != oldOsTrustedFunction) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.TRUSTED_FUNCTION_COM_SEND_IMPLEMENTATION__OS_TRUSTED_FUNCTION, oldOsTrustedFunction, osTrustedFunction));
-			}
-		}
-		return osTrustedFunction;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OsApplicationTrustedFunction basicGetOsTrustedFunction() {
-		return osTrustedFunction;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOsTrustedFunction(OsApplicationTrustedFunction newOsTrustedFunction) {
-		OsApplicationTrustedFunction oldOsTrustedFunction = osTrustedFunction;
-		osTrustedFunction = newOsTrustedFunction;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.TRUSTED_FUNCTION_COM_SEND_IMPLEMENTATION__OS_TRUSTED_FUNCTION, oldOsTrustedFunction, osTrustedFunction));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InteractionPackage.TRUSTED_FUNCTION_COM_SEND_IMPLEMENTATION__OS_TRUSTED_FUNCTION:
-				if (resolve) return getOsTrustedFunction();
-				return basicGetOsTrustedFunction();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InteractionPackage.TRUSTED_FUNCTION_COM_SEND_IMPLEMENTATION__OS_TRUSTED_FUNCTION:
-				setOsTrustedFunction((OsApplicationTrustedFunction)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.TRUSTED_FUNCTION_COM_SEND_IMPLEMENTATION__OS_TRUSTED_FUNCTION:
-				setOsTrustedFunction((OsApplicationTrustedFunction)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.TRUSTED_FUNCTION_COM_SEND_IMPLEMENTATION__OS_TRUSTED_FUNCTION:
-				return osTrustedFunction != null;
-		}
-		return super.eIsSet(featureID);
 	}
 
 } //TrustedFunctionComSendImplementationImpl

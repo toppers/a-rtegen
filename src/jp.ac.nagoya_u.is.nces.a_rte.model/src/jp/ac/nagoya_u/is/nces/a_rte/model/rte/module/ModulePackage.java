@@ -2476,22 +2476,13 @@ public interface ModulePackage extends EPackage {
 	int WRITE_API_FEATURE_COUNT = RTE_API_FEATURE_COUNT + 6;
 
 	/**
-	 * The operation id for the '<em>Is Contained Trusted Operation</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WRITE_API___IS_CONTAINED_TRUSTED_OPERATION = RTE_API_OPERATION_COUNT + 0;
-
-	/**
 	 * The number of operations of the '<em>Write Api</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WRITE_API_OPERATION_COUNT = RTE_API_OPERATION_COUNT + 1;
+	int WRITE_API_OPERATION_COUNT = RTE_API_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference list.
@@ -7472,22 +7463,13 @@ public interface ModulePackage extends EPackage {
 	int INVALIDATE_API_FEATURE_COUNT = RTE_API_FEATURE_COUNT + 4;
 
 	/**
-	 * The operation id for the '<em>Is Contained Trusted Operation</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INVALIDATE_API___IS_CONTAINED_TRUSTED_OPERATION = RTE_API_OPERATION_COUNT + 0;
-
-	/**
 	 * The number of operations of the '<em>Invalidate Api</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INVALIDATE_API_OPERATION_COUNT = RTE_API_OPERATION_COUNT + 1;
+	int INVALIDATE_API_OPERATION_COUNT = RTE_API_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference list.
@@ -9377,22 +9359,13 @@ public interface ModulePackage extends EPackage {
 	int TRUSTED_FUNCTION__TRUSTED_FUNCTION_INDEX = FUNCTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Caller Os Application Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRUSTED_FUNCTION__CALLER_OS_APPLICATION_NAME = FUNCTION_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Trusted Function</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRUSTED_FUNCTION_FEATURE_COUNT = FUNCTION_FEATURE_COUNT + 2;
+	int TRUSTED_FUNCTION_FEATURE_COUNT = FUNCTION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Trusted Function</em>' class.
@@ -9501,15 +9474,6 @@ public interface ModulePackage extends EPackage {
 	 * @ordered
 	 */
 	int RTE_BUFFER_INVALIDATE_TRUSTED_FUNCTION__TRUSTED_FUNCTION_INDEX = TRUSTED_FUNCTION__TRUSTED_FUNCTION_INDEX;
-
-	/**
-	 * The feature id for the '<em><b>Caller Os Application Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RTE_BUFFER_INVALIDATE_TRUSTED_FUNCTION__CALLER_OS_APPLICATION_NAME = TRUSTED_FUNCTION__CALLER_OS_APPLICATION_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Operation</b></em>' containment reference.
@@ -14030,22 +13994,13 @@ public interface ModulePackage extends EPackage {
 	int SEND_API_FEATURE_COUNT = RTE_API_FEATURE_COUNT + 9;
 
 	/**
-	 * The operation id for the '<em>Is Contained Trusted Operation</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEND_API___IS_CONTAINED_TRUSTED_OPERATION = RTE_API_OPERATION_COUNT + 0;
-
-	/**
 	 * The number of operations of the '<em>Send Api</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEND_API_OPERATION_COUNT = RTE_API_OPERATION_COUNT + 1;
+	int SEND_API_OPERATION_COUNT = RTE_API_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference list.
@@ -15290,13 +15245,22 @@ public interface ModulePackage extends EPackage {
 	int CALL_API__OPERATION_PARAM = RTE_API_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Port Arg Value</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_API__PORT_ARG_VALUE = RTE_API_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Return Variable</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CALL_API__RETURN_VARIABLE = RTE_API_FEATURE_COUNT + 2;
+	int CALL_API__RETURN_VARIABLE = RTE_API_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Call Api</em>' class.
@@ -15305,7 +15269,7 @@ public interface ModulePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CALL_API_FEATURE_COUNT = RTE_API_FEATURE_COUNT + 3;
+	int CALL_API_FEATURE_COUNT = RTE_API_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Call Api</em>' class.
@@ -15495,6 +15459,15 @@ public interface ModulePackage extends EPackage {
 	 * @ordered
 	 */
 	int TF_CALL_API__OPERATION_PARAM = CALL_API__OPERATION_PARAM;
+
+	/**
+	 * The feature id for the '<em><b>Port Arg Value</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TF_CALL_API__PORT_ARG_VALUE = CALL_API__PORT_ARG_VALUE;
 
 	/**
 	 * The feature id for the '<em><b>Return Variable</b></em>' reference.
@@ -17990,15 +17963,6 @@ public interface ModulePackage extends EPackage {
 	int COM_SEND_SIGNAL_TRUSTED_FUNCTION__TRUSTED_FUNCTION_INDEX = TRUSTED_FUNCTION__TRUSTED_FUNCTION_INDEX;
 
 	/**
-	 * The feature id for the '<em><b>Caller Os Application Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COM_SEND_SIGNAL_TRUSTED_FUNCTION__CALLER_OS_APPLICATION_NAME = TRUSTED_FUNCTION__CALLER_OS_APPLICATION_NAME;
-
-	/**
 	 * The feature id for the '<em><b>Is Group</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -18017,31 +17981,13 @@ public interface ModulePackage extends EPackage {
 	int COM_SEND_SIGNAL_TRUSTED_FUNCTION__SIGNAL_GROUP_SYMBOL_NAME = TRUSTED_FUNCTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Operation</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COM_SEND_SIGNAL_TRUSTED_FUNCTION__OPERATION = TRUSTED_FUNCTION_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Send Value Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COM_SEND_SIGNAL_TRUSTED_FUNCTION__SEND_VALUE_TYPE = TRUSTED_FUNCTION_FEATURE_COUNT + 3;
-
-	/**
 	 * The number of structural features of the '<em>Com Send Signal Trusted Function</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COM_SEND_SIGNAL_TRUSTED_FUNCTION_FEATURE_COUNT = TRUSTED_FUNCTION_FEATURE_COUNT + 4;
+	int COM_SEND_SIGNAL_TRUSTED_FUNCTION_FEATURE_COUNT = TRUSTED_FUNCTION_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Com Send Signal Trusted Function</em>' class.
@@ -19286,15 +19232,6 @@ public interface ModulePackage extends EPackage {
 	int RTE_BUFFER_WRITE_TRUSTED_FUNCTION__TRUSTED_FUNCTION_INDEX = TRUSTED_FUNCTION__TRUSTED_FUNCTION_INDEX;
 
 	/**
-	 * The feature id for the '<em><b>Caller Os Application Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RTE_BUFFER_WRITE_TRUSTED_FUNCTION__CALLER_OS_APPLICATION_NAME = TRUSTED_FUNCTION__CALLER_OS_APPLICATION_NAME;
-
-	/**
 	 * The feature id for the '<em><b>Operation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19430,15 +19367,6 @@ public interface ModulePackage extends EPackage {
 	int RTE_BUFFER_SEND_TRUSTED_FUNCTION__TRUSTED_FUNCTION_INDEX = TRUSTED_FUNCTION__TRUSTED_FUNCTION_INDEX;
 
 	/**
-	 * The feature id for the '<em><b>Caller Os Application Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RTE_BUFFER_SEND_TRUSTED_FUNCTION__CALLER_OS_APPLICATION_NAME = TRUSTED_FUNCTION__CALLER_OS_APPLICATION_NAME;
-
-	/**
 	 * The feature id for the '<em><b>Operation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -19572,15 +19500,6 @@ public interface ModulePackage extends EPackage {
 	 * @ordered
 	 */
 	int CS_TRUSTED_FUNCTION__TRUSTED_FUNCTION_INDEX = TRUSTED_FUNCTION__TRUSTED_FUNCTION_INDEX;
-
-	/**
-	 * The feature id for the '<em><b>Caller Os Application Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CS_TRUSTED_FUNCTION__CALLER_OS_APPLICATION_NAME = TRUSTED_FUNCTION__CALLER_OS_APPLICATION_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Data Variable</b></em>' reference.
@@ -19754,22 +19673,13 @@ public interface ModulePackage extends EPackage {
 	int SERVER_RUNNABLE_START_OPERATION__START_SERVER_RUNNABLE = EXECUTABLE_START_OPERATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Port Arg Value</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVER_RUNNABLE_START_OPERATION__PORT_ARG_VALUE = EXECUTABLE_START_OPERATION_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Server Runnable Start Operation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SERVER_RUNNABLE_START_OPERATION_FEATURE_COUNT = EXECUTABLE_START_OPERATION_FEATURE_COUNT + 2;
+	int SERVER_RUNNABLE_START_OPERATION_FEATURE_COUNT = EXECUTABLE_START_OPERATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Server Runnable Start Operation</em>' class.
@@ -28424,61 +28334,6 @@ public interface ModulePackage extends EPackage {
 	int TACK_STATUS_OPERATION_COUNT = LOGICAL_BLOCK_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.UserDefinedExcludeOperationImpl <em>User Defined Exclude Operation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.UserDefinedExcludeOperationImpl
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.ModulePackageImpl#getUserDefinedExcludeOperation()
-	 * @generated
-	 */
-	int USER_DEFINED_EXCLUDE_OPERATION = 232;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USER_DEFINED_EXCLUDE_OPERATION__SOURCE = EXCLUDE_OPERATION__SOURCE;
-
-	/**
-	 * The feature id for the '<em><b>Single Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USER_DEFINED_EXCLUDE_OPERATION__SINGLE_SOURCE = EXCLUDE_OPERATION__SINGLE_SOURCE;
-
-	/**
-	 * The feature id for the '<em><b>Role Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USER_DEFINED_EXCLUDE_OPERATION__ROLE_NAME = EXCLUDE_OPERATION__ROLE_NAME;
-
-	/**
-	 * The number of structural features of the '<em>User Defined Exclude Operation</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USER_DEFINED_EXCLUDE_OPERATION_FEATURE_COUNT = EXCLUDE_OPERATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>User Defined Exclude Operation</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USER_DEFINED_EXCLUDE_OPERATION_OPERATION_COUNT = EXCLUDE_OPERATION_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ParameterPassTypeEnum <em>Parameter Pass Type Enum</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -28486,7 +28341,7 @@ public interface ModulePackage extends EPackage {
 	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.ModulePackageImpl#getParameterPassTypeEnum()
 	 * @generated
 	 */
-	int PARAMETER_PASS_TYPE_ENUM = 233;
+	int PARAMETER_PASS_TYPE_ENUM = 232;
 
 	/**
 	 * The meta object id for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ParameterDirectionEnum <em>Parameter Direction Enum</em>}' enum.
@@ -28496,7 +28351,7 @@ public interface ModulePackage extends EPackage {
 	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.ModulePackageImpl#getParameterDirectionEnum()
 	 * @generated
 	 */
-	int PARAMETER_DIRECTION_ENUM = 234;
+	int PARAMETER_DIRECTION_ENUM = 233;
 
 	/**
 	 * The meta object id for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.SignednessEnum <em>Signedness Enum</em>}' enum.
@@ -28506,7 +28361,7 @@ public interface ModulePackage extends EPackage {
 	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.ModulePackageImpl#getSignednessEnum()
 	 * @generated
 	 */
-	int SIGNEDNESS_ENUM = 235;
+	int SIGNEDNESS_ENUM = 234;
 
 	/**
 	 * The meta object id for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ConstantValueTypeEnum <em>Constant Value Type Enum</em>}' enum.
@@ -28516,7 +28371,7 @@ public interface ModulePackage extends EPackage {
 	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.ModulePackageImpl#getConstantValueTypeEnum()
 	 * @generated
 	 */
-	int CONSTANT_VALUE_TYPE_ENUM = 236;
+	int CONSTANT_VALUE_TYPE_ENUM = 235;
 
 	/**
 	 * The meta object id for the '<em>String</em>' data type.
@@ -28526,7 +28381,7 @@ public interface ModulePackage extends EPackage {
 	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.ModulePackageImpl#getString()
 	 * @generated
 	 */
-	int STRING = 237;
+	int STRING = 236;
 
 	/**
 	 * The meta object id for the '<em>Verbatim String</em>' data type.
@@ -28536,7 +28391,7 @@ public interface ModulePackage extends EPackage {
 	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.ModulePackageImpl#getVerbatimString()
 	 * @generated
 	 */
-	int VERBATIM_STRING = 238;
+	int VERBATIM_STRING = 237;
 
 	/**
 	 * The meta object id for the '<em>CIdentifier</em>' data type.
@@ -28546,7 +28401,7 @@ public interface ModulePackage extends EPackage {
 	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.ModulePackageImpl#getCIdentifier()
 	 * @generated
 	 */
-	int CIDENTIFIER = 239;
+	int CIDENTIFIER = 238;
 
 	/**
 	 * The meta object id for the '<em>Boolean</em>' data type.
@@ -28556,7 +28411,7 @@ public interface ModulePackage extends EPackage {
 	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.ModulePackageImpl#getBoolean()
 	 * @generated
 	 */
-	int BOOLEAN = 240;
+	int BOOLEAN = 239;
 
 	/**
 	 * The meta object id for the '<em>Integer</em>' data type.
@@ -28566,7 +28421,7 @@ public interface ModulePackage extends EPackage {
 	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.ModulePackageImpl#getInteger()
 	 * @generated
 	 */
-	int INTEGER = 241;
+	int INTEGER = 240;
 
 	/**
 	 * Returns the meta object for class '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ModuleObject <em>Object</em>}'.
@@ -28717,16 +28572,6 @@ public interface ModulePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getWriteApi_TAckStatus();
-
-	/**
-	 * Returns the meta object for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.WriteApi#isContainedTrustedOperation() <em>Is Contained Trusted Operation</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Is Contained Trusted Operation</em>' operation.
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.WriteApi#isContainedTrustedOperation()
-	 * @generated
-	 */
-	EOperation getWriteApi__IsContainedTrustedOperation();
 
 	/**
 	 * Returns the meta object for class '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.SendOperation <em>Send Operation</em>}'.
@@ -30903,16 +30748,6 @@ public interface ModulePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getInvalidateApi_TAckStatus();
-
-	/**
-	 * Returns the meta object for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.InvalidateApi#isContainedTrustedOperation() <em>Is Contained Trusted Operation</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Is Contained Trusted Operation</em>' operation.
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.InvalidateApi#isContainedTrustedOperation()
-	 * @generated
-	 */
-	EOperation getInvalidateApi__IsContainedTrustedOperation();
 
 	/**
 	 * Returns the meta object for class '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.IocNonqueuedSendOperation <em>Ioc Nonqueued Send Operation</em>}'.
@@ -34207,16 +34042,6 @@ public interface ModulePackage extends EPackage {
 	EReference getTAckStatus_StatusVariable();
 
 	/**
-	 * Returns the meta object for class '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.UserDefinedExcludeOperation <em>User Defined Exclude Operation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>User Defined Exclude Operation</em>'.
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.UserDefinedExcludeOperation
-	 * @generated
-	 */
-	EClass getUserDefinedExcludeOperation();
-
-	/**
 	 * Returns the meta object for class '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.RestartPartitionApi <em>Restart Partition Api</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -34419,16 +34244,6 @@ public interface ModulePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSendApi_TAckStatus();
-
-	/**
-	 * Returns the meta object for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.SendApi#isContainedTrustedOperation() <em>Is Contained Trusted Operation</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Is Contained Trusted Operation</em>' operation.
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.SendApi#isContainedTrustedOperation()
-	 * @generated
-	 */
-	EOperation getSendApi__IsContainedTrustedOperation();
 
 	/**
 	 * Returns the meta object for class '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ReceiveApi <em>Receive Api</em>}'.
@@ -34748,6 +34563,17 @@ public interface ModulePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCallApi_OperationParam();
+
+	/**
+	 * Returns the meta object for the reference list '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.CallApi#getPortArgValue <em>Port Arg Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Port Arg Value</em>'.
+	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.CallApi#getPortArgValue()
+	 * @see #getCallApi()
+	 * @generated
+	 */
+	EReference getCallApi_PortArgValue();
 
 	/**
 	 * Returns the meta object for the reference '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.CallApi#getReturnVariable <em>Return Variable</em>}'.
@@ -36003,17 +35829,6 @@ public interface ModulePackage extends EPackage {
 	EAttribute getTrustedFunction_TrustedFunctionIndex();
 
 	/**
-	 * Returns the meta object for the attribute '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.TrustedFunction#getCallerOsApplicationName <em>Caller Os Application Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Caller Os Application Name</em>'.
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.TrustedFunction#getCallerOsApplicationName()
-	 * @see #getTrustedFunction()
-	 * @generated
-	 */
-	EAttribute getTrustedFunction_CallerOsApplicationName();
-
-	/**
 	 * Returns the meta object for class '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ComSendSignalTrustedFunction <em>Com Send Signal Trusted Function</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -36044,28 +35859,6 @@ public interface ModulePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getComSendSignalTrustedFunction_SignalGroupSymbolName();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ComSendSignalTrustedFunction#getOperation <em>Operation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Operation</em>'.
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ComSendSignalTrustedFunction#getOperation()
-	 * @see #getComSendSignalTrustedFunction()
-	 * @generated
-	 */
-	EReference getComSendSignalTrustedFunction_Operation();
-
-	/**
-	 * Returns the meta object for the reference '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ComSendSignalTrustedFunction#getSendValueType <em>Send Value Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Send Value Type</em>'.
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ComSendSignalTrustedFunction#getSendValueType()
-	 * @see #getComSendSignalTrustedFunction()
-	 * @generated
-	 */
-	EReference getComSendSignalTrustedFunction_SendValueType();
 
 	/**
 	 * Returns the meta object for class '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.OsSetEventApi <em>Os Set Event Api</em>}'.
@@ -36577,17 +36370,6 @@ public interface ModulePackage extends EPackage {
 	EReference getServerRunnableStartOperation_StartServerRunnable();
 
 	/**
-	 * Returns the meta object for the reference list '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ServerRunnableStartOperation#getPortArgValue <em>Port Arg Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Port Arg Value</em>'.
-	 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ServerRunnableStartOperation#getPortArgValue()
-	 * @see #getServerRunnableStartOperation()
-	 * @generated
-	 */
-	EReference getServerRunnableStartOperation_PortArgValue();
-
-	/**
 	 * Returns the meta object for class '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.TrustedFunctionRteBufferWriteSendOperation <em>Trusted Function Rte Buffer Write Send Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -36982,14 +36764,6 @@ public interface ModulePackage extends EPackage {
 		 * @generated
 		 */
 		EReference WRITE_API__TACK_STATUS = eINSTANCE.getWriteApi_TAckStatus();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Contained Trusted Operation</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation WRITE_API___IS_CONTAINED_TRUSTED_OPERATION = eINSTANCE.getWriteApi__IsContainedTrustedOperation();
 
 		/**
 		 * The meta object literal for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.SendOperationImpl <em>Send Operation</em>}' class.
@@ -38668,14 +38442,6 @@ public interface ModulePackage extends EPackage {
 		 * @generated
 		 */
 		EReference INVALIDATE_API__TACK_STATUS = eINSTANCE.getInvalidateApi_TAckStatus();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Contained Trusted Operation</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation INVALIDATE_API___IS_CONTAINED_TRUSTED_OPERATION = eINSTANCE.getInvalidateApi__IsContainedTrustedOperation();
 
 		/**
 		 * The meta object literal for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.IocNonqueuedSendOperationImpl <em>Ioc Nonqueued Send Operation</em>}' class.
@@ -41390,16 +41156,6 @@ public interface ModulePackage extends EPackage {
 		EReference TACK_STATUS__STATUS_VARIABLE = eINSTANCE.getTAckStatus_StatusVariable();
 
 		/**
-		 * The meta object literal for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.UserDefinedExcludeOperationImpl <em>User Defined Exclude Operation</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.UserDefinedExcludeOperationImpl
-		 * @see jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.ModulePackageImpl#getUserDefinedExcludeOperation()
-		 * @generated
-		 */
-		EClass USER_DEFINED_EXCLUDE_OPERATION = eINSTANCE.getUserDefinedExcludeOperation();
-
-		/**
 		 * The meta object literal for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.RestartPartitionApiImpl <em>Restart Partition Api</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -41560,14 +41316,6 @@ public interface ModulePackage extends EPackage {
 		 * @generated
 		 */
 		EReference SEND_API__TACK_STATUS = eINSTANCE.getSendApi_TAckStatus();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Contained Trusted Operation</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation SEND_API___IS_CONTAINED_TRUSTED_OPERATION = eINSTANCE.getSendApi__IsContainedTrustedOperation();
 
 		/**
 		 * The meta object literal for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.ReceiveApiImpl <em>Receive Api</em>}' class.
@@ -41830,6 +41578,14 @@ public interface ModulePackage extends EPackage {
 		 * @generated
 		 */
 		EReference CALL_API__OPERATION_PARAM = eINSTANCE.getCallApi_OperationParam();
+
+		/**
+		 * The meta object literal for the '<em><b>Port Arg Value</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CALL_API__PORT_ARG_VALUE = eINSTANCE.getCallApi_PortArgValue();
 
 		/**
 		 * The meta object literal for the '<em><b>Return Variable</b></em>' reference feature.
@@ -42836,14 +42592,6 @@ public interface ModulePackage extends EPackage {
 		EAttribute TRUSTED_FUNCTION__TRUSTED_FUNCTION_INDEX = eINSTANCE.getTrustedFunction_TrustedFunctionIndex();
 
 		/**
-		 * The meta object literal for the '<em><b>Caller Os Application Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TRUSTED_FUNCTION__CALLER_OS_APPLICATION_NAME = eINSTANCE.getTrustedFunction_CallerOsApplicationName();
-
-		/**
 		 * The meta object literal for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.ComSendSignalTrustedFunctionImpl <em>Com Send Signal Trusted Function</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -42868,22 +42616,6 @@ public interface ModulePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COM_SEND_SIGNAL_TRUSTED_FUNCTION__SIGNAL_GROUP_SYMBOL_NAME = eINSTANCE.getComSendSignalTrustedFunction_SignalGroupSymbolName();
-
-		/**
-		 * The meta object literal for the '<em><b>Operation</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference COM_SEND_SIGNAL_TRUSTED_FUNCTION__OPERATION = eINSTANCE.getComSendSignalTrustedFunction_Operation();
-
-		/**
-		 * The meta object literal for the '<em><b>Send Value Type</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference COM_SEND_SIGNAL_TRUSTED_FUNCTION__SEND_VALUE_TYPE = eINSTANCE.getComSendSignalTrustedFunction_SendValueType();
 
 		/**
 		 * The meta object literal for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.OsSetEventApiImpl <em>Os Set Event Api</em>}' class.
@@ -43306,14 +43038,6 @@ public interface ModulePackage extends EPackage {
 		 * @generated
 		 */
 		EReference SERVER_RUNNABLE_START_OPERATION__START_SERVER_RUNNABLE = eINSTANCE.getServerRunnableStartOperation_StartServerRunnable();
-
-		/**
-		 * The meta object literal for the '<em><b>Port Arg Value</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SERVER_RUNNABLE_START_OPERATION__PORT_ARG_VALUE = eINSTANCE.getServerRunnableStartOperation_PortArgValue();
 
 		/**
 		 * The meta object literal for the '{@link jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.impl.TrustedFunctionRteBufferWriteSendOperationImpl <em>Trusted Function Rte Buffer Write Send Operation</em>}' class.

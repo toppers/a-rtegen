@@ -39,7 +39,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  * 
- *  $Id: excludeOperation.mtl 28166 2016-11-22 05:49:53Z m-yamada $
+ *  $Id: excludeOperation.mtl 19918 2016-01-08 06:05:46Z hiroki.kitagawa $
  */
 [/comment]
 [comment encoding = UTF-8 /]
@@ -65,10 +65,6 @@ Rte_Call_Bsw_SuspendOSInterrupts();
 (void) Rte_Call_Bsw_GetResource([aExcludeOperation.osResourceId/]);
 [/template]
 
-[template private genExcludeOperationEnter(aExcludeOperation : UserDefinedExcludeOperation) ]
-RTE_INTERNAL_EXCLUSIVE_AREA_ENTER(); /* MISRA RULE 14.3 VIOLATION : This macro is supposed to be defined by users. */
-[/template]
-
 [template private genExcludeOperationEnter(aExcludeOperation : NoneExcludeOperation) ]
 [/template]
 
@@ -88,10 +84,6 @@ Rte_Call_Bsw_ResumeOSInterrupts();
 
 [template private genExcludeOperationExit(aExcludeOperation : OsResourceExcludeOperation) ]
 (void) Rte_Call_Bsw_ReleaseResource([aExcludeOperation.osResourceId/]);
-[/template]
-
-[template private genExcludeOperationExit(aExcludeOperation : UserDefinedExcludeOperation) ]
-RTE_INTERNAL_EXCLUSIVE_AREA_EXIT(); /* MISRA RULE 14.3 VIOLATION : This macro is supposed to be defined by users. */
 [/template]
 
 [template private genExcludeOperationExit(aExcludeOperation : NoneExcludeOperation) ]

@@ -46,6 +46,7 @@ import jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.EcucPartition;
 import jp.ac.nagoya_u.is.nces.a_rte.model.ar4x.ecuc.Os;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.BlackboxHeader;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.BlackboxType;
+import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ComSendSignalTrustedFunction;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ComSendTrustedFunctionParamType;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.Constant;
 import jp.ac.nagoya_u.is.nces.a_rte.model.rte.module.ModuleRoot;
@@ -107,6 +108,10 @@ public class ModuleModelBuildCache {
 	public Optional<RteNonqueuedSendTrustedFunctionParamType> rteNonqueuedSendTfParamType;
 	public Optional<ComSendTrustedFunctionParamType> comSendSignalTfParamType;
 	public Optional<ComSendTrustedFunctionParamType> comSendSignalGroupTfParamType;
+
+	// R内部実装用の定義関数
+	public Optional<ComSendSignalTrustedFunction> comSendSignalTf;
+	public Optional<ComSendSignalTrustedFunction> comSendSignalGroupTf;
 
 	// ファイル
 	public Optional<BlackboxHeader> comHeader;

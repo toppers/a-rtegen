@@ -55,7 +55,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -100,7 +99,7 @@ public class RteBswModuleInstanceImpl extends EcucContainerImpl implements RteBs
 	protected EList<RteBswExclusiveAreaImpl> rteBswExclusiveAreaImpl;
 
 	/**
-	 * The cached value of the '{@link #getRteBswImplementation() <em>Rte Bsw Implementation</em>}' reference.
+	 * The cached value of the '{@link #getRteBswImplementation() <em>Rte Bsw Implementation</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getRteBswImplementation()
@@ -168,14 +167,6 @@ public class RteBswModuleInstanceImpl extends EcucContainerImpl implements RteBs
 	 * @generated
 	 */
 	public BswImplementation getRteBswImplementation() {
-		if (rteBswImplementation != null && ((EObject)rteBswImplementation).eIsProxy()) {
-			InternalEObject oldRteBswImplementation = (InternalEObject)rteBswImplementation;
-			rteBswImplementation = (BswImplementation)eResolveProxy(oldRteBswImplementation);
-			if (rteBswImplementation != oldRteBswImplementation) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EcucPackage.RTE_BSW_MODULE_INSTANCE__RTE_BSW_IMPLEMENTATION, oldRteBswImplementation, rteBswImplementation));
-			}
-		}
 		return rteBswImplementation;
 	}
 
@@ -184,8 +175,14 @@ public class RteBswModuleInstanceImpl extends EcucContainerImpl implements RteBs
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BswImplementation basicGetRteBswImplementation() {
-		return rteBswImplementation;
+	public NotificationChain basicSetRteBswImplementation(BswImplementation newRteBswImplementation, NotificationChain msgs) {
+		BswImplementation oldRteBswImplementation = rteBswImplementation;
+		rteBswImplementation = newRteBswImplementation;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, EcucPackage.RTE_BSW_MODULE_INSTANCE__RTE_BSW_IMPLEMENTATION, oldRteBswImplementation, newRteBswImplementation);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -194,10 +191,17 @@ public class RteBswModuleInstanceImpl extends EcucContainerImpl implements RteBs
 	 * @generated
 	 */
 	public void setRteBswImplementation(BswImplementation newRteBswImplementation) {
-		BswImplementation oldRteBswImplementation = rteBswImplementation;
-		rteBswImplementation = newRteBswImplementation;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, EcucPackage.RTE_BSW_MODULE_INSTANCE__RTE_BSW_IMPLEMENTATION, oldRteBswImplementation, rteBswImplementation));
+		if (newRteBswImplementation != rteBswImplementation) {
+			NotificationChain msgs = null;
+			if (rteBswImplementation != null)
+				msgs = ((InternalEObject)rteBswImplementation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - EcucPackage.RTE_BSW_MODULE_INSTANCE__RTE_BSW_IMPLEMENTATION, null, msgs);
+			if (newRteBswImplementation != null)
+				msgs = ((InternalEObject)newRteBswImplementation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - EcucPackage.RTE_BSW_MODULE_INSTANCE__RTE_BSW_IMPLEMENTATION, null, msgs);
+			msgs = basicSetRteBswImplementation(newRteBswImplementation, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EcucPackage.RTE_BSW_MODULE_INSTANCE__RTE_BSW_IMPLEMENTATION, newRteBswImplementation, newRteBswImplementation));
 	}
 
 	/**
@@ -239,6 +243,8 @@ public class RteBswModuleInstanceImpl extends EcucContainerImpl implements RteBs
 				return ((InternalEList<?>)getRteBswEventToTaskMapping()).basicRemove(otherEnd, msgs);
 			case EcucPackage.RTE_BSW_MODULE_INSTANCE__RTE_BSW_EXCLUSIVE_AREA_IMPL:
 				return ((InternalEList<?>)getRteBswExclusiveAreaImpl()).basicRemove(otherEnd, msgs);
+			case EcucPackage.RTE_BSW_MODULE_INSTANCE__RTE_BSW_IMPLEMENTATION:
+				return basicSetRteBswImplementation(null, msgs);
 			case EcucPackage.RTE_BSW_MODULE_INSTANCE__RTE_BSW_REQUIRED_MODE_GROUP_CONNECTION:
 				return ((InternalEList<?>)getRteBswRequiredModeGroupConnection()).basicRemove(otherEnd, msgs);
 		}
@@ -258,8 +264,7 @@ public class RteBswModuleInstanceImpl extends EcucContainerImpl implements RteBs
 			case EcucPackage.RTE_BSW_MODULE_INSTANCE__RTE_BSW_EXCLUSIVE_AREA_IMPL:
 				return getRteBswExclusiveAreaImpl();
 			case EcucPackage.RTE_BSW_MODULE_INSTANCE__RTE_BSW_IMPLEMENTATION:
-				if (resolve) return getRteBswImplementation();
-				return basicGetRteBswImplementation();
+				return getRteBswImplementation();
 			case EcucPackage.RTE_BSW_MODULE_INSTANCE__RTE_BSW_REQUIRED_MODE_GROUP_CONNECTION:
 				return getRteBswRequiredModeGroupConnection();
 		}
